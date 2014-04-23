@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <title>New Document</title>
@@ -6,24 +6,11 @@
 <meta name="Author" content="">
 <meta name="Keywords" content="">
 <meta name="Description" content="">
-<script language="JavaScript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script language="JavaScript" src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
 <script language="JavaScript">
-	/**
-	 *	这个方法你们自己处理吧，反正就是修改BTN文字
-	 */
-	function fixBtnState(checkapp) {
-		var iResult = window.JavaScriptClient
-				.isAppInstalled("com.yuexue.tifenapp");
-		var iDom = document.getElementById(checkapp);
-		alert(iDom);
-		if (iDom) {
-			if (iResult == 1) {
-				iDom.innerHTML = "StartApp"
-			} else {
-				iDom.innerHTML = "Download"
-			}
-		}
+
+	function openApp() {
+		window.open("tifenapp://path");
 	}
 
 	function handleStartOrDownload(app_name) {
@@ -41,8 +28,8 @@
 </script>
 </head>
 
-<body onload="fixBtnState('checkapp')">
-	<a id="checkapp" href="#" onclick="handleStartOrDownload('com.yuexue.tifenapp)">Loading</a>
+<body onload="openApp()">
+	<a id="checkapp" href="tifenapp://path">Loading</a>
 </body>
 </html>
 
