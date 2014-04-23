@@ -9,27 +9,17 @@
 
 <script language="JavaScript">
 
-	function openApp() {
-		window.open("tifenapp://path");
-	}
-
-	function handleStartOrDownload(app_name) {
-		var iAppName = app_name;
-		var iResult = window.JavaScriptClient.isAppInstalled(iAppName);
-		if (iResult == 1) {
-		  
-			
-			window.JavaScriptClient.startApp(iAppName);
-			
-		} else {
-			window.open("http://www.tifen.com/app");
-		}
-	}
+window.location = "weixin://qr/6-v1_rvE94WIh6qZn67P";
+            
+setTimeout(
+	function(){ 
+		window.location="http://www.tifen.com/app";   
+	} , 1500);          
 </script>
 </head>
 
-<body onload="openApp()">
-	<a id="checkapp" href="tifenapp://path">Loading</a>
+<body>
+	
 </body>
 </html>
 
