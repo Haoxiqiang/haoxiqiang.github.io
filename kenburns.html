@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/ken_burns_style.css">
+</head>
+<body>
+	<div id="kenburns-slideshow"></div>
+	<div id="kenburns-description">
+		<h1 id="status">Loading Images..</h1>
+		<h1 id="slide-title"></h1>
+		<p>Kenburns.js is a lightweight and flexible Jquery gallery plugin that loads images and features an animated, pan-and-zoom, Ken Burns style effect. Grab the source from my</p>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="js/kenburns.js"></script>
+	
+	<script type="text/javascript">
+	var titles = ["Epic Day at Refugio",
+				  "Colors of Spring",
+				  "First Flowers",
+				  "Magic Hour at Sands Beach",
+				  "Coal Oil Point",
+				  "Hope Ranch Views"];
+
+	$(document).ready(function() {
+	    $('#kenburns-slideshow').Kenburns({
+	    	images: [
+	    		"images/image0.jpg",
+	    		"images/image1.jpg",
+	    		"images/image2.jpg",
+	    		"images/image3.jpg",
+	    		"images/image4.jpg",
+	    		"images/image5.jpg"
+	    	],
+	    	scale:0.75,
+	    	duration:8000,
+	    	fadeSpeed:1200,
+	    	ease3d:'cubic-bezier(0.445, 0.050, 0.550, 0.950)',
+
+	    	onSlideComplete: function(){
+	    		$('#slide-title').html(titles[this.getSlideIndex()]);
+	    	},
+	    	onLoadingComplete: function(){
+	    		$('#status').html("Loading Complete");
+	    	}
+
+	    });
+	});
+	</script>
+</body>
+</html>
