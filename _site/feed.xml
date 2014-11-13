@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Your awesome title</title>
+    <title>郝锡强的博客</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 13 Nov 2014 18:24:17 +0800</pubDate>
-    <lastBuildDate>Thu, 13 Nov 2014 18:24:17 +0800</lastBuildDate>
+    <link>http://opentalking.org/</link>
+    <atom:link href="http://opentalking.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 13 Nov 2014 23:18:19 +0800</pubDate>
+    <lastBuildDate>Thu, 13 Nov 2014 23:18:19 +0800</lastBuildDate>
     <generator>Jekyll v2.5.1</generator>
     
       <item>
@@ -28,8 +28,8 @@
 
 </description>
         <pubDate>Fri, 14 Nov 2014 02:08:04 +0800</pubDate>
-        <link>http://yourdomain.com/jekyll/update/2014/11/14/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/jekyll/update/2014/11/14/welcome-to-jekyll.html</guid>
+        <link>http://opentalking.org/jekyll/update/2014/11/14/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://opentalking.org/jekyll/update/2014/11/14/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
