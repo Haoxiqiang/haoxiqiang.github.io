@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="原创, 博客, 技术博文, web开发, J2EE开发者, 曾经不知你好"/>
+    <meta name="description" content="曾经不知你好">
+    <meta name="keywords" content=""/>
     <meta name="author" content="liyouhai.com"> 
-    <link rel="canonical" href="http://liyouhai.com/index.html">
+    <link rel="canonical" href="http://liyouhai.com/Timing/">
     <link href="http://liyouhai.com/rss.xml" title="RSS 2.0" type="application/rss+xml" rel="alternate"/>
     <link href="/img/favicon.ico" rel="icon" type="image/x-icon">
-    <title>曾经不知你好</title>
+    <title>Timing - 曾经不知你好</title>
     <link rel="stylesheet" href="/css/min/pure-min.css">
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="/css/min/grids-responsive-old-ie-min.css">
@@ -104,53 +104,43 @@
         <div>
             <div class="posts">
 
-                
+                <link rel="stylesheet" href="/css/min/pointtime.css" type="text/css" media="screen" />
+<script language="javascript">
+    $(function(){
+        var tags_a = $(".point-time");
+        tags_a.each(function(){
+            var x = 5;
+            var y = 0;
+            var rand = parseInt(Math.random() * (x - y + 1) + y);
+            $(this).addClass("point"+rand);
+        });
+    });
+
+</script>
+<div class="archive" >
 
 
-    <section class="post">
-        <header class="post-header">
-            <img class="post-avatar" height="48" width="48"
-                 src="http://liyouhai.com/images/lindachung.jpg">
+    
+    
+    <article>
+        <h3 class="year">2014</h3>
+        <section>
+        <span class="point-time "></span>
+        <time datetime="05-11">
 
-            <h2 class="post-title">Jekyll主题 &bull;JekyllPure</h2>
+        <span>05月11日</span>
+        <span></span>
+        </time>
+        <aside>
+            <p class="things"><a href="/project/opensource-jekyll-theme-jekyllpure.html">Jekyll主题 &bull;JekyllPure</a></p>
 
-            <p class="post-meta">By 05月11日  2014  <a
-                    class="post-categorybut " href="/type/#project">project</a><a
-                    class="post-category " > Jekyll</a><a
-                    class="post-category " >  静态博客</a>
-            </p>
-        </header>
+        </aside>
 
-        <div class="post-description">
-            <p><img src="http://liyouhai.qiniudn.com/2014-05-11-opensource-jekyll-theme-jekyllpure.jpg/top" alt="" /></p>
-
-<blockquote><p>JekyllPure版本V1.0.0 <br>
-最后更新:2014-09-19 16:45</p></blockquote>
-
-
-
-
-            <a href="/project/opensource-jekyll-theme-jekyllpure.html" class="post-categorybut">阅读全文</a>
-        </div>
     </section>
-
-
-<div class="pure-g pagination">
     
-    <span class=" pure-u-1-2 pagination-item"><p>Newer</p></span>
     
-
-
-    
-    <span class=" pure-u-1-2 pagination-item"><p>Older</p></span>
-    
+    </article>
 </div>
-
-
-
-
-
-
 
 
             </div>

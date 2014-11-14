@@ -1,23 +1,56 @@
 ---
-layout: default
+layout: blog
+description: ""
+tags : [ 原创 ,博客,技术博文,web开发,J2EE开发者,曾经不知你好]
 ---
 
-<div class="home">
+{% for post in paginator.posts %}
 
-  <h1 class="page-heading">Posts</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <section class="post">
+        <header class="post-header">
+            <img class="post-avatar" height="48" width="48"
+                 src="{{ post.avatarimg }}">
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+            <h2 class="post-title">{{ post.title }}</h2>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+            <p class="post-meta">By {{ post.date | date: "%m" }}月{{ post.date | date: "%d" }}日  {{ post.date | date: "%Y" }}  <a
+                    class="post-categorybut " href="/type/#{{ post.categories  }}">{{ post.categories  }}</a><a
+                    class="post-category " > {{ post.tags | first }}</a><a
+                    class="post-category " >  {{ post.tags[1] }}</a>
+            </p>
+        </header>
 
+        <div class="post-description">
+            {{ post.content | split:'<!-- more -->'| first }}
+
+
+            <a href="{{ post.url }}" class="post-categorybut">阅读全文</a>
+        </div>
+    </section>
+
+{% endfor %}
+<div class="pure-g pagination">
+    {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+    <a class="pure-u-1-2 pagination-item" href="/"><p>Newer</p></a>
+    {% else %}
+    <a class=" pure-u-1-2 pagination-item" href="/page/{{paginator.previous_page}}"><p>Newer</p></a>
+    {% endif %}
+    {% else %}
+    <span class=" pure-u-1-2 pagination-item"><p>Newer</p></span>
+    {% endif %}
+
+
+    {% if paginator.next_page %}
+    <a class=" pure-u-1-2 pagination-item" href="/page/{{paginator.next_page}}"><p>Older</p></a>
+    {% else %}
+    <span class=" pure-u-1-2 pagination-item"><p>Older</p></span>
+    {% endif %}
 </div>
+
+
+
+
+
+

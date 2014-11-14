@@ -1,14 +1,22 @@
-# Site settings
-title: Your awesome title
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
-
-# Build settings
-markdown: kramdown
+#production_url是sitemap.txt生成的url,方便百度谷歌收录
+production_url: http://liyouhai.com
+#
+# Jekyll Settings
+#
+#rdiscount解析器对于嵌入html javascript代码,为文章增加特定效果兼容较好
+markdown: rdiscount
+rdiscount:
+  extensions: [  "autolink", ]
+markdown_ext:  markdown,mkd,mkdn,md
+highlighter: pygments
+permalink: /:categories/:title.html
+paginate: 7
+paginate_path: "page/:num"
+exclude: [ "README.md",".idea",".iml",".name",".Node"]
+encoding: "utf-8"
+#在发布文章时使用一个未来的日期
+future: true
+#产生相关页面的索引
+lsi:      false
+#禁用定制插件
+safe:     false
