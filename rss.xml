@@ -7,10 +7,10 @@ permalink: rss.xml
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title>郝锡强的博客</title>
-    <link href="http://liyouhai.com/rss.xml" rel="self"/>
-    <link href="http://liyouhai.com/"/>
+    <link href="http://blog.haoxiqiang.info/rss.xml" rel="self"/>
+    <link href="http://blog.haoxiqiang.info"/>
     <updated>{{ site.time | date_to_xmlschema }}</updated>
-    <id>http://liyouhai.com/</id>
+    <id>http://blog.haoxiqiang.info/</id>
     <author>
         <name>liyouhai</name>
         <email>liyouhai@vip.qq.com</email>
@@ -19,9 +19,9 @@ permalink: rss.xml
     {% for post in site.posts %}
     <entry>
         <title>{{ post.title | xml_escape }}</title>
-        <link href="http://liyouhai.com{{ post.url }}"/>
+        <link href="http://blog.haoxiqiang.info{{ post.url }}"/>
         <updated>{{ post.date | date_to_xmlschema }}</updated>
-        <id>http://liyouhai.com/{{ post.id }}</id>
+        <id>http://blog.haoxiqiang.info/{{ post.id }}</id>
         <content type="html">{{ post.content | xml_escape }}</content>
         <summary type="html">{{ post.content | xml_escape }}</summary>
     </entry>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
     <title>郝锡强的博客</title>
-    <link href="http://liyouhai.com/rss.xml" rel="self"/>
-    <link href="http://liyouhai.com/"/>
-    <updated>2014-11-14T15:31:13+08:00</updated>
-    <id>http://liyouhai.com/</id>
+    <link href="http://blog.haoxiqiang.info/rss.xml" rel="self"/>
+    <link href="http://blog.haoxiqiang.info"/>
+    <updated>2014-11-14T21:42:36+08:00</updated>
+    <id>http://blog.haoxiqiang.info/</id>
     <author>
         <name>liyouhai</name>
         <email>liyouhai@vip.qq.com</email>
@@ -14,9 +14,9 @@
     
     <entry>
         <title>Jekyll主题 &amp;bull;JekyllPure</title>
-        <link href="http://liyouhai.com/project/opensource-jekyll-theme-jekyllpure.html"/>
+        <link href="http://blog.haoxiqiang.info/project/opensource-jekyll-theme-jekyllpure.html"/>
         <updated>2014-05-11T00:00:00+08:00</updated>
-        <id>http://liyouhai.com//project/opensource-jekyll-theme-jekyllpure</id>
+        <id>http://blog.haoxiqiang.info//project/opensource-jekyll-theme-jekyllpure</id>
         <content type="html">&lt;p&gt;&lt;img src=&quot;http://liyouhai.qiniudn.com/2014-05-11-opensource-jekyll-theme-jekyllpure.jpg/top&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;&lt;p&gt;JekyllPure版本V1.0.0 &lt;br&gt;
@@ -25,7 +25,7 @@
 &lt;!-- more --&gt;
 
 
-&lt;p&gt;Demo:&lt;a href=&quot;http://liyouhai.com/&quot;&gt;曾经不知你好&#39;Blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Demo:&lt;a href=&quot;http://liyouhai.com/&quot;&gt;郝锡强&#39;Blog&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Github:&lt;a href=&quot;https://github.com/liyouhai/JekyllPure&quot;&gt;JekyllPure&#39;github&lt;/a&gt;&lt;/p&gt;
 
@@ -157,7 +157,7 @@
 &lt;!-- more --&gt;
 
 
-&lt;p&gt;Demo:&lt;a href=&quot;http://liyouhai.com/&quot;&gt;曾经不知你好&#39;Blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Demo:&lt;a href=&quot;http://liyouhai.com/&quot;&gt;郝锡强&#39;Blog&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Github:&lt;a href=&quot;https://github.com/liyouhai/JekyllPure&quot;&gt;JekyllPure&#39;github&lt;/a&gt;&lt;/p&gt;
 

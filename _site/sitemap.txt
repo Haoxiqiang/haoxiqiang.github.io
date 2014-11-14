@@ -1,10 +1,10 @@
 
-http://liyouhai.com/Timing/
-http://liyouhai.com/index.html
-http://liyouhai.com/rss.xml
-http://liyouhai.com/search/
-http://liyouhai.com/sitemap.txt
-http://liyouhai.com/tag/
-http://liyouhai.com/type/
+http://blog.haoxiqiang.info/Timing/
+http://blog.haoxiqiang.info/index.html
+http://blog.haoxiqiang.info/rss.xml
+http://blog.haoxiqiang.info/search/
+http://blog.haoxiqiang.info/sitemap.txt
+http://blog.haoxiqiang.info/tag/
+http://blog.haoxiqiang.info/type/
 
-http://liyouhai.com/project/opensource-jekyll-theme-jekyllpure.html
+http://blog.haoxiqiang.info/project/opensource-jekyll-theme-jekyllpure.html

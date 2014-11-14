@@ -1,124 +1,115 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Static Markdown (or Textile), Liquid, HTML & CSS go in. Static sites come out ready for deployment. Jekyll template guide,JekyllPure是一个基于jekyll主题,集成了各种方便的插件,以及简洁的页面">
-    <meta name="keywords" content="Jekyll, 静态博客, 主题"/>
-    <meta name="author" content="liyouhai.com"> 
-    <link rel="canonical" href="http://liyouhai.com/project/opensource-jekyll-theme-jekyllpure.html">
-    <link href="http://liyouhai.com/rss.xml" title="RSS 2.0" type="application/rss+xml" rel="alternate"/>
-    <link href="/img/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Jekyll主题 &bull;JekyllPure - 曾经不知你好</title>
-    <link rel="stylesheet" href="/css/min/pure-min.css">
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/css/min/grids-responsive-old-ie-min.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="/css/min/grids-responsive-min.css">
-    <!--<![endif]-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Static Markdown (or Textile), Liquid, HTML & CSS go in. Static sites come out ready for deployment. Jekyll template guide,JekyllPure是一个基于jekyll主题,集成了各种方便的插件,以及简洁的页面">
+<meta name="keywords" content="Jekyll, 静态博客, 主题"/>
+<meta name="author" content="http://blog.haoxiqiang.info"> 
+<link rel="canonical" href="http://blog.haoxiqiang.info/project/opensource-jekyll-theme-jekyllpure.html">
+<link href="http://blog.haoxiqiang.info/rss.xml" title="RSS 2.0" type="application/rss+xml" rel="alternate"/>
+<link href="/img/favicon.ico" rel="icon" type="image/x-icon">
+<title>Jekyll主题 &bull;JekyllPure - 郝锡强的博客</title>
+<link rel="stylesheet" href="/css/min/pure-min.css">
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="/css/min/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<link rel="stylesheet" href="/css/min/grids-responsive-min.css">
+<!--<![endif]-->
 
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/css/JekyllPure-old-ie.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="/css/JekyllPure.css">
-    <!--<![endif]-->
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="/css/JekyllPure-old-ie.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<link rel="stylesheet" href="/css/JekyllPure.css">
+<!--<![endif]-->
 
-    <link href="/css/min/font-awesome.min.css" rel="stylesheet">
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/css/min/font-awesome-ie7.min.css">
-    <![endif]-->
-    <script src="/js/min/jquery-1.7.2.min.js"></script>
-    <!--
-     /\_ \    __                         /\ \                __
-     \//\ \  /\_\  __  __    ___   __  __\ \ \___      __   /\_\
-       \ \ \ \/\ \/\ \/\ \  / __`\/\ \/\ \\ \  _ `\  /'__`\ \/\ \
-        \_\ \_\ \ \ \ \_\ \/\ \L\ \ \ \_\ \\ \ \ \ \/\ \L\.\_\ \ \
-        /\____\\ \_\/`____ \ \____/\ \____/ \ \_\ \_\ \__/.\_\\ \_\
-        \/____/ \/_/`/___/> \/___/  \/___/   \/_/\/_/\/__/\/_/ \/_/
-                       /\___/
-                       \/__/
-     图像可以到http://asciigen.com/  生成..记得翻墙才能正常生成.如不方便可以博客留言我帮你生成
-     -->
+<link href="/css/min/font-awesome.min.css" rel="stylesheet">
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="/css/min/font-awesome-ie7.min.css">
+<![endif]-->
+<script src="/js/min/jquery-1.7.2.min.js"></script>
+<!--
+ __  __     ______     ______     __  __     __     ______     __     ______     __   __     ______    
+/\ \_\ \   /\  __ \   /\  __ \   /\_\_\_\   /\ \   /\  __ \   /\ \   /\  __ \   /\ "-.\ \   /\  ___\   
+\ \  __ \  \ \  __ \  \ \ \/\ \  \/_/\_\/_  \ \ \  \ \ \/\_\  \ \ \  \ \  __ \  \ \ \-.  \  \ \ \__ \  
+ \ \_\ \_\  \ \_\ \_\  \ \_____\   /\_\/\_\  \ \_\  \ \___\_\  \ \_\  \ \_\ \_\  \ \_\\"\_\  \ \_____\ 
+  \/_/\/_/   \/_/\/_/   \/_____/   \/_/\/_/   \/_/   \/___/_/   \/_/   \/_/\/_/   \/_/ \/_/   \/_____/ 
+                                                                                                       
+http://ascii.mastervb.net/text_to_ascii.php   sub_zero
+ -->
 </head>
 
 <body>
 
 
-
-
-
-
-
 <div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-        <div class="header">
-            <div class="headerpic">
-                <a href="/">
-                    <img src="/img/headicon.png" alt="Profile Picture" style="width: 140px;" title="返回首页">
-                </a>
-            </div>
-            <h1 class="brand-title">曾经不知你好</h1>
-            <h2 class="brand-tagline">Write Less,Do More!</h2>
-
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a class="pure-button" href="/Timing">时间轴</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="/tag">标签库</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="/1">收藏站</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="/1">音乐屋</a>
-
-                </ul>
-            </nav>
-            <div class="search">
-                <form action="/search">
-                    <input type="text" class="search-query" placeholder="Search Blog" name="query" title="全站搜索-只支持英文">
-                </form>
-            </div>
-            <div id="toc"></div>
-            <nav id="nav">
-                <ul class="nav-list">
-                    <li class="nav-link">
-                    <a class="github" href="https://github.com/haoxiqiang"><i class="fa fa-github fa-2x"></i></a>
-                    </li>
-                    <li class="nav-link">
-                    <a class="rss" href="/rss.xml" ><i class="fa fa-rss fa-2x"></i></a>
-                    </li>
-                </ul>
-            </nav>
+<div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <div class="headerpic">
+            <a href="/">
+                <img src="/img/headicon.png" alt="Profile Picture" style="width: 140px;" title="返回首页">
+            </a>
         </div>
+        <h1 class="brand-title">郝锡强的博客</h1>
+        <h2 class="brand-tagline">什么都喜欢写点</h2>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="pure-button" href="/Timing">时间轴</a>
+                </li>
+                <li class="nav-item">
+                    <a class="pure-button" href="/tag">标签库</a>
+                </li>
+                <li class="nav-item">
+                    <a class="pure-button" href="/collect">收藏站</a>
+                </li>
+
+            </ul>
+        </nav>
+        <div class="search">
+            <form action="/search">
+                <input type="text" class="search-query" placeholder="Search Blog" name="query" title="全站搜索-只支持英文">
+            </form>
+        </div>
+        <div id="toc"></div>
+        <nav id="nav">
+            <ul class="nav-list">
+                <li class="nav-link">
+                <a class="github" href="https://github.com/haoxiqiang"><i class="fa fa-github fa-2x"></i></a>
+                </li>
+                <li class="nav-link">
+                <a class="rss" href="/rss.xml" ><i class="fa fa-rss fa-2x"></i></a>
+                </li>
+            </ul>
+        </nav>
     </div>
+</div>
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <!--[if lt IE 8]>
-        <i class="label label-danger">亲爱的用户，您的浏览器版本过低，建议您升级浏览器获得更好的用户体验</i>
-        <![endif]-->
-        <div>
-            <div class="posts">
+<div class="content pure-u-1 pure-u-md-3-4">
+    <!--[if lt IE 8]>
+    <i class="label label-danger">博主太懒,拒绝为IE 8及以下用户服务</i>
+    <![endif]-->
+    <div>
+        <div class="posts">
 
-                <div class="qrcodeTable"></div>
+            <div class="qrcodeTable"></div>
 <header class="post-header">
-    <img class="post-avatar" height="48" width="48"
-         src="http://liyouhai.com/images/lindachung.jpg">
+<!--     <img class="post-avatar" height="48" width="48"
+     src="http://liyouhai.com/images/lindachung.jpg"> -->
 
-    <h2 class="post-title">Jekyll主题 &bull;JekyllPure</h2>
+<h2 class="post-title">Jekyll主题 &bull;JekyllPure</h2>
 
-    <p class="post-meta">By 05月11日  2014  <a
-            class="post-categorybut " href="/type/#">project</a><a
-            class="post-category " href="/tag/#Jekyll"> Jekyll</a><a
-            class="post-category " href="/tag/#静态博客">  静态博客</a>
-    </p>
+<p class="post-meta">By 05月11日  2014  <a
+        class="post-categorybut " href="/type/#">project</a><a
+        class="post-category " href="/tag/#Jekyll"> Jekyll</a><a
+        class="post-category " href="/tag/#静态博客">  静态博客</a>
+</p>
 </header>
 <div class="article pure-u-22-24">
-    <p><img src="http://liyouhai.qiniudn.com/2014-05-11-opensource-jekyll-theme-jekyllpure.jpg/top" alt="" /></p>
+<p><img src="http://liyouhai.qiniudn.com/2014-05-11-opensource-jekyll-theme-jekyllpure.jpg/top" alt="" /></p>
 
 <blockquote><p>JekyllPure版本V1.0.0 <br>
 最后更新:2014-09-19 16:45</p></blockquote>
@@ -126,7 +117,7 @@
 <!-- more -->
 
 
-<p>Demo:<a href="http://liyouhai.com/">曾经不知你好'Blog</a></p>
+<p>Demo:<a href="http://liyouhai.com/">郝锡强'Blog</a></p>
 
 <p>Github:<a href="https://github.com/liyouhai/JekyllPure">JekyllPure'github</a></p>
 
@@ -251,45 +242,64 @@
 <p>详细连接博文:<a href="http://liyouhai.com/project/opensource-jekyll-theme-jekyllpure.html">曾经不知你好'Blog</a></p>
 
 </div>
-    <div class="pure-g pagination">
-        
-        <span class="pure-u-1-2 pagination-item "><p>上一篇&nbsp;<i class="fa fa-chain-broken"></i></p></span>
-        
-        
-        <span class="pure-u-1-2 pagination-item "><p>下一篇&nbsp;<i class="fa fa-chain-broken"></i></p></span>
-        
-    </div>
-    <link href="/css/code.css" rel="stylesheet">
-    <link href="/css/min/fancybox.css" rel="stylesheet">
-    <script src="/js/min/jquery.toc.min.js" ></script>
-    <script src="/js/min/jquery.qrcode.min.js" ></script>
-    <script src="/js/min/jquery.fancybox.pack.js" ></script>
-    <script src="/js/page.js" ></script>
-
+<div class="pure-g pagination">
+    
+    <span class="pure-u-1-2 pagination-item "><p>上一篇&nbsp;<i class="fa fa-chain-broken"></i></p></span>
     
     
-
+    <span class="pure-u-1-2 pagination-item "><p>下一篇&nbsp;<i class="fa fa-chain-broken"></i></p></span>
     
-    
+</div>
+<link href="/css/code.css" rel="stylesheet">
+<link href="/css/min/fancybox.css" rel="stylesheet">
+<script src="/js/min/jquery.toc.min.js" ></script>
+<script src="/js/min/jquery.qrcode.min.js" ></script>
+<script src="/js/min/jquery.fancybox.pack.js" ></script>
+<script src="/js/page.js" ></script>
 
 
 
 
 
 
-            </div>
-            </div>
-        <div class="footer">
-                <a href="/love/welcome-my-blog.html">About</a>
-                 <a href="/1">Collecting</a>
-                <a href="tencent://message/?uin=1003800663">QQ</a>
-                <a href="https://github.com/liyouhai">GitHub</a>
-            <script src="/js/min/nprogress.min.js"></script>
-            <script src="/js/index.js"></script>
+<a name="comments"> </a>
+<div id="comment">
+    <div class="ds-thread" data-title="Jekyll主题 &bull;JekyllPure"></div>
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"haoxiqiang.info"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = '../js/min/duoshuo.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+</div>
+
+
+
+
+
+
+
+
+
+
         </div>
-        <div class="topfade"><a href="javascript:;" title="返回顶部"></a></div>
-
+        </div>
+    <div class="footer">
+            <a href="/love/welcome-my-blog.html">About</a>
+             <a href="/1">Collecting</a>
+            <a href="tencent://message/?uin=653979558">QQ</a>
+            <a href="https://github.com/haoxiqiang">GitHub</a>
+        <script src="/js/min/nprogress.min.js"></script>
+        <script src="/js/index.js"></script>
     </div>
+    <div class="topfade"><a href="javascript:;" title="返回顶部"></a></div>
+
+</div>
 
 </div>
 

@@ -5,14 +5,14 @@ description: "Static Markdown (or Textile), Liquid, HTML & CSS go in. Static sit
 category: Project
 avatarimg: "http://liyouhai.com/images/lindachung.jpg"
 tags : [ Jekyll ,静态博客,主题]
-duoshuo: false
+duoshuo: true
 ---
 
 ![](http://liyouhai.qiniudn.com/2014-05-11-opensource-jekyll-theme-jekyllpure.jpg/top)
 > JekyllPure版本V1.0.0 <br>
 > 最后更新:2014-09-19 16:45
 <!-- more -->
-Demo:[曾经不知你好'Blog](http://liyouhai.com/)
+Demo:[郝锡强'Blog](http://liyouhai.com/)
 
 Github:[JekyllPure'github](https://github.com/liyouhai/JekyllPure)
 
