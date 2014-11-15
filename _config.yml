@@ -4,7 +4,6 @@ production_url: http://blog.haoxiqiang.info
 # Jekyll Settings
 #
 #rdiscount解析器对于嵌入html javascript代码,为文章增加特定效果兼容较好
-duoshuo_shortname: haoxiqiang.info
 markdown: rdiscount
 rdiscount:
   extensions: [  "autolink", ]

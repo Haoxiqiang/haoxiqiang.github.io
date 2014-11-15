@@ -5,8 +5,6 @@ comments: true
 
 <div class="qrcodeTable"></div>
 <header class="post-header">
-<!--     <img class="post-avatar" height="48" width="48"
-     src="{{ page.avatarimg }}"> -->
 
 <h2 class="post-title">{{ page.title }}</h2>
 
@@ -30,49 +28,17 @@ comments: true
     {% else %}
     <span class="pure-u-1-2 pagination-item "><p>下一篇&nbsp;<i class="fa fa-chain-broken"></i></p></span>
     {% endif %}
+</div>
     {% if page.comments  %}
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'haoxiqiangsblog'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
+    {% include comments.html %}
     {% endif %}
 
-</div>
-    <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'haoxiqiangsblog'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-    </script>
 <link href="/css/code.css" rel="stylesheet">
 <link href="/css/min/fancybox.css" rel="stylesheet">
 <script src="/js/min/jquery.toc.min.js" ></script>
 <script src="/js/min/jquery.qrcode.min.js" ></script>
 <script src="/js/min/jquery.fancybox.pack.js" ></script>
 <script src="/js/page.js" ></script>
-
-{% if  page.sharing != false %}
-{% include sharing.html %}
-{% endif %}
-<!-- {% if  page.duoshuo != false %}
-{% include duoshuo.html %}
-{% endif %} -->
 
 
 

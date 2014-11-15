@@ -3,7 +3,7 @@ layout: blog
 description: "郝锡强的博客"
 tags : [ 博客,技术博文,移动,J2EE开发者]
 ---
-
+{% include analytics.html %}
 {% for post in paginator.posts %}
 
 
@@ -37,8 +37,6 @@ tags : [ 博客,技术博文,移动,J2EE开发者]
     {% else %}
     <span class=" pure-u-1-2 pagination-item"><p>Newer</p></span>
     {% endif %}
-
-
     {% if paginator.next_page %}
     <a class=" pure-u-1-2 pagination-item" href="/page/{{paginator.next_page}}"><p>Older</p></a>
     {% else %}
