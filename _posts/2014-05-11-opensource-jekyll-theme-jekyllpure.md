@@ -5,7 +5,7 @@ description: "Static Markdown (or Textile), Liquid, HTML & CSS go in. Static sit
 category: Project
 avatarimg: "http://liyouhai.com/images/lindachung.jpg"
 tags : [ Jekyll ,静态博客,主题]
-duoshuo: true
+duoshuo: false
 ---
 
 ![](http://liyouhai.qiniudn.com/2014-05-11-opensource-jekyll-theme-jekyllpure.jpg/top)

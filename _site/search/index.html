@@ -95,17 +95,24 @@ http://ascii.mastervb.net/text_to_ascii.php   sub_zero
     <div>
         <div class="posts">
 
-            <script src="/js/min/jquery.search.js" ></script>
-
-<i class="label label-danger">目前不支持中文搜索，但支持英文搜索</i>
-
-<div id="search_results"></div>
-<script>
-    $('#search_results').tapir({'token': '534e874bdc0c060200000003'});
+            <script>
+  (function() {
+    var cx = '014313519114298061509:rjynj7pfc7q';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
 </script>
+<gcse:search></gcse:search>
 
         </div>
-        </div>
+    </div>
+    <div><p>39</p></div>
+
     <div class="footer">
             <a href="/love/welcome-my-blog.html">About</a>
              <a href="/1">Collecting</a>

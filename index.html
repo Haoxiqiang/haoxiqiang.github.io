@@ -11,8 +11,7 @@ tags : [ 博客,技术博文,移动,J2EE开发者]
         <header class="post-header">
 
             <h2 class="post-title">{{ post.title }}</h2>
-
-            <p class="post-meta">By {{ post.date | date: "%m" }}月{{ post.date | date: "%d" }}日  {{ post.date | date: "%Y" }}  <a
+            <p class="post-meta">By  {{ site.time | date_to_xmlschema }} {{ post.date | date: "%m" }}月{{ post.date | date: "%d" }}日  {{ post.date | date: "%Y" }}  <a
                     class="post-categorybut " href="/type/#{{ post.categories  }}">{{ post.categories  }}</a><a
                     class="post-category " > {{ post.tags | first }}</a><a
                     class="post-category " >  {{ post.tags[1] }}</a>

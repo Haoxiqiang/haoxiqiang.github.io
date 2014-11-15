@@ -3,12 +3,16 @@ layout: blog
 title: 全站搜索
 permalink: search/
 ---
-
-<script src="/js/min/jquery.search.js" ></script>
-
-<i class="label label-danger">目前不支持中文搜索，但支持英文搜索</i>
-
-<div id="search_results"></div>
 <script>
-    $('#search_results').tapir({'token': '534e874bdc0c060200000003'});
+  (function() {
+    var cx = '014313519114298061509:rjynj7pfc7q';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
 </script>
+<gcse:search></gcse:search>
