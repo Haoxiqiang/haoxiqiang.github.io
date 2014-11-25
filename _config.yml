@@ -29,7 +29,6 @@ markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 highlighter: pygments
 
 kramdown: 
-  parse_block_html: true
   input: GFM
 
 permalink: /:categories/:year-:month-:title.html
