@@ -1,0 +1,35 @@
+---
+layout: default
+title : Timing
+---
+<div class="timing">
+    <ul id='timeline'>
+        <article>
+            {% for post in site.posts reverse %}
+            {% if post.layout == 'post' %}
+            
+                <section class="main">
+                      
+                          <li class='work'>
+                            <input class='radio' id='{{ post.date | date: "%Y%m%d" }}' name='works' type='radio' checked>
+                            <div class="relative">
+                              <label for='{{ post.date | date: "%Y%m%d" }}'>{{ post.title }}</label>
+                              <span class='date'>{{ post.date | date: "%Y年%m月%d日" }}</span>
+                              <span class='circle'></span>
+                            </div>
+                            <div class='timeline-content'>
+                              <p>
+                                {{ post.content | split:'<!-- more -->'| first }}
+                              </p>
+                            </div>
+                          </li>
+                       
+                </section>
+
+            {% endif %}
+            {% endfor %}
+        </article>
+    </ul>
+</div>
+<link rel="stylesheet" href="{{ '/css/timeline.css' | prepend: site.baseurl }}" type="text/css" media="screen" />
+

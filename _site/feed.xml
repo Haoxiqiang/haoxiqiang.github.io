@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>郝锡强的博客</title>
+    <description></description>
+    <link>http://haoxiqiang.info/blog/</link>
+    <atom:link href="http://haoxiqiang.info/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 25 Nov 2014 10:56:41 +0800</pubDate>
+    <lastBuildDate>Tue, 25 Nov 2014 10:56:41 +0800</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Welcome</title>
+        <description>&lt;p&gt;in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+&lt;!-- more --&gt;&lt;br /&gt;
+Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;
+  &lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;def print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  puts &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, #{name}&amp;quot;&lt;/span&gt;
+end
+print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi,STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+ 
+\begin{aligned} \dot{x} &amp;= \sigma(y-x) \\ 
+\dot{y} &amp;= \rho x - y - xz \\ 
+\dot{z} &amp;= -\beta z + xy \end{aligned} 
+ %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a^2 + b^2 = c^2&lt;/script&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;When $a \ne 0$, there are two solutions to (ax^2 + bx + c = 0) and they are &lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Dec 2014 06:19:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/blog/2014-12-welcome.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-12-welcome.html</guid>
+        
+        <category>design</category>
+        
+        <category>java</category>
+        
+        <category>ios</category>
+        
+        <category>blog</category>
+        
+        <category>css</category>
+        
+        <category>javascript</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>3</title>
+        <description>&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Dec 2014 05:19:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/blog/2014-12-3.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-12-3.html</guid>
+        
+        <category>design</category>
+        
+        <category>java</category>
+        
+        <category>blog</category>
+        
+        <category>css</category>
+        
+        <category>javascript</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome4</title>
+        <description>&lt;p&gt;in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;
+  &lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;def print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  puts &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, #{name}&amp;quot;&lt;/span&gt;
+end
+print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi,STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 01 Dec 2014 20:19:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/blog/2014-12-welcome4.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-12-welcome4.html</guid>
+        
+        <category>design</category>
+        
+        <category>java</category>
+        
+        <category>ios</category>
+        
+        <category>css</category>
+        
+        <category>javascript</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+&lt;!-- more --&gt;&lt;br /&gt;
+Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;
+  &lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://liyouhai.qiniudn.com/2014-05-11-opensource-jekyll-theme-jekyllpure.jpg/top&quot; alt=&quot;&quot; /&gt;&lt;br /&gt;
+&amp;gt; JekyllPure版本V1.0.0&lt;br /&gt;
+&amp;gt; 最后更新:2014-09-19 16:45&lt;/p&gt;
+
+&lt;!-- more --&gt;
+&lt;p&gt;Demo:&lt;a href=&quot;http://liyouhai.com/&quot;&gt;郝锡强’Blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Github:&lt;a href=&quot;https://github.com/liyouhai/JekyllPure&quot;&gt;JekyllPure’github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;使用技术&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;项目基于&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;说明&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;版本&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;静态博客&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 2.3.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://purecss.io/&quot;&gt;Pure&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;雅虎前端框架&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 0.5.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://fontawesome.io/&quot;&gt;Fontawesome&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;字体图标&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 4.2.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://jquery.com/&quot;&gt;Jquery&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;javascript&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 1.7.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://ricostacruz.com/nprogress/&quot;&gt;NProgress.js&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;页面顶部加载条&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 0.1.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://projects.jga.me/toc&quot;&gt;TOC.js&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;文章目录生成&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 0.2.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://fancybox.net/&quot;&gt;fancyBox&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;图片盒子&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 2.1.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://jeromeetienne.github.io/jquery-qrcode/&quot;&gt;qrcode&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;网址生成二维码&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 1.0.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://addywaddy.github.io/jquery.tagcloud.js/&quot;&gt;tagcloud.js&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;标签云&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 1.0.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://tapirgo.com/&quot;&gt;tapirgo&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;全文搜索插件&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 1.0.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://www.jwplayer.com/&quot;&gt;Jwplayer&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;HTML5视频插件&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 6.2.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;http://duoshuo.com/&quot;&gt;Duoshuo&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;多说评论&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Version 1.0.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        <pubDate>Sat, 22 Nov 2014 06:18:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/blog/2014-11-welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-11-welcome-to-jekyll.html</guid>
+        
+        <category>design</category>
+        
+        <category>android</category>
+        
+        <category>java</category>
+        
+        <category>ios</category>
+        
+        <category>blog</category>
+        
+        <category>css</category>
+        
+        <category>javascript</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>2</title>
+        <description>&lt;p&gt;in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+&lt;!-- more --&gt;&lt;br /&gt;
+Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;
+  &lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;def print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  puts &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, #{name}&amp;quot;&lt;/span&gt;
+end
+print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi,STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Heading 1&lt;/th&gt;
+      &lt;th&gt;Heading 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cell 1&lt;/td&gt;
+      &lt;td&gt;Cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cell 3&lt;/td&gt;
+      &lt;td&gt;Cell 4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Header 1&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Header 2&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Header 3&lt;/th&gt;
+      &lt;th&gt;Header 4&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Cell 1&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Cell 2&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Cell 3&lt;/td&gt;
+      &lt;td&gt;Cell 4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Cell 5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Cell 6&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Cell 7&lt;/td&gt;
+      &lt;td&gt;Cell 8&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Header 1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Header 2&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Header 3&lt;/th&gt;
+      &lt;th&gt;Header 4&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Cell 1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Cell 2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Cell 3&lt;/td&gt;
+      &lt;td&gt;Cell 4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Cell 5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Cell 6&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Cell 7&lt;/td&gt;
+      &lt;td&gt;Cell 8&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Header 1&lt;/th&gt;
+      &lt;th&gt;Header 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cell 1&lt;/td&gt;
+      &lt;td&gt;Cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cell 3&lt;/td&gt;
+      &lt;td&gt;Cell 4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        <pubDate>Wed, 22 Oct 2014 06:10:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/blog/2014-10-2.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-10-2.html</guid>
+        
+        <category>design</category>
+        
+        <category>ios</category>
+        
+        <category>blog</category>
+        
+        <category>css</category>
+        
+        <category>javascript</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome5</title>
+        <description>&lt;p&gt;in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;
+  &lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;def print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  puts &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, #{name}&amp;quot;&lt;/span&gt;
+end
+print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi,STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 22 Sep 2014 06:22:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/blog/2014-09-welcome5.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-09-welcome5.html</guid>
+        
+        <category>design</category>
+        
+        <category>java</category>
+        
+        <category>ios</category>
+        
+        <category>css</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,23 +1,56 @@
+title: 郝锡强的博客
+email: haoxiqiang@live.com
 #production_url是sitemap.txt生成的url,方便百度谷歌收录
-production_url: http://blog.haoxiqiang.info
+production_url: http://haoxiqiang.info
 #
 # Jekyll Settings
 #
-#rdiscount解析器对于嵌入html javascript代码,为文章增加特定效果兼容较好
-markdown: rdiscount
-rdiscount:
-  extensions: [  "autolink", ]
-markdown_ext:  markdown,mkd,mkdn,md
+
+# Serving
+detach:  false
+port:    4000
+host:    127.0.0.1
+url: "http://haoxiqiang.info"
+baseurl: "/blog"
+twitter_username: haoxiqiang
+github_username:  haoxiqiang
+
+# Handling Reading
+safe:         false
+include:      [".htaccess"]
+exclude:      []
+keep_files:   [".git", ".svn"]
+encoding:     "utf-8"
+textile_ext:  "textile"
+
+#markdown: rdiscount
+markdown: kramdown
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 highlighter: pygments
-permalink: /:categories/:title.html
+
+kramdown: 
+  parse_block_html: true
+  input: GFM
+
+permalink: /:categories/:year-:month-:title.html
 paginate: 5
-paginate_path: "page/:num"
-exclude: [ "README.md",".idea",".iml",".name",".Node"]
-encoding: "utf-8"
+paginate_path: /page/:num
+relative_permalinks: false
+
+
 #在发布文章时使用一个未来的日期
 future: true
 #产生相关页面的索引
-lsi:      true
+lsi:      false
 #禁用定制插件
-safe:     false
+safe:     true
+
+sass:
+  sass_dir: _sass
+  style: compressed
+  compile_in_place: true
+
+
+
+
 

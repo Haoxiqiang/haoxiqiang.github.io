@@ -1,35 +1,27 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="郝锡强的博客">
-<meta name="keywords" content="博客, 技术博文, 移动, J2EE开发者"/>
-<meta name="author" content="http://blog.haoxiqiang.info"> 
-<link rel="canonical" href="http://blog.haoxiqiang.info/index.html">
-<link href="http://blog.haoxiqiang.info/rss.xml" title="RSS 2.0" type="application/rss+xml" rel="alternate"/>
-<link href="/img/favicon.ico" rel="icon" type="image/x-icon">
-<title>郝锡强的博客</title>
-<link rel="stylesheet" href="/css/min/pure-min.css">
-<!--[if lte IE 8]>
-<link rel="stylesheet" href="/css/min/grids-responsive-old-ie-min.css">
-<![endif]-->
-<!--[if gt IE 8]><!-->
-<link rel="stylesheet" href="/css/min/grids-responsive-min.css">
-<!--<![endif]-->
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>郝锡强的博客</title>
+  <meta name="description" content="">
+
+  <link rel="canonical" href="http://haoxiqiang.info/blog/">
+  <link rel="alternate" type="application/atom+xml" title="郝锡强的博客" href="http://haoxiqiang.info/blog/feed.xml" />
+  
+<link rel="stylesheet" href="/blog/css/main.css">
+<link rel="stylesheet" href="/blog/css/pure-min.css">
 
 <!--[if lte IE 8]>
-<link rel="stylesheet" href="/css/JekyllPure-old-ie.css">
+  <link rel="stylesheet" href="/blog/css/grids-responsive-old-ie-min.css">
 <![endif]-->
 <!--[if gt IE 8]><!-->
-<link rel="stylesheet" href="/css/JekyllPure.css">
+    <link rel="stylesheet" href="/blog/css/grids-responsive-min.css">
 <!--<![endif]-->
 
-<link href="/css/min/font-awesome.min.css" rel="stylesheet">
-<!--[if lte IE 8]>
-<link rel="stylesheet" href="/css/min/font-awesome-ie7.min.css">
-<![endif]-->
-<script src="/js/min/jquery-1.11.1.min.js"></script>
 <!--
  __  __     ______     ______     __  __     __     ______     __     ______     __   __     ______    
 /\ \_\ \   /\  __ \   /\  __ \   /\_\_\_\   /\ \   /\  __ \   /\ \   /\  __ \   /\ "-.\ \   /\  ___\   
@@ -39,11 +31,15 @@
                                                                                                        
 http://ascii.mastervb.net/text_to_ascii.php   sub_zero
  -->
+ <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
 </head>
 
-<body>
-
-<script>
+  <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -56,132 +52,190 @@ http://ascii.mastervb.net/text_to_ascii.php   sub_zero
 
 </script>
 
-<div id="layout" class="pure-g">
-<div class="sidebar pure-u-1 pure-u-md-1-4">
-    <div class="header">
-        <div class="headerpic">
-            <a href="/">
-                <img src="/img/headicon.png" alt="Profile Picture" style="width: 140px;" title="返回首页">
+
+  <body>
+    <div id="layout" class="pure-g">
+      <div class="sidebar pure-u-1 pure-u-md-1-4">
+
+    <div class="sidebar-header">
+        <div class="sidebar-header-pic">
+            <a href="/blog/">
+                <img src="/blog/img/headicon.png" alt="Profile Picture" style="width: 140px;" title="返回首页">
             </a>
         </div>
-        <h1 class="brand-title">郝锡强的博客</h1>
-        <h2 class="brand-tagline">什么都喜欢写点</h2>
+        <h1 class="sidebar-title">郝锡强的博客</h1>
+        <h2 class="sidebar-tagline">什么都喜欢写点</h2>
 
-        <nav class="nav">
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <a class="pure-button" href="/Timing">时间轴</a>
+        <nav class="sidebar-nav">
+            <ul class="sidebar-nav-list">
+                <li class="sidebar-nav-item">
+                    <a class="pure-button" href="/blog/list/timing.html">时间轴</a>
                 </li>
-                <li class="nav-item">
-                    <a class="pure-button" href="/tag">标签库</a>
-                </li>
-                <li class="nav-item">
-                    <a class="pure-button" href="/collect">收藏站</a>
-                </li>
-
-            </ul>
-        </nav>
-        <div class="search">
-            <form action="/search">
-                <input type="text" class="search-query" placeholder="Search Blog" name="query" title="全站搜索-只支持英文">
-            </form>
-        </div>
-        <div id="toc"></div>
-        <nav id="nav">
-            <ul class="nav-list">
-                <li class="nav-link">
-                <a class="github" href="https://github.com/haoxiqiang"><i class="fa fa-github fa-2x"></i></a>
-                </li>
-                <li class="nav-link">
-                <a class="rss" href="/rss.xml" ><i class="fa fa-rss fa-2x"></i></a>
+                <li class="sidebar-nav-item">
+                    <a class="pure-button" href="/blog/list/tag.html">标签库</a>
                 </li>
             </ul>
         </nav>
     </div>
 </div>
 
-<div class="content pure-u-1 pure-u-md-3-4">
-    <!--[if lt IE 8]>
-    <i class="label label-danger">博主太懒,拒绝为IE 8及以下用户服务</i>
-    <![endif]-->
-    <div>
-        <div class="posts">
-
-            <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-56761138-1', 'auto');
-  ga('require', 'displayfeatures');
-  ga('require', 'linkid', 'linkid.js');
-  ga('send', 'pageview');
-
-</script>
 
 
+      <div class="content pure-u-1 pure-u-md-3-4">
+          <div>
+    <!-- A wrapper for all the blog posts -->
+    <div class="posts">
+     <!--    <h1 class="content-subhead">Pinned Post</h1> -->
 
+      
 
-    <section class="post">
-        <header class="post-header">
+        <section class="post">
+          <header class="post-header">
+            <h2 class="post-title">Welcome</h2>
+              <p class="post-meta">By&nbsp;郝锡强&nbsp;&nbsp;&nbsp;&nbsp;12月22日2014&nbsp;&nbsp;
+                <a class="post-category-design" href="/type/#design"> design</a>
+                <a class="post-category-java" href="/type/#java">  java</a>
+                <a class="post-category-ios" href="/type/#ios">  ios</a>
+              </p>
+          </header>
 
-            <h2 class="post-title">Jekyll主题 &bull;JekyllPure</h2>
-            <p class="post-meta">By  2014-11-17T10:34:51+08:00 05月11日  2014  <a
-                    class="post-categorybut " href="/type/#project">project</a><a
-                    class="post-category " > Jekyll</a><a
-                    class="post-category " >  静态博客</a>
-            </p>
-        </header>
+            <div class="post-content">
+                <p>in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
-        <div class="post-description">
-            <p><img src="http://liyouhai.qiniudn.com/2014-05-11-opensource-jekyll-theme-jekyllpure.jpg/top" alt="" /></p>
-
-<blockquote><p>JekyllPure版本V1.0.0 <br>
-最后更新:2014-09-19 16:45</p></blockquote>
+<p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
 
 
 
+                <a href="/blog/blog/2014-12-welcome.html" class="post-category-read">阅读全文</a>
+            </div>
+        </section>
 
-            <a href="/project/opensource-jekyll-theme-jekyllpure.html" class="post-categorybut">阅读全文</a>
+      
+
+        <section class="post">
+          <header class="post-header">
+            <h2 class="post-title">3</h2>
+              <p class="post-meta">By&nbsp;郝锡强&nbsp;&nbsp;&nbsp;&nbsp;12月12日2014&nbsp;&nbsp;
+                <a class="post-category-design" href="/type/#design"> design</a>
+                <a class="post-category-java" href="/type/#java">  java</a>
+                <a class="post-category-blog" href="/type/#blog">  blog</a>
+              </p>
+          </header>
+
+            <div class="post-content">
+                <p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
+
+
+
+
+                <a href="/blog/blog/2014-12-3.html" class="post-category-read">阅读全文</a>
+            </div>
+        </section>
+
+      
+
+        <section class="post">
+          <header class="post-header">
+            <h2 class="post-title">Welcome4</h2>
+              <p class="post-meta">By&nbsp;郝锡强&nbsp;&nbsp;&nbsp;&nbsp;12月01日2014&nbsp;&nbsp;
+                <a class="post-category-design" href="/type/#design"> design</a>
+                <a class="post-category-java" href="/type/#java">  java</a>
+                <a class="post-category-ios" href="/type/#ios">  ios</a>
+              </p>
+          </header>
+
+            <div class="post-content">
+                <p>in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+
+
+
+                <a href="/blog/blog/2014-12-welcome4.html" class="post-category-read">阅读全文</a>
+            </div>
+        </section>
+
+      
+
+        <section class="post">
+          <header class="post-header">
+            <h2 class="post-title">Welcome to Jekyll!</h2>
+              <p class="post-meta">By&nbsp;郝锡强&nbsp;&nbsp;&nbsp;&nbsp;11月22日2014&nbsp;&nbsp;
+                <a class="post-category-design" href="/type/#design"> design</a>
+                <a class="post-category-android" href="/type/#android">  android</a>
+                <a class="post-category-java" href="/type/#java">  java</a>
+              </p>
+          </header>
+
+            <div class="post-content">
+                <p>You’ll find this post in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+
+
+
+                <a href="/blog/blog/2014-11-welcome-to-jekyll.html" class="post-category-read">阅读全文</a>
+            </div>
+        </section>
+
+      
+
+        <section class="post">
+          <header class="post-header">
+            <h2 class="post-title">2</h2>
+              <p class="post-meta">By&nbsp;郝锡强&nbsp;&nbsp;&nbsp;&nbsp;10月22日2014&nbsp;&nbsp;
+                <a class="post-category-design" href="/type/#design"> design</a>
+                <a class="post-category-ios" href="/type/#ios">  ios</a>
+                <a class="post-category-blog" href="/type/#blog">  blog</a>
+              </p>
+          </header>
+
+            <div class="post-content">
+                <p>in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+
+
+
+                <a href="/blog/blog/2014-10-2.html" class="post-category-read">阅读全文</a>
+            </div>
+        </section>
+
+      
+    </div>
+
+
+    <div class="pure-g pagination ">
+        <div class="pure-u-1-2">
+          
+              <span class="pagination-item">已在第一頁</span>
+          
         </div>
-    </section>
-
-
-<div class="pure-g pagination">
-    
-    <span class=" pure-u-1-2 pagination-item"><p>Newer</p></span>
-    
-    
-    <span class=" pure-u-1-2 pagination-item"><p>Older</p></span>
-    
-</div>
-
-
-
-
-
-
-
-
+        <div class="pure-u-1-2">
+          
+            <a class="pagination-item" href="/blog/page/2">Older</a>
+          
         </div>
     </div>
-    <div><p>144</p></div>
+
 
     <div class="footer">
-            <a href="/love/welcome-my-blog.html">About</a>
-             <a href="/1">Collecting</a>
-            <a href="tencent://message/?uin=653979558">QQ</a>
-            <a href="https://github.com/haoxiqiang">GitHub</a>
-        <script src="/js/min/nprogress.min.js"></script>
-        <script src="/js/index.js"></script>
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li><a href="http://haoxiqiang.info/">About</a></li>
+            <li><a href="tencent://message/?uin=653979558">QQ</a></li>
+            <li><a href="http://github.com/haoxiqiang/">GitHub</a></li>
+        </ul>
     </div>
-    <div class="topfade"><a href="javascript:;" title="返回顶部"></a></div>
-
+</div>
 </div>
 
-</div>
 
-</body>
+
+      </div>
+
+     
+    </div>
+  </body>
 
 </html>
