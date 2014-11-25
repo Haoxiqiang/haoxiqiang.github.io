@@ -7,9 +7,6 @@ production_url: http://haoxiqiang.info
 #
 
 # Serving
-detach:  false
-port:    4000
-host:    127.0.0.1
 url: "http://haoxiqiang.info"
 baseurl: ""
 twitter_username: haoxiqiang
