@@ -3,10 +3,10 @@
   <channel>
     <title>郝锡强的博客</title>
     <description></description>
-    <link>http://haoxiqiang.info/blog/</link>
-    <atom:link href="http://haoxiqiang.info/blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Nov 2014 10:56:41 +0800</pubDate>
-    <lastBuildDate>Tue, 25 Nov 2014 10:56:41 +0800</lastBuildDate>
+    <link>http://haoxiqiang.info/</link>
+    <atom:link href="http://haoxiqiang.info/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 25 Nov 2014 11:37:20 +0800</pubDate>
+    <lastBuildDate>Tue, 25 Nov 2014 11:37:20 +0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -39,8 +39,8 @@ print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&qu
 &lt;p&gt;When $a \ne 0$, there are two solutions to (ax^2 + bx + c = 0) and they are &lt;/p&gt;
 </description>
         <pubDate>Mon, 22 Dec 2014 06:19:05 +0800</pubDate>
-        <link>http://haoxiqiang.info/blog/blog/2014-12-welcome.html</link>
-        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-12-welcome.html</guid>
+        <link>http://haoxiqiang.info/blog/2014-12-welcome.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-12-welcome.html</guid>
         
         <category>design</category>
         
@@ -65,8 +65,8 @@ print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&qu
 
 </description>
         <pubDate>Fri, 12 Dec 2014 05:19:05 +0800</pubDate>
-        <link>http://haoxiqiang.info/blog/blog/2014-12-3.html</link>
-        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-12-3.html</guid>
+        <link>http://haoxiqiang.info/blog/2014-12-3.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-12-3.html</guid>
         
         <category>design</category>
         
@@ -100,8 +100,8 @@ print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&qu
 
 </description>
         <pubDate>Mon, 01 Dec 2014 20:19:05 +0800</pubDate>
-        <link>http://haoxiqiang.info/blog/blog/2014-12-welcome4.html</link>
-        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-12-welcome4.html</guid>
+        <link>http://haoxiqiang.info/blog/2014-12-welcome4.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-12-welcome4.html</guid>
         
         <category>design</category>
         
@@ -222,8 +222,8 @@ Jekyll also offers powerful support for code snippets:&lt;/p&gt;
 &lt;/table&gt;
 </description>
         <pubDate>Sat, 22 Nov 2014 06:18:05 +0800</pubDate>
-        <link>http://haoxiqiang.info/blog/blog/2014-11-welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-11-welcome-to-jekyll.html</guid>
+        <link>http://haoxiqiang.info/blog/2014-11-welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-11-welcome-to-jekyll.html</guid>
         
         <category>design</category>
         
@@ -349,8 +349,8 @@ print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&qu
 &lt;/table&gt;
 </description>
         <pubDate>Wed, 22 Oct 2014 06:10:05 +0800</pubDate>
-        <link>http://haoxiqiang.info/blog/blog/2014-10-2.html</link>
-        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-10-2.html</guid>
+        <link>http://haoxiqiang.info/blog/2014-10-2.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-10-2.html</guid>
         
         <category>design</category>
         
@@ -386,8 +386,8 @@ print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&qu
 
 </description>
         <pubDate>Mon, 22 Sep 2014 06:22:05 +0800</pubDate>
-        <link>http://haoxiqiang.info/blog/blog/2014-09-welcome5.html</link>
-        <guid isPermaLink="true">http://haoxiqiang.info/blog/blog/2014-09-welcome5.html</guid>
+        <link>http://haoxiqiang.info/blog/2014-09-welcome5.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-09-welcome5.html</guid>
         
         <category>design</category>
         
