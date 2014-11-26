@@ -66,7 +66,18 @@ blockquote {
         margin-bottom: 0;
     }
 }
-
+blockquote a{
+    color: rgb(61, 146, 201);
+    text-decoration:underline;
+    &:visited {
+        text-decoration: underline;
+        color: rgb(61, 146, 201);
+    }
+    &:hover {
+        color: $text-color;
+        text-decoration: underline;
+    }
+}
 
 
 /**
