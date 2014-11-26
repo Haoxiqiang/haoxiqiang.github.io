@@ -41,8 +41,7 @@ Check out the [Jekyll docs][jekyll] for more info on how to get the most out of 
 
 When $a \ne 0$, there are two solutions to $ \(ax^2 + bx + c = 0\) $ and they are 
 
-|项目基于   | 说明  | 版本 |
-| :-------- | :--------| :--: |
+
 |[Jekyll](http://jekyllrb.com/)  |静态博客| Version 2.4.+|
 |[Pure](http://purecss.io/)     | 雅虎前端框架|Version 0.5.0|
 |[Duoshuo](http://duoshuo.com/)|多说评论|Version 1.0.0|
