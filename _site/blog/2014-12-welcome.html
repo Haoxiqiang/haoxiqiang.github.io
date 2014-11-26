@@ -112,7 +112,34 @@ print_hi<span class="o">(</span><span class="s1">&#39;Tom&#39;</span><span class
 
 <p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>.</p>
 
-<p>When $a \ne 0$, there are two solutions to (ax^2 + bx + c = 0) and they are </p>
+<p>When $a \ne 0$, there are two solutions to $ (ax^2 + bx + c = 0) $ and they are </p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">项目基于</th>
+      <th style="text-align: left">说明</th>
+      <th style="text-align: center">版本</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><a href="http://jekyllrb.com/">Jekyll</a></td>
+      <td style="text-align: left">静态博客</td>
+      <td style="text-align: center">Version 2.4.+</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://purecss.io/">Pure</a></td>
+      <td style="text-align: left">雅虎前端框架</td>
+      <td style="text-align: center">Version 0.5.0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="http://duoshuo.com/">Duoshuo</a></td>
+      <td style="text-align: left">多说评论</td>
+      <td style="text-align: center">Version 1.0.0</td>
+    </tr>
+  </tbody>
+</table>
 
         </div>
     </div>
@@ -121,7 +148,7 @@ print_hi<span class="o">(</span><span class="s1">&#39;Tom&#39;</span><span class
     <div class="pure-g pagination ">
         <div class="pure-u-1-2">
             
-              <a class="pagination-item" href="/blog/2014-12-3.html " title="3 ">3</a>
+              <span class="pagination-item-no">上一篇</span>
             
         </div>
         <div class="pure-u-1-2">
@@ -132,39 +159,38 @@ print_hi<span class="o">(</span><span class="s1">&#39;Tom&#39;</span><span class
     </div>
     <div class="comment">
         
-            <div id="disqus_thread"></div>
+          
+            <div class="ds-thread" data-thread-key="" data-title="" data-url=""></div>
 <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'haoxiqiangsblog'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
+var duoshuoQuery = {short_name:"haoxiqiang"};
     (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<script type="text/javascript">
-/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'haoxiqiangsblog'; // required: replace example with your forum shortname
 
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
 
+          
         
     </div>
 
+    
+      <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+    
+    
     <div class="footer">
     <div class="pure-menu pure-menu-horizontal pure-menu-open">
         <ul>
-            <li><a href="http://haoxiqiang.info/">About</a></li>
+            <li><a href="http://www.haoxiqiang.info/">About</a></li>
             <li><a href="tencent://message/?uin=653979558">QQ</a></li>
             <li><a href="http://github.com/haoxiqiang/">GitHub</a></li>
         </ul>
