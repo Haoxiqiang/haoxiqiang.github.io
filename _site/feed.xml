@@ -5,9 +5,114 @@
     <description></description>
     <link>http://haoxiqiang.info/</link>
     <atom:link href="http://haoxiqiang.info/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Nov 2014 14:58:05 +0800</pubDate>
-    <lastBuildDate>Tue, 25 Nov 2014 14:58:05 +0800</lastBuildDate>
+    <pubDate>Tue, 25 Nov 2014 14:42:33 +0800</pubDate>
+    <lastBuildDate>Tue, 25 Nov 2014 14:42:33 +0800</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Welcome</title>
+        <description>&lt;p&gt;in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+&lt;!-- more --&gt;&lt;br /&gt;
+Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;def print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  puts &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, #{name}&amp;quot;&lt;/span&gt;
+end
+print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi,STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+ 
+\begin{aligned} \dot{x} &amp;= \sigma(y-x) \\ 
+\dot{y} &amp;= \rho x - y - xz \\ 
+\dot{z} &amp;= -\beta z + xy \end{aligned} 
+ %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a^2 + b^2 = c^2&lt;/script&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;When $a \ne 0$, there are two solutions to (ax^2 + bx + c = 0) and they are &lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Dec 2014 06:19:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/2014-12-welcome.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-12-welcome.html</guid>
+        
+        <category>design</category>
+        
+        <category>java</category>
+        
+        <category>ios</category>
+        
+        <category>blog</category>
+        
+        <category>css</category>
+        
+        <category>javascript</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>3</title>
+        <description>&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Dec 2014 05:19:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/2014-12-3.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-12-3.html</guid>
+        
+        <category>design</category>
+        
+        <category>java</category>
+        
+        <category>blog</category>
+        
+        <category>css</category>
+        
+        <category>javascript</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome4</title>
+        <description>&lt;p&gt;in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;def print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  puts &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, #{name}&amp;quot;&lt;/span&gt;
+end
+print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi,STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 01 Dec 2014 20:19:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/2014-12-welcome4.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-12-welcome4.html</guid>
+        
+        <category>design</category>
+        
+        <category>java</category>
+        
+        <category>ios</category>
+        
+        <category>css</category>
+        
+        <category>javascript</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -248,6 +353,39 @@ print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&qu
         <category>css</category>
         
         <category>javascript</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome5</title>
+        <description>&lt;p&gt;in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+&lt;!-- more --&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;def print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  puts &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, #{name}&amp;quot;&lt;/span&gt;
+end
+print_hi&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#=&amp;gt; prints &amp;#39;Hi,STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 22 Sep 2014 06:22:05 +0800</pubDate>
+        <link>http://haoxiqiang.info/blog/2014-09-welcome5.html</link>
+        <guid isPermaLink="true">http://haoxiqiang.info/blog/2014-09-welcome5.html</guid>
+        
+        <category>design</category>
+        
+        <category>java</category>
+        
+        <category>ios</category>
+        
+        <category>css</category>
         
         
         <category>blog</category>

@@ -7,6 +7,11 @@ http://haoxiqiang.info/sitemap.txt
 http://haoxiqiang.info/list/tag.html
 http://haoxiqiang.info/list/timing.html
 http://haoxiqiang.info/list/type.html
+http://haoxiqiang.info/page/2/index.html
 
+http://haoxiqiang.info/blog/2014-12-welcome.html
+http://haoxiqiang.info/blog/2014-12-3.html
+http://haoxiqiang.info/blog/2014-12-welcome4.html
 http://haoxiqiang.info/blog/2014-11-welcome-to-jekyll.html
 http://haoxiqiang.info/blog/2014-10-2.html
+http://haoxiqiang.info/blog/2014-09-welcome5.html
