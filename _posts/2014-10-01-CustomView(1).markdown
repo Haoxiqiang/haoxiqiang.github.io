@@ -125,7 +125,7 @@ public class SimpleView extends View {
 }
 {% endhighlight %}
 
-在第二部分中,准备写一下一些事件的处理
+在第二部分中,准备写一下Drawing
 
 >源码地址<br />
 [我的GitHub](https://github.com/Haoxiqiang/BlogCode)
