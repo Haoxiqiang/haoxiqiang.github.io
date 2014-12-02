@@ -97,7 +97,7 @@ code {
 
 pre {
     padding: 8px 12px;
-    overflow-x: scroll;
+    // overflow-x: scroll;
 
     > code {
         border: 0;
@@ -183,13 +183,20 @@ html,body,#layout{
 
 .post{
     margin:0.5em 0.5em;
-    padding: 1em 2em;
+    padding: 1em 1.5em;
     border: 1px solid #eeeeee;
     background:#fafafa;
     -moz-box-shadow: 1px 1px 1px #bdbdbd;
     -webkit-box-shadow: 1px 1px 1px #bdbdbd;
     box-shadow: 1px 1px 1px #bdbdbd;
 }
+@media (max-width: 48em) {
+    .post {
+        padding: 0.5em 0.8em;
+        margin:0.2em 0.2em;
+    }  
+}
+
 a {
 
     color: $brand-color;
