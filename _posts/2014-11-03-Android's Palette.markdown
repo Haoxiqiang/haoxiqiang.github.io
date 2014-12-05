@@ -8,7 +8,7 @@ letex: false
 tags: [java,android]
 ---
 ### Palette
-Palette是一个v7包中提供的工具,可以用来在你的一个Bitmap中提取出一些代表色值,就想下面的这一幅图
+Palette是一个v7包中提供的工具,可以用来在你的一个Bitmap中提取出一些代表色值,就想下面的这一幅图<br />
 ![palette01](../img/palette01.png)
 <!-- more -->
 现在支持这几种代表色:
