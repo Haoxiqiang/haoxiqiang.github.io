@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Android's RecyclerView(2) 视差滚动
-date:   2014-11-03 14:01:22
+date:   2014-11-02 14:01:22
 author: 郝锡强
 categories: blog
 letex: false

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Android's RecyclerView
-date:   2014-11-02 17:03:26
+date:   2014-11-01 17:03:26
 author: 郝锡强
 categories: blog
 letex: false
