@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Android's RecyclerView(2) 视差滚动
+title:  Android's Palette
 date:   2014-11-03 10:01:22
 author: 郝锡强
 categories: blog
