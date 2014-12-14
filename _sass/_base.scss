@@ -86,9 +86,9 @@ blockquote a{
 pre,
 code {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
+    border: 0px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #eef;
+    background-color: transparent;
 }
 
 code {
@@ -105,6 +105,8 @@ pre {
         padding-left: 0;
     }
 }
+
+
 
 /*hxq*/
 html,body,#layout{
