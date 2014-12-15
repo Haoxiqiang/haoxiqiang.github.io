@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Android's SQLite.markdown
+title:  Android's SQLite
 date:   2014-12-01 22:11:22
 author: 郝锡强
 categories: blog
@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
    	* if the database named DATABASE_NAME doesn't exist in order to create it.     	*/
     @Override
    	public void onCreate(SQLiteDatabase sqLiteDatabase) {
-       	Log.i(TAG, "Creating database [" + DATABASE_NAME + " v." + DATABASE_VERSION + "]...");
+       	Log.i(TAG, "["+DATABASE_NAME+"v."+DATABASE_VERSION+"]");
     	//TODO: Create the Database
     }
 
@@ -32,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
    	* Called when the DATABASE_VERSION is increased.    	*/
     @Override
    	public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-       	Log.i(TAG, "Upgrading database ["+DATABASE_NAME+" v." + oldVersion+"] to ["+DATABASE_NAME+" v." + newVersion+"]...");
+       	Log.i(TAG, "Upgrading database["+DATABASE_NAME+" v." + newVersion+"]");
     }
 }
 {% endhighlight %}
