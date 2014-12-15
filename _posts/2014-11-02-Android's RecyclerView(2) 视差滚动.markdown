@@ -5,7 +5,7 @@ date:   2014-11-02 14:01:22
 author: 郝锡强
 categories: blog
 letex: false
-tags: [java,android]
+tags: [android]
 ---
 RecyclerView的视差滚动<br />
 ![parallaxrecycler](../img/parallaxrecycler.gif)
