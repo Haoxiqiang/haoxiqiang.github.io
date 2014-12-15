@@ -31,7 +31,7 @@ restarting in TCP mode port: 5555
 
 ```
 //Connect adb host to device:
-$ adb connect #.#.#.#
+$ adb connect your ip
 connected to #.#.#.#:5555
 //Remove USB cable from device, and confirm you can still access device:
 $ adb devices
@@ -39,9 +39,11 @@ List of devices attached
 #.#.#.#:5555 device
 ```
 
-如果连接断掉或者失败的话.检查一下网段是不是在一个下面,没问题的话就使用重启大法
+如果连接断掉或者失败的话.检查一下网段是不是在一个下面,没问题的话就使用重启大法,然后插一次USB在搞一下就行了
 
 ```
-adb kill-server
-adb start-server
+$adb kill-server
+$adb start-server
+$adb tcpip 5555
+$adb connect your ip
 ```
