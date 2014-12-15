@@ -5,7 +5,7 @@ date:   2014-10-03 14:19:06
 author: 郝锡强
 categories: blog
 letex: false
-tags: [java,android]
+tags: [android]
 ---
 
 <!--![Canvas](../img/android_view_draw.png)-->
