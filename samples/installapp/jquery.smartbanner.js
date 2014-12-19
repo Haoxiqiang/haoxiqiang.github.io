@@ -235,10 +235,10 @@
     $.smartbanner.defaults = {
         title: null, // What the title of the app should be in the banner (defaults to <title>)
         author: null, // What the author of the app should be in the banner (defaults to <meta name="author"> or hostname)
-        price: 'FREE', // Price of the app
+        price: 'Price-0.0$', // Price of the app
         appStoreLanguage: 'us', // Language code for App Store
         inAppStore: 'On the App Store', // Text of price for iOS
-        inGooglePlay: 'In Google Play', // Text of price for Android
+        inGooglePlay: 'Market Name or Ohters', // Text of price for Android
         inAmazonAppStore: 'In the Amazon Appstore',
         inWindowsStore: 'In the Windows Store', //Text of price for Windows
         GooglePlayParams: null, // Aditional parameters for the market
