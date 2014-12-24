@@ -42,6 +42,8 @@ lsi:      false
 #禁用定制插件
 safe:     true
 
+comments: true
+
 sass:
   sass_dir: _sass
   style: compressed
