@@ -10,7 +10,7 @@ layout: default
 
         <section class="post">
           <header class="post-header">
-            <h2 class="post-title">{{ post.title }}</h2>
+            <h2 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
               <p class="post-meta">By&nbsp;{{ post.author}}&nbsp;&nbsp;&nbsp;&nbsp;{{ post.date | date: "%m月%d日%Y" }}&nbsp;&nbsp;
                 <a class="post-category-{{ post.tags| first}}" href="{{'/list/tag.html'| prepend: site.baseurl }}"> {{ post.tags | first}}</a>
                 <a class="post-category-{{ post.tags[1] }}" href="{{'/list/tag.html'| prepend: site.baseurl }}">  {{ post.tags[1] }}</a>
@@ -21,7 +21,6 @@ layout: default
             <div class="post-content">
                 {{ post.content | split:'<!-- more -->'| first }}
             </div>
-             <a href="{{ post.url | prepend: site.baseurl }}" class="post-category-read">阅读全文</a>
         </section>
 
       {% endfor %}

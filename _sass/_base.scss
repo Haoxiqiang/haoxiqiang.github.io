@@ -106,8 +106,6 @@ pre {
     }
 }
 
-
-
 /*hxq*/
 html,body,#layout{
     min-height: 100%;
@@ -198,37 +196,34 @@ html,body,#layout{
         margin:0.2em 0.2em;
     }  
 }
-
-a {
-
-    color: $brand-color;
-    text-decoration: none;
-    -webkit-transition: color 0.3s;
-    -moz-transition: color 0.3s;
-    -o-transition: color 0.3s;
-    transition: color 0.3s;
-
-    &:visited {
-
-        text-decoration: line-through;
-        color: #757575;
-    }
-
-    &:hover {
-        color: $text-color;
-        text-decoration: underline;
-    }
-    &:focus {
-        color: $text-color;
-        text-decoration: underline;
-    }
-}
-
 .post-title {
     font-size: 2.5em;
     letter-spacing: -1px;
     line-height: 1;
     margin: 0.1em  0em 0em 0em;
+}
+a {
+    text-decoration: none;
+    color: #007edf;
+    text-shadow: none;
+    background: 0 0;
+
+    transition: color 0.5s ease;
+    transition: text-shadow 0.5s ease;
+    -webkit-transition: color 0.5s ease;
+    -webkit-transition: text-shadow 0.5s ease;
+    -moz-transition: color 0.5s ease;
+    -moz-transition: text-shadow 0.5s ease;
+    -o-transition: color 0.5s ease;
+    -o-transition: text-shadow 0.5s ease;
+    -ms-transition: color 0.5s ease;
+    -ms-transition: text-shadow 0.5s ease;
+
+    &:hover {
+        color: #0069ba;
+        text-shadow: #0090ff 0px 0px 1.5px;
+        text-decoration: none;
+    }
 }
 
 .post-content {

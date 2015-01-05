@@ -12,8 +12,11 @@ tags: [design,java,ios,blog,css,javascript]
 in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+下面的分割线,预览与全文的分割线
 <!-- more -->
 Jekyll also offers powerful support for code snippets:
+
+支持代码高亮
 
 {% highlight bash %}
 def print_hi(name)
@@ -22,6 +25,8 @@ end
 print_hi('Tom')
 #=> prints 'Hi,STDOUT.
 {% endhighlight %}
+
+支持letax,只需要在页面中声明`letex: true`
 
 $$ 
 \begin{aligned} \dot{x} &= \sigma(y-x) \\ 
@@ -32,8 +37,7 @@ $$
 $$a^2 + b^2 = c^2$$
 When $a \ne 0$, there are two solutions to $ \(ax^2 + bx + c = 0\) $ and they are 
 
-
-
+涉及技术的链接:
 
 |[Jekyll](http://jekyllrb.com/)  |静态博客| Version 2.5.2|
 |[MathJax](http://www.mathjax.org/)  |Letex| Version 2.4.0|
