@@ -1,22 +1,10 @@
 /**
  * this css from Vertical Timeline
  **/
-pre{
-   background: #bbb
-}
-code{
-  background: transparent;
-  border: 0px;
-}
 a{
   color: white;
   text-decoration: none;
 }
-a:hover,a:focus,a:visited{
-    color: white;
-}
-
-
 .cbp_tmtimeline {
   margin: 1.5em 1em 0.5em 1em;
   padding: 0;
