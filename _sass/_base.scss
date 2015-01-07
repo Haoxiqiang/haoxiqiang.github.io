@@ -301,6 +301,10 @@ a {
     @extend %post-category;
     background: #00CEAA;
 }
+.post-category-css {
+    @extend %post-category;
+    background: #E06415;
+}
 
 %pagination-item {
     text-align:center;
