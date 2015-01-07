@@ -10,7 +10,7 @@ tags: [android]
 View能够显示出来内容,都是通过"画"出来的,所谓画是因为我们操作View仿佛画画一样,在画板上使用画笔来绘制,这里的画布是Canvas,画笔是Paint.Canvas可使用的地方有很多,通过onDraw方法获取到的Canvas内容可以直接反应到View上.
 
 Canvas很强大,能绘制几何图像,填充颜色,绘制文本,绘制Bitmap,还又一些位置转换的方法<br />
-![Canvas01](../img/android_canvas01.png)
+![Canvas01](/source/images/blog/android_canvas01.png)
 
 <!-- more -->
 ### Canvas对象的获取方式有三种:
@@ -25,17 +25,17 @@ Canvas很强大,能绘制几何图像,填充颜色,绘制文本,绘制Bitmap,还
 
 
 
-![Canvas02](../img/android_canvas02.png)
+![Canvas02](/source/images/blog/android_canvas02.png)
 
 >引用自[roamer' blog](http://blog.csdn.net/lonelyroamer/article/details/8264189)
 Canvas 在一般的情况下可以看作是一张画布，所有的绘图操作如drawBitmap, drawCircle都发生在这张画布上，这张画板还定义了一些属性比如Matrix，颜色等等。但是如果需要实现一些相对复杂的绘图操作，比如多层动画，地图（地图可以有多个地图层叠加而成，比如：政区层，道路层，兴趣点层）。Canvas提供了图层（Layer）支持，缺省情况可以看作是只有一个图层Layer。如果需要按层次来绘图，Android的Canvas可以使用SaveLayerXXX, Restore 来创建一些中间层，对于这些Layer是按照“栈结构“来管理的：       
 
-![Canvas03](../img/android_canvas03.png)
+![Canvas03](/source/images/blog/android_canvas03.png)
 
 >引用自[roamer' blog](http://blog.csdn.net/lonelyroamer/article/details/8264189)
 创建一个新的Layer到“栈”中，可以使用saveLayer, savaLayerAlpha, 从“栈”中推出一个Layer，可以使用restore,restoreToCount。但Layer入栈时，后续的DrawXXX操作都发生在这个Layer上，而Layer退栈时，就会把本层绘制的图像“绘制”到上层或是Canvas上，在复制Layer到Canvas上时，可以指定Layer的透明度(Layer），这是在创建Layer时指定的：public int saveLayerAlpha(RectF bounds, int alpha, int saveFlags)本例Layers 介绍了图层的基本用法：Canvas可以看做是由两个图层（Layer）构成的，为了更好的说明问题，我们将代码稍微修改一下，缺省图层绘制一个红色的圆，在新的图层画一个蓝色的圆，新图层的透明度为0×88。
 
-![Canvas04](../img/android_canvas04.png)
+![Canvas04](/source/images/blog/android_canvas04.png)
 
 {% highlight java %}
 public class CanvasView extends View {

@@ -8,7 +8,7 @@ letex: false
 tags: [android]
 ---
 RecyclerView的视差滚动<br />
-![parallaxrecycler](../img/parallaxrecycler.gif)
+![parallaxrecycler](/source/images/blog/parallaxrecycler.gif)
 <!-- more -->
 实现的这个需求的话,需要知道当前滚动的距离,这里可以通过设置监听`setOnScrollListener`的方式获取,这样就有视差滚动的视差效果了,但是
 {% highlight java %}

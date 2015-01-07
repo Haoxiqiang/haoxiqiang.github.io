@@ -38,7 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
 {% endhighlight %}
 
 >源码地址<br />
-[PaletteDemo](https://github.com/Haoxiqiang/BlogCode/tree/master/PaletteDemo)
+
 >参考<br />
 [Android 中的 SQLite 数据库支持](http://objccn.io/issue-11-5/)<br />
 [using the SQLite Database on Android and SQLiteOpenHelper](http://kylewbanks.com/blog/Tutorial-Implementing-a-Client-Side-Cache-using-the-SQLite-Database-on-Android-and-SQLiteOpenHelper)
