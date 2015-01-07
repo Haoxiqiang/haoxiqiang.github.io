@@ -182,13 +182,16 @@ html,body,#layout{
 }
 
 .post{
-    margin:0.5em 0.5em;
+    margin:0.8em 0.5em;
     padding: 1em 1.5em;
-    border: 1px solid #eeeeee;
+    // border: 1px solid #eeeeee;
     background:#fafafa;
-    -moz-box-shadow: 1px 1px 1px #bdbdbd;
-    -webkit-box-shadow: 1px 1px 1px #bdbdbd;
-    box-shadow: 1px 1px 1px #bdbdbd;
+    // -moz-box-shadow: 1px 1px 1px #bdbdbd;
+    // -webkit-box-shadow: 1px 1px 1px #bdbdbd;
+    
+    box-shadow: 0.08em 0.12em 0.1em 0.12em rgba(0,0,0,0.4);
+    // box-shadow: 0 0 2px 1px rgba(0,0,0,.35);
+    border-radius: 2px;
 }
 @media (max-width: 48em) {
     .post {
@@ -299,48 +302,23 @@ a {
     background: #00CEAA;
 }
 
-
-.pagination{
-    margin: 1em 3em;
-    background:#fafafa;
-    -moz-box-shadow: 1px 1px 2px #bdbdbd;
-    -webkit-box-shadow: 1px 1px 2px #bdbdbd;
-    box-shadow: 1px 1px 2px #bdbdbd;
-}
-.pagination-item {
-    border: 1px solid #eee;
+%pagination-item {
     text-align:center;
     width: 100%;
     display: inline-block;
     padding : 1em 0em;
-    color: #000;
 }
-.pagination-item-no{
-    @extend .pagination-item;
-
-    color: #acacac;
+.pagination-item-yes {
+    @extend %pagination-item;
 }
-a.pagination-item{
-    
-    color: #000;
-    text-decoration:underline;
-    
+.pagination-item-no {
+    @extend %pagination-item;
     &:hover {
-        color: #1CA3FC;
-        text-decoration: underline;
-    }
-
-    &:focus {
-        color: #1CA3FC;
-        text-decoration: underline;
-    }
-
-    &:visited {
-        text-decoration: underline;
-        color: #1CA3FC;
+        color: red;
+        text-decoration: line-through;
+         text-shadow: red 0px 0px 0.5px;
     }
 }
-
 .comment{
      margin: 0.5em 3em 0.5em 1em;
 }
