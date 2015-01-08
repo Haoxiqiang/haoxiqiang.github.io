@@ -27,25 +27,25 @@ layout: default
     </div>
 
 
-    <div class="pure-g pagination ">
+    <div class="pure-g">
         <div class="pure-u-1-2">
           {% if paginator.previous_page %}
             
             {% if paginator.page == 2 %}
-              <a class="pagination-item" href="{{site.baseurl }}/">Newer</a>
+              <a class="pagination-item-yes" href="{{site.baseurl }}/">Newer</a>
             {% else %}
-              <a class="pagination-item" href="{{'/page/' | prepend: site.baseurl }}{{paginator.previous_page}}">Newer</a>
+              <a class="pagination-item-yes" href="{{'/page/' | prepend: site.baseurl }}{{paginator.previous_page}}">Newer</a>
             {% endif %}
 
           {% else %}
-              <span class="pagination-item">已在第一頁</span>
+              <a class="pagination-item-no">已在第一頁</a>
           {% endif %}
         </div>
         <div class="pure-u-1-2">
           {% if paginator.next_page %}
-            <a class="pagination-item" href="{{'/page/' | prepend: site.baseurl }}{{paginator.next_page}}">Older</a>
+            <a class="pagination-item-yes" href="{{'/page/' | prepend: site.baseurl }}{{paginator.next_page}}">Older</a>
           {% else %}
-            <span class="pagination-item">已在最終頁</span>
+            <a class="pagination-item-no">已在最終頁</a>
           {% endif %}
         </div>
     </div>
