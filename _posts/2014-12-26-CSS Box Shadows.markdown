@@ -13,7 +13,7 @@ tags: [css]
 	width:8em;
     height: 8em;
     color: #fff;
-    margin: 0.0em 1em;
+    margin: 0.5em 1em;
     text-align:center;
     padding: 2em;
     text-shadow: 0 -1px 1px rgba(0,0,0,0.5);

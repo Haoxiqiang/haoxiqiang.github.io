@@ -128,7 +128,7 @@ public class SimpleView extends View {
 在第二部分中,准备写一下Drawing
 
 >源码地址<br />
-[我的GitHub](https://github.com/Haoxiqiang/BlogCode)
+[BlogCode01](https://github.com/Haoxiqiang/BlogCode)
 
 
 >参考<br />

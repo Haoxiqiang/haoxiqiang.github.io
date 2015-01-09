@@ -23,7 +23,8 @@ java.io.FileNotFoundException: /mnt/sdcard/Android/data/com.xxxxxx.android/files
  ... 11 more
 {% endhighlight %}
 <!-- more -->
-在`stackover`查到原因:
+在`Stackoverflow`查到原因:
+
 >The Problem comes from the Android System or / and the FAT32 system. I can not explain how the system get the error, it has something to do with deleting files and the FAT32 System.
 But the solution is really easy: Before you delete a Directory or File: rename it!
 解决的代码如下:
@@ -32,6 +33,12 @@ final File to = new File(file.getAbsolutePath() + System.currentTimeMillis()); f
 to.delete();
 {% endhighlight %}
 
+补充:
+一般来说这个都是引用没有被干掉或者交叉引用的关系
+
+* two or more process reference the same file
+* file was deleted,but the reference not be killed
+
+
 >参考<br />
-[Lambda-QuickStart](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html)<br />
-[LambdaExpressions](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+[Stackoverflow](http://stackoverflow.com/questions/11539657/open-failed-ebusy-device-or-resource-busy)
