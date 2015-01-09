@@ -27,9 +27,11 @@ java.io.FileNotFoundException: /mnt/sdcard/Android/data/com.xxxxxx.android/files
 
 >The Problem comes from the Android System or / and the FAT32 system. I can not explain how the system get the error, it has something to do with deleting files and the FAT32 System.
 But the solution is really easy: Before you delete a Directory or File: rename it!
+
 解决的代码如下:
 {% highlight java%}
-final File to = new File(file.getAbsolutePath() + System.currentTimeMillis()); file.renameTo(to); 
+final File to = new File(file.getAbsolutePath() + System.currentTimeMillis()); 
+file.renameTo(to); 
 to.delete();
 {% endhighlight %}
 
