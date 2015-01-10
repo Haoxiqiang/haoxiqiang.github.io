@@ -10,9 +10,9 @@ comments: true
 
         <h2 class="post-title"><a>{{ page.title }}</a></h2>
           <p class="post-meta">By&nbsp;{{ page.author}}&nbsp;&nbsp;&nbsp;&nbsp;{{ page.date | date: "%m月%d日%Y" }}&nbsp;&nbsp;
-            <a class="post-category-{{ page.tags| first}}" href="{{'/list/tag.html'| prepend: site.baseurl }}"> {{ page.tags | first}}</a>
-            <a class="post-category-{{ page.tags[1] }}" href="{{'/list/tag.html'| prepend: site.baseurl }}">  {{ page.tags[1] }}</a>
-            <a class="post-category-{{ page.tags[2] }}" href="{{'/list/tag.html'| prepend: site.baseurl }}">  {{ page.tags[2] }}</a>
+            <a class="post-category-{{ page.tags| first}}" href="{{'/static/tag.html'| prepend: site.baseurl }}?tag={{page.tags | first}}"> {{ page.tags | first}}</a>
+            <a class="post-category-{{ page.tags[1] }}" href="{{'/static/tag.html'| prepend: site.baseurl }}?tag={{ page.tags[1]}}">  {{ page.tags[1] }}</a>
+            <a class="post-category-{{ page.tags[2] }}" href="{{'/static/tag.html'| prepend: site.baseurl }}?tag={{ page.tags[2]}}">  {{ page.tags[2] }}</a>
           </p>
       </header>
 
