@@ -1,0 +1,30 @@
+---
+layout: post
+title:  轻松搞定Android的环境,源码,工具
+date:   2015-01-16 08:35:07
+author: 郝锡强
+categories: blog
+letex: false
+tags: [android]
+---
+此篇为GFW内的程序员专用,涉及的内容
+
+* `Android` 的`SDK`更新
+* `Android Studio`的下载
+* `Android Source`的下载
+* `Android NDK`的下载
+* `Android Other Source`的下载
+<!-- more -->
+国内很多科研机构提供了镜像下载,比如[北京化工大学镜像站](http://ubuntu.buct.edu.cn/)
+我们这里先说一下`SDK`的更新,因为`Android SDK Manager`直接提供了代理,我们可以直接使用,打开`Android SDK Manager`按照红框部分填写,然后关闭掉,重写打开就好了
+
+* IPv4: http://ubuntu.buct.edu.cn/
+* IPv4: http://ubuntu.buct.cn/
+
+	![Android SDK Manager 01](../source/images/blog/android_buct_p01.png)
+
+<br />
+[NDK地址](http://ubuntu.buct.edu.cn/android/ndk/)	更新非常及时,提供了`Google`的提供的`NDK`工具
+
+![Android SDK Manager 02](../source/images/blog/android_buct_p02.png)
+	
