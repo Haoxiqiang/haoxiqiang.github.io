@@ -11,12 +11,12 @@ tags: [android]
 
 ## 前言
 谁无年少时,对于一门技术而言,大家都是在"Hello world"学起来的,让我们困惑的是,在过去的一年中,有些人的技术提升是100%,有些人是20%,有些人或许悲催的没有什么变化.是智商的原因吗?在我看来,可能是你的学习方法不对而已.前几天结婚休假,我一直在写一些自己的博客,在找资料的过程中发现,光光使用百度来说,效率太低下了,一般来说至少有一半的时间浪费在了无用页面上.我准备花几个晚上的时间整理一下我收集的资料,同时尽可能的保证都在国内可以访问.以下将列举初中级开发的一些资料整合,至于高级的,我大约还没有什么发言权(U •́ .̫ •̀ U)
+<!-- more -->
 
 ## Android初学者
 对于初级开发者来说,我一般更推荐购买一本基础书,泛泛的浏览一下Android的基础知识点,市面上的各种`Android`其实都差不多,大家都算是半斤八两,图灵的质量还算是不错,比如[郭霖](http://item.jd.com/11504254.html)的第一行代码,还有上次图灵妹子 @图灵教育 送的这本[Android编程权威指南](http://item.jd.com/11431307.html),我自己买的[Android 4高级编程](http://item.jd.com/11223114.html),随便一本都好,放桌子上没事翻翻的.如果你英语尚可,并且能够翻墙,请直接使用[API GUIDER](http://developer.android.com/guide/index.html),大部分图书你都可以看做是对这部分的翻译且扩展
-编程新手,一定要多动手,我当初学习的时候就是把[eoe实例区](http://www.eoeandroid.com/forum-27-1.html)的代码从头写了一遍,当然,这个是夸张的说法,我总不能蛋疼的把这几千个例子自己全写一遍吧✧*｡(´☯ ف ☯),
-隐约记得大约写了几百个例子.
-当你能够写一些个简单的应用的时候,比如先从[对一个开源的课程表修复大量BUG放出](http://www.eoeandroid.com/thread-312326-1-1.html),别人的代码中做起,一点点阅读,一点点修改掉`Bug`,这样你会稍微有点成就感,不会轻易的放弃掉编程这项有意思的运动.
+编程新手,一定要多动手,我当初学习的时候就是把[eoe实例区](http://www.eoeandroid.com/forum-27-1.html)的代码从头写了一遍,当然,这个是夸张的说法,我总不能蛋疼的把这几千个例子自己全写一遍吧✧*｡(´☯ ف ☯),隐约记得我当时大约写了几百个例子.
+当你能够写一些个简单的应用的时候,比如像我是先从[对一个开源的课程表修复大量BUG放出](http://www.eoeandroid.com/thread-312326-1-1.html),别人的代码中做起,一点点阅读,一点点修改掉`Bug`,这样你会稍微有点成就感,不会轻易的放弃掉编程这项有意思的运动.
 然后,你会慢慢的发现你能读懂大部分代码的意思的时候,你需要了解一下Android的设计`Google Design`,官方的一个训练集合,`注意这个是一个4.x的版本,最新请参阅``Google Material Design`这里我也希望一些设计师也能看看这个系列,请访问经过翻译的国内能访问的地址[link](http://adchs.github.io/index.html),第一次可能有点慢,因为页面中引用了`googleapi`的`font`.
 
    * 开始这部分,讲述了`Android`的基本特征以及`Android`对界面的标准称呼
@@ -47,14 +47,34 @@ tags: [android]
 	
   * IBM的JAVA社区 [http://www.ibm.com/developerworks/cn/java/](http://www.ibm.com/developerworks/cn/java/) 我在这里学会了`HashMap`...
   * stormzhang [http://stormzhang.com/](http://stormzhang.com/) 这个大神是eoe的会员哦,最近再讲`Android Studio`
-  
+  * Google Android官方培训课程中文版 [https://github.com/kesenhoo/android-training-course-in-chinese](https://github.com/kesenhoo/android-training-course-in-chinese) 
 提问
 
   * stackoverflow [http://stackoverflow.com/](http://stackoverflow.com/) 程序员的神器网站,简单的请在eoe问答搜索,真要是搞不定请到stackoverflow
-  
+   
 ## Android高级开发者
+
 这里我竟然没有写的,逼格要`low`掉怎么办
   
   * 新时代的版本管理工具,互联网公司面试必修课之`git` [Git](https://github.com/flyhigher139/Git-Cheat-Sheet/blob/master/Git%20Cheat%20Sheet-Zh.md)
   * 秀出你的`github`,面试敲门砖,热爱开源必备[GitHub](https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.zh-cn.md)
   	附上超级完全版[http://gitbook.liuhui998.com/index.html](http://gitbook.liuhui998.com/index.html)
+  * 陈皓 [http://coolshell.cn/](http://coolshell.cn/) 陈皓,酷壳网,有很多有意思的东西和话题
+  * 罗升阳 [http://blog.csdn.net/luoshengyang](http://blog.csdn.net/luoshengyang),老罗的源码分析深度比较大,适合对`Android`原理有兴趣的同学
+  * 码农周刊分类整理 [https://github.com/nemoTyrant/manong](https://github.com/nemoTyrant/manong),码农周刊的类别分的比较大，不易于后期查阅，每期的内容按语言或技术进行了分类整理。
+  * 一些开源工程的介绍 [https://github.com/Trinea/android-open-project](https://github.com/Trinea/android-open-project) 来自Trinea
+  * 《程序员编程艺术：面试和算法心得》[https://github.com/julycoding/The-Art-Of-Programming-By-July](https://github.com/julycoding/The-Art-Of-Programming-By-July)
+
+## 装备
+我建议程序员不是`.net`开发的选手最好使用`mac`,可以关注一下[池建强](http://macshuo.com/),我觉得最大的优势就是有
+
+* 命令行
+* 各种工具类软件齐全
+* 环境配备简单,可以顺手写个`ios`什么的
+* 关键是电力啊,9个小时的持久啊
+
+对于`IDE`大部分公司可以还是使用`eclipse`+`jdk 1.6`,其实我个人更推荐使用`Android studio`+`jdk 1.8`,这个是趋势.
+
+## 备注
+
+以上所有资源均由我验证过,保质保量,转发的时候附上不附上连接无所谓,我发这个帖子的目的就是提高大家的阅历,这么多链接我是整理了差不多一个下午,希望能帮助到每一个`Android`开发者,另外我们`eoe`总有一些不道德的搬运工,也希望这些人尊重以上博主的劳动成果,自己努力之后哪怕是分享一个简单的`activity`那也有自己的骄傲,谢谢
