@@ -24,6 +24,10 @@ tags: [android]
    * 模式这部分,讲述了很多`Android`元素的使用方式,比如一个通知用在在什么场景下使用
    * 控件这部分,讲述了一些基本控件的使用方式,比如对于进度条和活动指示器作为向用户给出的信号用以提示某个操作会花费较长的时间。
    
+还有一个重要训练过程
+
+`Google Android`官方培训课程 [http://hukai.me/android-training-course-in-chinese/index.html](http://hukai.me/android-training-course-in-chinese/index.html)
+   
 ## Android中级开发者
 这个时候写一个一般的应用对你来说就像是喝口水一样了,需要的是时间,不再是技术了.这个时候你可能熟练的使用`Android`的大部分`API`,会数据库,懂网络请求,会写几个自定义的的`View`,这个时候你可以看看博客提升自己,以下是我收集的一些博客资源
 	
@@ -64,6 +68,7 @@ tags: [android]
   * 码农周刊分类整理 [https://github.com/nemoTyrant/manong](https://github.com/nemoTyrant/manong),码农周刊的类别分的比较大，不易于后期查阅，每期的内容按语言或技术进行了分类整理。
   * 一些开源工程的介绍 [https://github.com/Trinea/android-open-project](https://github.com/Trinea/android-open-project) 来自Trinea
   * 《程序员编程艺术：面试和算法心得》[https://github.com/julycoding/The-Art-Of-Programming-By-July](https://github.com/julycoding/The-Art-Of-Programming-By-July)
+  * A curated list of awesome Android UI/UX libraries [https://github.com/wasabeef/awesome-android-ui](https://github.com/wasabeef/awesome-android-ui)
 
 ## 装备
 我建议程序员不是`.net`开发的选手最好使用`mac`,可以关注一下[池建强](http://macshuo.com/),我觉得最大的优势就是有

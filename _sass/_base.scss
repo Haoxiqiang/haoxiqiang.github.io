@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
 %vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
+    margin-bottom: 0.5em;
 }
 
 /**
@@ -96,11 +96,11 @@ code {
 }
 
 code {
-    padding: 1px 5px;
+    padding: 2px 5px;
 }
 
 pre {
-    padding: 8px 12px;
+    padding: 5px 8px;
     // overflow-x: scroll;
 
     > code {
