@@ -96,5 +96,59 @@ mBuilder.setNumber(20);
         "snooze", notifyPendingIntent);
 ...
 {% endhighlight %}
+![notification03](../source/images/blog/notification03.png)
+{% highlight java %}
+...
+.setStyle(new NotificationCompat.BigPictureStyle()
+            .setBigContentTitle("BigContentTitle")
+            .setSummaryText("SummaryTextSummaryText")
+            .bigPicture(bitmapDrawable.getBitmap()))
+...
+{% endhighlight %}
+![notification05](../source/images/blog/notification05.png)
+{% highlight java %}
+...
+.setStyle(new NotificationCompat.InboxStyle()
+            .setBigContentTitle("BigContentTitle")
+            .setSummaryText("SummaryTextSummaryText")
+            .addLine("aaaaaaaaaaaaaaaaa")
+            .addLine("bbbbbbbbbbbbbbbbb")
+            .addLine("ccccccccccccccccc")
+            .addLine("ddddddddddddddddd")
+    )
+...
+{% endhighlight %}
+![notification04](../source/images/blog/notification04.png)
 
-![notification01](../source/images/blog/notification02.png)
+`Notifications`可以包含一个进度条。如果你可以在任何时候估算这个操作得花多少时间以及当前已经完成多少,如果是`determinate`就显示一个百分比的进度条,如果`indeterminate`则显示一个连续的进度显示.
+{% highlight java %}
+...
+// Start a lengthy operation in a background thread
+new Thread(
+    new Runnable() {
+        @Override
+        public void run() {
+            int incr;
+            // Do the "lengthy" operation 20 times
+            for (incr = 0; incr <= 100; incr+=5) {
+                mBuilder.setProgress(100, incr, false);
+                mNotifyManager.notify(mNotificationId, mBuilder.build());
+                try {
+                    // Sleep for 5 seconds
+                    Thread.sleep(5*1000);
+                } catch (InterruptedException e) {
+                    Log.d("showNotificationWithDeterminate", "sleep failure");
+                }
+            }
+            mBuilder.setContentText("Download complete")
+                    // Removes the progress bar
+                    .setProgress(0,0,false);
+            mNotifyManager.notify(mNotificationId, mBuilder.build());
+        }
+    }
+// Starts the thread by calling the run() method in its Runnable
+).start();
+...
+.setProgress(0, 0, true);
+...
+{% endhighlight %}
