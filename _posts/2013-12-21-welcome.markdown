@@ -5,7 +5,7 @@ date:   2013-12-21 22:19:05
 author: 郝锡强
 categories: blog
 letex: true
-tags: [design,java,ios,blog,css,javascript]
+tags: [blog]
 ---
 看过很多jekyll模板,借鉴`Pure`我做了一个自己的模板,不定期更新,连接跳转到:[haoxiqiang-template](https://github.com/Haoxiqiang/haoxiqiang-template)
 
