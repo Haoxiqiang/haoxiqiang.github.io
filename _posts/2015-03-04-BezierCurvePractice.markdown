@@ -9,7 +9,7 @@ tags: [android]
 ---
 贝塞尔曲线被广泛地在计算机图形中用来为平滑曲线建立模型,下面是一个三元的示例
 
-![Bézier_3_big.svg](../source/images/blog/Bézier_3_big.svg.png)![Bézier_3_big.gif](../source/images/blog/Bézier_3_big.gif)
+![Bézier_3_big.svg](/source/images/blog/Bézier_3_big.svg.png)![Bézier_3_big.gif](/source/images/blog/Bézier_3_big.gif)
 <!-- more -->
 贝赛尔曲线都可以理解为由给定点`P0`、`P1`、`P2`的函数`B(t)`追踪,对于一维的贝赛尔曲线来说,就是一条直线
 

@@ -9,7 +9,7 @@ tags: [android]
 ---
 通知系统使用户得知应用中重要的事情，例如有新信息到来或者日历事件提醒。将通知作为一个新的通道，提醒用户重要的事情或者记录下用户没有注意到的事情。但是我们要注意到`Notification`本身在`Android 4.1`的时候有过重大升级,一直到`5.0`微小修改很多.从`4.1`开始,`Android`支持在通知底部显示附加操作。通过这些操作，用户可以对通知直接执行常见的任务，而不用打开应用。这样可以加快操作，配合上滑出消失操作，使用户的通知抽屉体验更加顺滑。上一张`5.0`的图
 
-![notification01](../source/images/blog/notification01.jpg)
+![notification01](/source/images/blog/notification01.jpg)
 <!-- more -->
 
 考虑到对低版本的兼容性,所有例子都通过`android.support.v4.app.NotificationCompat`来实现,效果这不同手机上会有不同
@@ -96,7 +96,7 @@ mBuilder.setNumber(20);
         "snooze", notifyPendingIntent);
 ...
 {% endhighlight %}
-![notification03](../source/images/blog/notification03.png)
+![notification03](/source/images/blog/notification03.png)
 {% highlight java %}
 ...
 .setStyle(new NotificationCompat.BigPictureStyle()
@@ -105,7 +105,7 @@ mBuilder.setNumber(20);
             .bigPicture(bitmapDrawable.getBitmap()))
 ...
 {% endhighlight %}
-![notification05](../source/images/blog/notification05.png)
+![notification05](/source/images/blog/notification05.png)
 {% highlight java %}
 ...
 .setStyle(new NotificationCompat.InboxStyle()
@@ -118,7 +118,7 @@ mBuilder.setNumber(20);
     )
 ...
 {% endhighlight %}
-![notification04](../source/images/blog/notification04.png)
+![notification04](/source/images/blog/notification04.png)
 
 `Notifications`可以包含一个进度条。如果你可以在任何时候估算这个操作得花多少时间以及当前已经完成多少,如果是`determinate`就显示一个百分比的进度条,如果`indeterminate`则显示一个连续的进度显示.
 {% highlight java %}

@@ -38,7 +38,7 @@ relative_permalinks: true
 #在发布文章时使用一个未来的日期
 future: true
 #产生相关页面的索引
-lsi:      false
+lsi:      true
 #禁用定制插件
 safe:     true
 

@@ -100,9 +100,9 @@ code {
 }
 
 pre {
-    padding: 5px 8px;
+    padding: 0.1em 0.1em;
+    margin: 0 !important;
     // overflow-x: scroll;
-
     > code {
         border: 0;
         padding-right: 0;

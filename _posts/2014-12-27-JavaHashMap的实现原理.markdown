@@ -9,7 +9,7 @@ tags: [java]
 ---
 昨天在群里讨论的时候,有人突然说HashMap的实现做面试题考新人一考一个准,一下子就能区分开是不是真的有工作经验.妈蛋,我竟然也不是很确认,特此总结一下:
 
-![hashmap01](../source/images/blog/hashmap01.jpg)
+![hashmap01](/source/images/blog/hashmap01.jpg)
 
 <!-- more -->
 对于`HashMap`来说,你的每一次`put`操作后,都会对`key`取一次`hashcode`放入`table`中.`table`的每一个位置是一个`HashMapEntry`,因为`key`的`hashcode`有可能相同,这时`table`同一个位置的`HashMapEntry`就会`next`中追加一个`HashMapEntry`.
