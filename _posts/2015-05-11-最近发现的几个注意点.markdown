@@ -1,0 +1,106 @@
+---
+layout: post
+title:  最近读文档发现的几个注意点
+date:   2015-05-11 11:18:26
+author: 郝锡强
+categories: blog
+letex: false
+tags: [android]
+---
+* FragmentTransaction使用replace方法
+* DB的BaseColumns声明
+* 启动一个匿名的Intent之前的校验
+* 提供给第三方应用使用的Activity
+* Handler的使用
+
+<!-- more -->
+
+## FragmentTransaction使用replace方法
+
+{% highlight java %}
+FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack so the user can navigate back
+transaction.replace(R.id.fragment_container, newFragment);
+transaction.addToBackStack(null);
+// Commit the transaction
+transaction.commit();
+{% endhighlight %}
+
+## DB的BaseColumns声明
+
+{% highlight java %}
+/* Inner class that defines the table contents */
+public static abstract class FeedEntry implements BaseColumns {
+    public static final String TABLE_NAME = "entry";
+    public static final String COLUMN_NAME_ENTRY_ID = "entryid";
+    public static final String COLUMN_NAME_TITLE = "title";
+    public static final String COLUMN_NAME_SUBTITLE = "subtitle";
+    ...
+}
+{% endhighlight %}
+
+## 启动一个匿名的Intent之前的校验
+
+{% highlight java %}
+PackageManager packageManager = getPackageManager();
+List activities = packageManager.queryIntentActivities(intent,
+        PackageManager.MATCH_DEFAULT_ONLY);
+boolean isIntentSafe = activities.size() > 0;
+// 对于chooser
+// Create intent to show chooser
+Intent chooser = Intent.createChooser(intent, title);
+// Verify the intent will resolve to at least one activity
+if (intent.resolveActivity(getPackageManager()) != null) {
+    startActivity(chooser);
+}
+{% endhighlight %}
+
+## 提供给第三方应用使用的Activity
+
+{% highlight xml %}
+<activity android:name="ShareActivity">
+    <!-- filter for sending text; accepts SENDTO action with sms URI schemes -->
+    <intent-filter>
+        <action android:name="android.intent.action.SENDTO"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="sms" />
+        <data android:scheme="smsto" />
+    </intent-filter>
+    <!-- filter for sending text or images; accepts SEND action and text or image data -->
+    <intent-filter>
+        <action android:name="android.intent.action.SEND"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="image/*"/>
+        <data android:mimeType="text/plain"/>
+    </intent-filter>
+</activity>
+{% endhighlight %}
+
+{% highlight java %}
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    // Get the intent that started this activity
+    Intent intent = getIntent();
+    Uri data = intent.getData();
+    // Figure out what to do based on the intent type
+    if (intent.getType().indexOf("image/") != -1) {
+        // Handle intents with image data ...
+    } else if (intent.getType().equals("text/plain")) {
+        // Handle intents with text ...
+    }
+}
+....
+// Create intent to deliver some kind of result data
+Intent result = new Intent("com.example.RESULT_ACTION", Uri.parse("content://result_uri");
+setResult(Activity.RESULT_OK, result);
+finish();
+{% endhighlight %}
+
+## Handler的使用
+
+这个说一说,这个怪自己,没弄清楚Handler的机制,如果外部new的话,取决于new时所在线程,除非你指定Looper,否则postRunnable是否在主线程运行是不确定的
+{% highlight java %}
+private static Handler INSTANCE = new Handler(Looper.getMainLooper());
+{% endhighlight %}

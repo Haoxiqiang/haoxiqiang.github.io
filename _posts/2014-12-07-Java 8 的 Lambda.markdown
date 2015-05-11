@@ -107,4 +107,5 @@ public static <X, Y> void processElements(
 
 >参考<br />
 [Lambda-QuickStart](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html)<br />
-[LambdaExpressions](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+[LambdaExpressions](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)<br />
+[LambdaExpressions性能影响](/source/pdf/jvmls2013kuksen-2014088.pdf)
