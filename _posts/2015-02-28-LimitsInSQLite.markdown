@@ -36,6 +36,19 @@ The theoretical maximum number of rows in a table is 264 (18446744073709551616 o
 
 please help the poor man.
 
+------------------------
+
+今天发现了一点蛛丝马迹,不确定是不是这个问题:
+
+* I deleted a lot of data but the database file did not get any smaller. Is this a bug?
+
+No. When you delete information from an SQLite database, the unused disk space is added to an internal "free-list" and is reused the next time you insert data. The disk space is not lost. But neither is it returned to the operating system.
+
+If you delete a lot of data and want to shrink the database file, run the [VACUUM](http://www.sqlite.org/lang_vacuum.html) command. VACUUM will reconstruct the database from scratch. This will leave the database with an empty free-list and a file that is minimal in size. Note, however, that the VACUUM can take some time to run and it can use up to twice as much temporary disk space as the original file while it is running.
+
+An alternative to using the VACUUM command is auto-vacuum mode, enabled using the [auto_vacuum pragma](http://www.sqlite.org/pragma.html#pragma_auto_vacuum).
+
+
 
 > [Limits In SQLite](http://www.sqlite.org/limits.html)<br />
 [what-are-the-performance-characteristics-of-sqlite-with-very-large-database-files](http://stackoverflow.com/questions/784173/what-are-the-performance-characteristics-of-sqlite-with-very-large-database-files)
