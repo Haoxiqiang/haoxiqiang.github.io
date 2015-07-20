@@ -104,3 +104,33 @@ finish();
 {% highlight java %}
 private static Handler INSTANCE = new Handler(Looper.getMainLooper());
 {% endhighlight %}
+
+## WebView在加载页面时候会发出facicon请求
+
+这个不管页面有没有facicon,都会发送这个请求,具体参考
+
+>  I will first say that having a favicon in a Web page is a good thing (normally).However it is not always desired and sometime developers need a way to avoid the extra payload. For example an IFRAME would request a favicon without showing it. Worst yet, in Chrome and Android an IFRAME will generate 3 requests for favicons:
+
+* "GET /favicon.ico HTTP/1.1" 404 183
+* "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 197
+* "GET /apple-touch-icon.png HTTP/1.1" 404 189
+
+> The following uses data URI and can be used to avoid fake favicon requests:
+ 
+	<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+	For references see here:
+	https://github.com/h5bp/html5-boilerplate/issues/1103
+	https://twitter.com/diegoperini/status/4882543836930048
+	The Chrome bug/behavior will probably be fixed in upcoming versions.
+
+	Here is the bug submission for you to vote:
+	https://code.google.com/p/chromium/issues/detail?id=131567
+	UPDATE 1:
+
+	From the comments (jpic) it looks like Firefox >= 25 doesn't like the above syntax anymore. I tested on Firefox 27 and it doesn't work while it still work on Webkit/Chrome.
+	So here is the new one that should cover all recent browsers. I tested Safari, Chrome and Firefox:
+	<link rel="icon" href="data:;base64,=">
+	I left out the "shortcut" name from the "rel" attribute value since that's only for older IE and versions of IE < 8 doesn't like dataURIs either. Not tested on IE8.
+	UPDATE 2:
+	If you need your document to validate against HTLM5 use this instead:
+	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
