@@ -11,6 +11,7 @@ tags: [blog]
 
 [git-scm](http://git-scm.com/docs/)  基本都有了,记录的这些操作当然也有
 [git-scm中文](https://git-scm.com/blog/2010/06/09/pro-git-zh.html)
+[git course](https://www.codecademy.com/learn/learn-git)一个在线的教程,自己跑了一遍还挺不错的
 
 =================================================================
 
@@ -42,3 +43,7 @@ Commit the changes, reusing the old commit message. reset copied the old head to
 Editor's note 1: You don't need to reset to an earlier commit if "you misspelled your commit message". If you reset, git will not link new activity to the previous commit in any way, giving you a blank slate for a new commit message. The easier option is git commit --amend, which will open your default commit message editor pre-populated with the last commit message.
 
 Beware however that if you have added any new changes to the index, using commit --amend will add them to your previous commit.
+
+* 只提取某一次提交的内容
+以前很多时候多分支用的不好的时候,经常改乱了分支,合并代码没有办法有时候不得不手动改一遍,直到我知道了一个命令
+$git cherry-pick commit-hash
