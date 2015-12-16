@@ -1,0 +1,140 @@
+---
+layout: post
+title:  RecyclerView实现一个树形菜单
+date:   2015-12-16 18:15:33
+author: 郝锡强
+categories: blog
+letex: false
+tags: [android]
+---
+很早想写这样一个 Demo,以前实现树形菜单使用的是TreeViewList,因为当时觉得ExpandableListView实现多级菜单,一个继承了 ListView 的封装,因为那个时候我也不会写,后来自己试着写了一下,发现根本没有必要自定义什么控件,直接使用RecyclerView,只需要自己控制一下数据源的转化就可以了.
+
+<!-- more -->
+
+技术要点不多:
+
+* 无论你的数据源是什么样的,都把它转化成这样的,为了方便递归
+{% highlight json %}
+{
+	"tree": {
+		"children": [
+			{
+				"available": true,
+				"children": [],
+				"id": "548005da36ec3532c4a18391",
+				"name": "第一轮复习"
+			}
+		],
+	"id": "gaozhongshuxue",
+	"name": "高中数学"
+	}
+}
+{% endhighlight %}
+* 构建一个便于递归的实体类,即它能存储它全部的子节点,我下面简单的写了一个
+{% highlight java %}
+public class Course {
+    //标识
+    @Expose
+    @SerializedName("id")
+    public String id;
+    //描述信息
+    @Expose
+    @SerializedName("name")
+    public String name;
+    //层级
+    public int level;
+    //是否打开的状态
+    public boolean open;
+    //父节点的标识
+    public String parentId;
+    //子节点的容器
+    public LinkedList<Course> children = new LinkedList<>();
+
+    public boolean hasChild() {
+        return children != null && children.size() > 0;
+    }
+    public void addChildren(LinkedList<Course> children) {
+        this.children.clear();
+        this.children.addAll(children);
+    }
+}
+{% endhighlight %}
+* 如何递归呢?也是很简单的,我这么写其实是有点冗余了,不过是个 Demo 就不改了
+{% highlight java %}
+private void createTree(Course container, JSONArray children, String parentId, int level) throws JSONException {
+	if (children != null) {
+		int childrenSize = children.length();
+		LinkedList<Course> tree = new LinkedList<>();
+		for (int i = 0; i < childrenSize; i++) {
+			JSONObject item = children.getJSONObject(i);
+			Course course = new Course();
+			course.id = item.getString("id");
+			course.name = item.getString("name");
+			course.level = level;
+ 			course.open = false;
+			course.parentId = parentId;
+			JSONArray children11 = item.getJSONArray("children");
+			createTree(course, children11, course.id, level + 1);
+			tree.add(course);
+			if (container == null) {
+				//如果是 null,那么表示这个是最顶层的节点,需要把这个对象 add 进去
+ 				mData.add(course);
+			}
+		}
+		if (container != null) {
+			container.addChildren(tree);
+		}
+	}
+}
+{% endhighlight %}
+* 每次 item 的点击的时候我们需要判断这个 item 的对象是不是一个拥有子节点的对象,然后做分发处理,这个一般需要获取到 Adapter 的实例以及全部数据,我的 Demo 就不注意结构了,我这里考虑了动画效果而使用了notifyItemRangeInserted,notifyItemRangeRemoved,如果你不需要动画,直接获取dispatchClick返回值是 true 时直接调用notifyDataSetChanged也是可以的,如果是 false 则表示这个是一个最终节点
+{% highlight java %}
+ public boolean dispatchClick(LinkedList<Course> container, Course course) {
+	if (container == null || course == null) {
+		return false;
+	}
+	if (course.hasChild()) {
+		int insertPosition = container.indexOf(course) + 1;
+		if (course.open) {
+			size = 0;
+			removeAllChildren(container, course);
+			notifyItemRangeRemoved(insertPosition, size);
+		} else {
+			course.open = true;
+			container.addAll(insertPosition, course.children);
+			notifyItemRangeInserted(insertPosition, course.children.size());
+		}
+
+		return true;
+	}
+
+	return false;
+}
+
+private void removeAllChildren(LinkedList<Course> container, Course course) {
+
+	course.open = false;
+	int childrenSize = course.children.size();
+	for (Course tree11 : course.children) {
+		if (tree11.hasChild() && tree11.open) {
+			tree11.open = false;
+			removeAllChildren(container, tree11);
+		}
+	}
+
+	size += childrenSize;
+	container.removeAll(course.children);
+}
+{% endhighlight %}
+* 现在基本的结构就完成了,RecyclerView默认的动画可能看不出来弹出效果,我们需要重写一个,现在需要继承SimpleItemAnimator,修改两个方法
+{% highlight java %}
+@Override
+public boolean animateAdd(final RecyclerView.ViewHolder holder) {
+	resetAnimation(holder);
+	ViewCompat.setTranslationY(holder.itemView, -(holder.itemView.getMeasuredHeight() / 2));
+	ViewCompat.setAlpha(holder.itemView, 0);
+	mPendingAdditions.add(holder);
+	return true;
+}
+//animateRemove的就不写了
+{% endhighlight %}

@@ -9,6 +9,7 @@ tags: [blog]
 ---
 今天有一个小妹妹问了我一段话是什么意思:
 >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid veniam harum quas similique quis, quisquam tempore iste. Alias soluta dolorum ratione, dolorem quia corrupti, suscipit eveniet dolor dignissimos voluptas laborum debitis ea fugiat aliquam rem ullam minus a aliquid pariatur!
+<!-- more -->
 
 =================================================================
 第一眼以为是英文结果没有看懂啥意思,仔细看了看还是没有看懂,有点晦涩啊,于是我找了 google 翻译了一下,这尼玛是拉丁文啊,于是我就好奇了,为什么有程序员会写这么一段话,结果一搜:

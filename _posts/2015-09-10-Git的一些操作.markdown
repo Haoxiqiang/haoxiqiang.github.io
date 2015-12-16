@@ -13,6 +13,8 @@ tags: [blog]
 [git-scm中文](https://git-scm.com/blog/2010/06/09/pro-git-zh.html)
 [git course](https://www.codecademy.com/learn/learn-git)一个在线的教程,自己跑了一遍还挺不错的
 
+<!-- more -->
+
 =================================================================
 
 * 删除一个远程分支
