@@ -138,3 +138,5 @@ public boolean animateAdd(final RecyclerView.ViewHolder holder) {
 }
 //animateRemove的就不写了
 {% endhighlight %}
+
+>源码可见[https://github.com/Haoxiqiang/TreeView](https://github.com/Haoxiqiang/TreeView)
