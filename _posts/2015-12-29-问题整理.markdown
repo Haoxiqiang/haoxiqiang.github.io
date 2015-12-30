@@ -1,0 +1,114 @@
+---
+layout: post
+title:  一些遇到的问题整理
+date:   2015-12-29 18:41:05
+author: 郝锡强
+categories: blog
+letex: false
+tags: [android]
+---
+今天看到[Xiaoke's Blog](http://blog.mcxiaoke.com/)博客中的一些问题整理,发现自己很多也遇到过,就抽时间也整理一下
+<!-- more -->
+这部分引自[Xiaoke's Blog](http://blog.mcxiaoke.com/)
+	
+* Fragment的状态恢复问题 [20131218]
+在FragmentActivity里，如果存在Fragment，系统恢复被销毁的Activity的同时会回复所有FragmentManager里的Fragment列表，然后添加到当前的Activity中，但问题是，Fragment虽然恢复了，状态却没有回复，这些都需要在onCreate或onRestoreInstanceState中手动处理。补充说明：onCreate()和onRestoreInstanceState()都可以用于应用的状态恢复，区别是onRestoreInstanceState()是在onStart()之后调用，可以根据具体情况选择时机。[“Failure Delivering Result ” - onActivityForResult](http://stackoverflow.com/questions/16265733/failure-delivering-result-onactivityforresult)FragmentActivity恢复状态的源码如下：
+{% highlight java %}
+// onCreate()中
+if (savedInstanceState != null) {
+	Parcelable p = savedInstanceState.getParcelable(FRAGMENTS_TAG);
+	// FragmentManager的restoreAllState会将之前保存的Fragment重新添加到FragmentManager中，并恢复BackStack
+	mFragments.restoreAllState(p, nc != null ? nc.fragments : null);
+}
+//保存状态的源码如下：
+/**	
+* Save all appropriate fragment state.
+*/
+@Override
+protected void onSaveInstanceState(Bundle outState) {
+	super.onSaveInstanceState(outState);
+	Parcelable p = mFragments.saveAllState();
+	if (p != null) {
+    	outState.putParcelable(FRAGMENTS_TAG, p);
+	}
+}
+{% endhighlight %}
+Google建议onCreate中只在savedInstanceState为null的时候才创建和初始化Fragment，代码如下：
+{% highlight java %}
+if (savedInstanceState == null) {
+	// During initial setup, plug in the details fragment.
+	DetailsFragment details = new DetailsFragment();
+	details.setArguments(getIntent().getExtras());
+	getFragmentManager().beginTransaction().add(android.R.id.content, details).commit();
+}
+{% endhighlight %}
+
+* Background和Seletor必须使用真实的Drawable
+否则，有些三星和摩托的机子上会没有背景，显示纯黑色，定义在colors.xml里的伪drawble不行,必须是真实的图片drawable或者定义好的shape,`<color name="mail_published_time_color">#bcbcbc</color>`
+`<drawable name="ab_bg_black">#aa191919</drawable>`
+
+* 在onActivityResult中显示Dialog [20131218]
+通过startActivityForResult调用某一个应用等待返回结果，然后在onActivityResult中需要异步处理的同时显示对话框，如果直接在onActivityResult中调用Dialog.show()会报错，因为onActivityResult是在onResume之前，一个类似的问题是，在onSaveInstanceState调用之后也不能进行FragmentTransaction的commit操作，这两个都影响到DialogFragment，正确的做法有两种：
+	* 方法一：在onPostResume显示对话框
+	* 方法二：在onActivityResult设置一个标志(比如mPendingShowDialog)为true，然后在onResume()的时候检查标志，如果为true就显示对话框,注意：不仅是Dialog，处理Fragment相关的transactions和commit操作都需要考虑这个问题，在onSaveInstanceState调用之后如果需要commit，请替换成commitAllowingStateLoss，如果不允许状态丢失，就需要寻找其它替代方法。
+
+* ListView显示 [20131017]
+如果ListView设置了MATCH_PARENT但是内容太少又没有撑满空间，ListView会自动缩小至显示内容所需区域，空白空间会显示默认的背景色，在ME525上是灰色块，解决办法是在主题里加上：`<item name="android:overScrollFooter">@android:color/transparent</item>`或者在布局里使用`android:overScrollFooter="@android:color/transparent"`,[background-color-listview](http://stackoverflow.com/questions/10655646/background-color-listview)
+
+* Drawable填充问题 [20131017]
+如果`solid`不设置颜色的话,那么就有可能存在一个默认的色值
+{% highlight xml %}
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle">
+   <!--内部用透明色填充-->
+    <solid
+            android:color="@color/transparent"/>
+    <stroke
+            android:width="1dp"
+            android:color="@color/soft_white"/>
+    <corners
+            android:radius="1dp"/>
+</shape>
+{% endhighlight %}
+
+* WebView的换行问题 [20131218]
+4.4开始，webview不会自动断行，需要在html里处理，代码里也可以这样处理：
+{% highlight java %}
+settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
+//但是很多网页这样不解决问题，还需要在Html里处理：
+<pre style="word-wrap: break-word; white-space: pre-wrap;">
+{% endhighlight %}
+
+* 使用拨号键盘的SecretCode功能
+这个是我一个不知道,以后试试,Android的拨号键盘有一些特殊的定义键，可以启动自定义的Intent，[Create a secret doorway to your app](http://blog.udinic.com/2013/05/17/create-a-secret-doorway-to-your-app/)用法：
+{% highlight java %}
+<receiver android:name=".receiver.DiagnoserReceiver">
+    <intent-filter>
+        <action android:name="android.provider.Telephony.SECRET_CODE"/>
+        <data android:scheme="android_secret_code" android:host="111222"/>
+    </intent-filter>
+</receiver>
+public class DiagnoserReceiver extends BroadcastReceiver {
+	public void onReceive(Context context, Intent intent) {
+        if ("android.provider.Telephony.SECRET_CODE".equals(intent.getAction())) {
+            Intent i = new Intent(Intent.ACTION_MAIN);
+            i.setClass(context, Diagnoser.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i);
+        }
+	 }
+}
+{% endhighlight %}
+
+* How to import existing GIT repository into another?
+I've tried several methods now and this is the one I prefer. It is from [github's "Subtree Merge" help article](https://help.github.com/articles/about-git-subtree-merges/) and it results in unmodified history of the subtree plus one merge commit to move the merged repository to the subdirectory, which is just what you want.
+{% highlight bash %}
+git remote add rack_remote git@github.com:schacon/rack.git
+git fetch rack_remote
+git merge -s ours --no-commit rack_remote/master
+git read-tree --prefix=rack/ -u rack_remote/master
+git commit -m "Imported rack as a subtree."
+#You can track upstream changes like so:
+git pull -s subtree rack_remote master
+{% endhighlight %}
+Git figures out on its own where the roots are before doing the merge, so you don't need to specify the prefix on subsequent merges.I had previously recommended the ]Pro Git Subtree Merging method but recant that recommendation since as it turns out their method skips the merge -s ours step so the read-tree is effectively no different than copying the files with cp.. That's obviously no good.
