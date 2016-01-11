@@ -1,0 +1,62 @@
+---
+layout: post
+title:  使用 RxJava 来写一个应用
+date:   2016-01-07 14:05:45
+author: 郝锡强
+categories: blog
+letex: false
+tags: [android]
+---
+这些天准备写一个自己的知乎日报,主要是练习和验证一下 RxJava 对项目实现的利弊.RxJava 在国外的社区很是火热,目前直接支持的语言包括
+
+* Java: RxJava
+* JavaScript: RxJS
+* C#: Rx.NET
+* C#(Unity): UniRx
+* Scala: RxScala
+* Clojure: RxClojure
+* C++: RxCpp
+* Ruby: Rx.rb
+* Python: RxPY
+* Groovy: RxGroovy
+* JRuby: RxJRuby
+* Kotlin: RxKotlin
+* Swift: RxSwift
+
+Rx 从官方定义来看,是利用观察者来实现的一个基于事件的异步程序框架.它扩展了观察者模式,抽象简化了一些基础操作,比如线程,同步,线程安全,并发数据结构和非阻塞I/O等等。
+
+<!-- more -->
+先导内容可以先看看[朱凯（扔物线），Flipboard](http://gank.io/post/560e15be2dca930e00da1083#toc_1)的这个文章,下面列一些学习资源以及我自己的一些认识记录,具体的没空写了
+
+* Scheduler
+	* Schedulers.immediate(): 直接在当前线程运行，相当于不指定线程。这是默认的 Scheduler。
+	* Schedulers.newThread(): 总是启用新线程，并在新线程执行操作。
+	* Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）所使用的 Scheduler。行为模式和 newThread() 差不多，区别在于 io() 的内部实现是是用一个无数量上限的线程池，可以重用空闲的线程，因此多数情况下 io() 比 newThread() 更有效率。不要把计算工作放在 io() 中，可以避免创建不必要的线程。
+	* Schedulers.computation(): 计算所使用的 Scheduler。这个计算指的是 CPU 密集型计算，即不会被 I/O 等操作限制性能的操作，例如图形的计算。这个 Scheduler 使用的固定的线程池，大小为 CPU 核数。不要把 I/O 操作放在 computation() 中，否则 I/O 操作的等待时间会浪费 CPU。
+	*  AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行。
+有了这几个 Scheduler ，就可以使用 subscribeOn() 和 observeOn() 两个方法来对线程进行控制了。
+	* subscribeOn(): 指定 subscribe() 所发生的线程，即 Observable.OnSubscribe 被激活时所处的线程。或者叫做事件产生的线程。
+	* observeOn(): 指定 Subscriber 所运行在的线程。或者叫做事件消费的线程。
+	
+* Creating Observables 用于创建新的Observables的操作符
+	* Create — create an Observable from scratch by calling observer methods programmatically
+	* Defer — do not create the Observable until the observer subscribes, and create a fresh Observable for each observer
+	* Empty/Never/Throw — create Observables that have very precise and limited behavior
+	* From — convert some other object or data structure into an Observable
+	* Interval — create an Observable that emits a sequence of integers spaced by a particular time interval
+	* Just — convert an object or a set of objects into an Observable that emits that or those objects
+	* Range — create an Observable that emits a range of sequential integers
+	* Repeat — create an Observable that emits a particular item or sequence of items repeatedly
+	* Start — create an Observable that emits the return value of a function
+	* Timer — create an Observable that emits a single item after a given delay
+
+* Transforming Observables 用于变换操作的操作符
+	* Buffer — periodically gather items from an Observable into bundles and emit these bundles rather than emitting the items one at a time
+	* FlatMap — Observable.flatMap()接收一个Observable的输出作为输入，同时输出另外一个Observable. 合并了两个Observable到一个Observable来操作
+	* GroupBy — divide an Observable into a set of Observables that each emit a different group of items from the original Observable, organized by key
+	* Map — transform the items emitted by an Observable by applying a function to each item
+	* Scan — apply a function to each item emitted by an Observable, sequentially, and emit each successive value
+	* Window — periodically subdivide items from an Observable into Observable windows and emit these windows rather than emitting the items one at a time
+	
+## 相关博客
+
