@@ -58,5 +58,7 @@ Rx 从官方定义来看,是利用观察者来实现的一个基于事件的异�
 	* Scan — apply a function to each item emitted by an Observable, sequentially, and emit each successive value
 	* Window — periodically subdivide items from an Observable into Observable windows and emit these windows rather than emitting the items one at a time
 	
+//待续,目前正在用 RxAndroid 写一个应用,因为感觉简单的已经会用,但是实际使用还是有些问题,先自己琢磨感受一下然后再继续写
+	
 ## 相关博客
 

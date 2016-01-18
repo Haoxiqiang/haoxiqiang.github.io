@@ -141,3 +141,14 @@ The ripple effect was omitted in the appcompat support library which is what you
 	* Control-K 删除从光标开始，到一行结尾的所有字符
 	* Control-Shift-A 选中从光标开始，到一行开头的所有文字
 	* Control-Shift-E 选中从光标开始，到一行结尾的所有文字
+
+## 切换 git 
+因为 `Xcode` 也 自带了 `git`,以前也装过其他的版本的 `git`,现在打算都使用`brew cask`来管理,所以需要切换一下,过程中比较纠结一下
+{% highlight bash %}
+//change into the Xcode directory:
+$ cd /Applications/Xcode.app/Contents/Developer/usr/bin
+//rename the Xcode's git like this:
+$ sudo mv ./git ./git-xcode-usr-bin
+//link my own git which is installed through homebrew:
+$ sudo ln -s /usr/local/bin/git ./git
+{% endhighlight %}
