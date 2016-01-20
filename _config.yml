@@ -40,7 +40,7 @@ future: true
 #产生相关页面的索引
 lsi:      false
 #禁用定制插件
-safe:     false
+safe:     true
 
 comments: true
 

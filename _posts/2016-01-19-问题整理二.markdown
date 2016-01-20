@@ -1,0 +1,49 @@
+---
+layout: post
+title:  问题整理二
+date:   2016-01-19 16:50:36
+author: 郝锡强
+categories: blog
+letex: false
+tags: [android]
+---
+对于`WebView`来讲,不要直接在`xml`中使用,因为这样,在`Activity`销毁的时候,内存也不会被释放,一些值得去做的方法:
+{% highlight java %}
+//使用ApplicationContext初始化
+WebView webView = new WebView(getApplicationContext());
+//如果在 fragment 里面
+@Override
+public void onDetach(){
+    super.onDetach();
+    webView.removeAllViews();
+    webView.destroy();
+}
+//清单文件中统一管理进程
+<application
+    android:process="com.processkill.p1">
+    <activity
+        android:name="com.processkill.A"
+        android:process="com.processkill.p2">
+    </activity>
+    <activity
+        android:name="com.processkill.B"
+        android:process="com.processkill.p3">
+    </activity>
+</application>
+{% endhighlight %}
+
+<!-- more -->
+
+`Romain Guy`写过这样一个文章[avoid-memory-leaks-on-android](http://www.curious-creature.com/2008/12/18/avoid-memory-leaks-on-android/).当然现在看起来有些过时了,现在会在设置第二次的时候检查并释放前一个引用,当然我们应该避免这样使用 `static` 关键字
+{% highlight java %}
+...
+/*
+ * Regardless of whether we're setting a new background or not, we want
+ * to clear the previous drawable.
+ */
+if (mBackground != null) {
+    mBackground.setCallback(null);
+    unscheduleDrawable(mBackground);
+}
+...
+{% endhighlight %}

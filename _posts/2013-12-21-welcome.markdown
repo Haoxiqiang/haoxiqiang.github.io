@@ -18,7 +18,7 @@ Jekyll also offers powerful support for code snippets:
 
 支持代码高亮
 
-{% highlight bash %}
+{% highlight ruby %}
 def print_hi(name)
   puts "Hi, #{name}"
 end
