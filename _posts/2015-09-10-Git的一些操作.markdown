@@ -18,15 +18,15 @@ tags: [blog]
 =================================================================
 
 * 删除一个远程分支
-{% highlight bash %}
+
 #As of Git v1.7.0, you can delete a remote branch using
 $git push origin --delete <branchName>
 #which is easier to remember than
 $git push origin :<branchName>
-{% endhighlight %}
+
 
 * 回退一次提交[how-do-you-undo-the-last-commit](http://stackoverflow.com/questions/927358/how-do-you-undo-the-last-commit)
-{% highlight bash %}
+
 #Undo a commit and redo
 
 $ git commit ...              (1)
@@ -34,7 +34,7 @@ $ git reset --soft HEAD~1     (2)
 #<< edit files as necessary >> (3)
 $ git add ....                (4)
 $ git commit -c ORIG_HEAD     (5)
-{% endhighlight %}
+
 
 
 This is what you want to undo

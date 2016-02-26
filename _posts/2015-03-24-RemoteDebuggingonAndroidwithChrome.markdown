@@ -28,11 +28,11 @@ tags: [blog]
 * 这时候`Chrome`会展示出来已打开的可调试的设备端的浏览器`Tab`,点击`inspect`即可查看
 <br />![chrome-inspect-tabs](/source/images/blog/chrome-inspect-tabs.png)
 * 如果我们想调试自己的应用的话,需要在代码中增加`WebView.setWebContentsDebuggingEnabled(true);`这样就可以了
-{% highlight java%}
+
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
     WebView.setWebContentsDebuggingEnabled(true);
 }
-{% endhighlight %}
+
 ![chrome-debug-webview](/source/images/blog/chrome-debug-webview.png)
 * `Chrome`的调试就不说了,如果需要实时显示的话,点击`Screencast`
 <br />![screencast-icon-location](/source/images/blog/screencast-icon-location.png)

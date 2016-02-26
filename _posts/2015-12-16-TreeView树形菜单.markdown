@@ -14,7 +14,6 @@ tags: [android]
 技术要点不多:
 
 * 无论你的数据源是什么样的,都把它转化成这样的,为了方便递归
-{% highlight json %}
 {
 	"tree": {
 		"children": [
@@ -29,9 +28,9 @@ tags: [android]
 	"name": "高中数学"
 	}
 }
-{% endhighlight %}
+
 * 构建一个便于递归的实体类,即它能存储它全部的子节点,我下面简单的写了一个
-{% highlight java %}
+
 public class Course {
     //标识
     @Expose
@@ -58,9 +57,9 @@ public class Course {
         this.children.addAll(children);
     }
 }
-{% endhighlight %}
+
 * 如何递归呢?也是很简单的,我这么写其实是有点冗余了,不过是个 Demo 就不改了
-{% highlight java %}
+
 private void createTree(Course container, JSONArray children, String parentId, int level) throws JSONException {
 	if (children != null) {
 		int childrenSize = children.length();
@@ -86,10 +85,10 @@ private void createTree(Course container, JSONArray children, String parentId, i
 		}
 	}
 }
-{% endhighlight %}
+
 * 每次 item 的点击的时候我们需要判断这个 item 的对象是不是一个拥有子节点的对象,然后做分发处理,这个一般需要获取到 Adapter 的实例以及全部数据,我的 Demo 就不注意结构了,我这里考虑了动画效果而使用了notifyItemRangeInserted,notifyItemRangeRemoved,如果你不需要动画,直接获取dispatchClick返回值是 true 时直接调用notifyDataSetChanged也是可以的,如果是 false 则表示这个是一个最终节点
-{% highlight java %}
- public boolean dispatchClick(LinkedList<Course> container, Course course) {
+
+public boolean dispatchClick(LinkedList<Course> container, Course course) {
 	if (container == null || course == null) {
 		return false;
 	}
@@ -125,9 +124,9 @@ private void removeAllChildren(LinkedList<Course> container, Course course) {
 	size += childrenSize;
 	container.removeAll(course.children);
 }
-{% endhighlight %}
+
 * 现在基本的结构就完成了,RecyclerView默认的动画可能看不出来弹出效果,我们需要重写一个,现在需要继承SimpleItemAnimator,修改两个方法
-{% highlight java %}
+
 @Override
 public boolean animateAdd(final RecyclerView.ViewHolder holder) {
 	resetAnimation(holder);
@@ -137,6 +136,6 @@ public boolean animateAdd(final RecyclerView.ViewHolder holder) {
 	return true;
 }
 //animateRemove的就不写了
-{% endhighlight %}
+
 
 >源码可见[https://github.com/Haoxiqiang/TreeView](https://github.com/Haoxiqiang/TreeView)

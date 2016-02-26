@@ -19,8 +19,8 @@ Canvas的裁剪Clip，即裁剪Canvas图层，我们绘制的东西，只能在�
 <br />
 ![Canvas05](/source/images/blog/android_canvas05.png)
 
-{% highlight java %}
- private void drawScene(Canvas canvas) {
+
+private void drawScene(Canvas canvas) {
     canvas.clipRect(0, 0, 100 * factor, 100 * factor);
 
     canvas.drawColor(Color.WHITE);
@@ -85,7 +85,7 @@ protected void onDraw(Canvas canvas) {
     drawScene(canvas);
     canvas.restore();
 }
-{% endhighlight %}
+
 
 >参考<br/> [roamer' blog](http://blog.csdn.net/lonelyroamer/article/details/8349601)
 <br/>[源码  Blog02](https://github.com/Haoxiqiang/BlogCode/tree/master/Blog02)

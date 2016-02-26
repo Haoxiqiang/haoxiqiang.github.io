@@ -8,7 +8,7 @@ letex: false
 tags: [java]
 ---
 最近写一个图片上传的东西,在一些手机出现了这个样的Runtime Exception:
-{% highlight java%}
+
 java.io.FileNotFoundException: /mnt/sdcard/Android/data/com.xxxxxx.android/files/xxxx open failed: EBUSY (Device or resource busy) 
  at libcore.io.IoBridge.open(IoBridge.java:406) 
  at java.io.FileOutputStream.<init>(FileOutputStream.java:88) 
@@ -21,7 +21,7 @@ java.io.FileNotFoundException: /mnt/sdcard/Android/data/com.xxxxxx.android/files
  at libcore.io.BlockGuardOs.open(BlockGuardOs.java:110) 
  at libcore.io.IoBridge.open(IoBridge.java:390) 
  ... 11 more
-{% endhighlight %}
+
 <!-- more -->
 在`Stackoverflow`查到原因:
 
@@ -29,11 +29,11 @@ java.io.FileNotFoundException: /mnt/sdcard/Android/data/com.xxxxxx.android/files
 But the solution is really easy: Before you delete a Directory or File: rename it!
 
 解决的代码如下:
-{% highlight java%}
+
 final File to = new File(file.getAbsolutePath() + System.currentTimeMillis()); 
 file.renameTo(to); 
 to.delete();
-{% endhighlight %}
+
 
 补充:
 一般来说这个都是引用没有被干掉或者交叉引用的关系

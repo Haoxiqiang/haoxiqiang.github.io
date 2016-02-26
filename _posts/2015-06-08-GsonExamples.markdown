@@ -19,7 +19,7 @@ Large collections: 序列化140万对象的集合(see disabled_testLargeCollecti
 Gson 1.4 数组的反序列化限制从80KB提高到了11MB.
 
 ## 最原始的例子
-{% highlight java%}
+
 //(序列化Serialization)
 Gson gson = new Gson();
 gson.toJson(1);            ==> prints 1
@@ -35,10 +35,10 @@ Long one = gson.fromJson("1", Long.class);
 Boolean false = gson.fromJson("false", Boolean.class);
 String str = gson.fromJson("\"abc\"", String.class);
 String anotherStr = gson.fromJson("[\"abc\"]", String.class);
-{% endhighlight %}
+
 
 ## 对象的例子
-{% highlight java%}
+
 //类
 class BagOfPrimitives {
   private int value1 = 1;
@@ -57,7 +57,7 @@ String json = gson.toJson(obj);
 //(反序列化Deserialization)
 BagOfPrimitives obj2 = gson.fromJson(json, BagOfPrimitives.class);   
 ==> obj2 is just like obj
-{% endhighlight %}
+
 
 ### 要点
 
@@ -75,7 +75,7 @@ BagOfPrimitives obj2 = gson.fromJson(json, BagOfPrimitives.class);
 
 `GSON`可以很容易地序列化静态嵌套类。`GSON`也可以很容易地反序列化静态嵌套类。
 但是`GSON`不能自动反序列化的纯内部类,因为它们的无参构造函数需要引用的对象在反序列化时是无法使用的.你可以通过使用静态内部类或给它提供一个定制的`InstanceCreator`来解决这个问题。下面是一个例子：
-{% highlight java%}
+
 //NOTE: 这个class B在默认情况下不会被`GSON`序列化
 public class A { 
   public String a; 
@@ -86,9 +86,9 @@ public class A {
     }
   } 
 }
-{% endhighlight %}
+
 `GSON`不能反序列化`{"b":"abc"} `,因为`class B`是一个内部类,如果你这么定义B:`static class B`,`GSON`是能反序列化这段字符串的,另外一个办法就是自定一个实例构建方法,下面是一个例子
-{% highlight java%}
+
 //NOTE: 这样可行,但是不推荐
 public class InstanceCreatorForB implements InstanceCreator<A.B> {
   private final A a;
@@ -99,11 +99,10 @@ public class InstanceCreatorForB implements InstanceCreator<A.B> {
     return a.new B();
   }
 }
-{% endhighlight %}
+
 
 ## 数组的例子
 
-{% highlight java%}
 Gson gson = new Gson();
 int[] ints = {1, 2, 3, 4, 5};
 String[] strings = {"abc", "def", "ghi"};
@@ -113,12 +112,11 @@ gson.toJson(strings);  ==> prints ["abc", "def", "ghi"]
 //(反序列化Deserialization)
 int[] ints2 = gson.fromJson("[1,2,3,4,5]", int[].class); 
 ==> ints2 will be same as ints
-{% endhighlight %}
+
 `GSON`也支持任意复杂的元素类型的多维数组
 
 ## 集合的例子
 
-{% highlight java%}
 Gson gson = new Gson();
 Collection<Integer> ints = Lists.immutableList(1,2,3,4,5);
 //(序列化Serialization)
@@ -127,7 +125,7 @@ String json = gson.toJson(ints); ==> json is [1,2,3,4,5]
 Type collectionType = new TypeToken<Collection<Integer>>(){}.getType();
 Collection<Integer> ints2 = gson.fromJson(json, collectionType);
 //ints,ints2是一样的
-{% endhighlight %}
+
 特别注意:请注意我们是如何定义的集合类型,非常不幸的是,在`JAVA`中,别无他途
 
 ### 集合限制
@@ -138,7 +136,7 @@ Collection<Integer> ints2 = gson.fromJson(json, collectionType);
 ## 泛型的序列化和反序列化
 
 当你调用`toJson(obj)`的时候,`GSON`会执行`obj.getClass()`来获取序列化的字段的信息,同样的,你可以在`fromJson(json, MyClass.class)`方法中使用典型对象.如果对象是一个非泛型对象,这样也能正常工作.但是,如果对象是一个泛型对象,`Java`的类型擦除会让这个对象丢失泛型类型信息.下面是一个说明性的例子:
-{% highlight java%}
+
 class Foo<T> {
   T value;
 }
@@ -146,30 +144,30 @@ Gson gson = new Gson();
 Foo<Bar> foo = new Foo<Bar>();
 gson.toJson(foo); // May not serialize foo.value correctly这样或许不能正确序列化foo.value
 gson.fromJson(json, foo.getClass()); // Fails to deserialize foo.value as Bar把foo.value作为一个Bar来反序列化会失败
-{% endhighlight %}
+
 上面的例子都会失败,因为`GSON`会调用`list.getClass()`来获取类的信息,但这李会返回一个本类(这个词我也不知道存不存在,我从a raw class中瞎编的)`Foo.class`,这样`GSON`不能知道`Foo<Bar>`的类型,所以不能解释`Foo`.您可以通过指定正确的参数化类型的泛型类型解决这个问题,你可以使用[TypeToken](http://google-gson.googlecode.com/svn/tags/1.1.1/docs/javadocs/com/google/gson/reflect/TypeToken.html)来做:
-{% highlight java%}
+
 Type fooType = new TypeToken<Foo<Bar>>() {}.getType();
 gson.toJson(foo, fooType);
 gson.fromJson(json, fooType);
-{% endhighlight %}
+
 `fooType`定义了一个`GetType`方法,这个方法返回了了一个真正的类型.
 
 ## 任意对象集合的序列化和反序列化
 
 有时你会处理一些混合类型的`JSON`,比如
-{% highlight json%}
+
 ['hello',5,{name:'GREETINGS',source:'guest'}]
-{% endhighlight %}
+
 一个相同的集合是这样的
-{% highlight java%}
+
 Collection collection = new ArrayList();
 collection.add("hello");
 collection.add(5);
 collection.add(new Event("GREETINGS", "guest"));
-{% endhighlight %}
+
 `Event`对象是这样定义的
-{% highlight java%}
+
 class Event {
   private String name;
   private String source;
@@ -178,11 +176,11 @@ class Event {
     this.source = source;
   }
 }
-{% endhighlight %}
+
 使用`GSON`序列化这个集合只需要调用`toJson(collection)`,而且不用设置其他任何东西.但是你要是通过`fromJson(json, Collection.class)`反序列化这个集合的话是不可行的,因为`GSON`,没办法匹配集合类型,所以`GSON`需要你提供这个集合序列化的类型.你有三个选项:
 
 * 使用`GSON`的解析器`API`(底层流解析器或DOM解析器`JsonParser`)来解析数据元素,然后在每一个元素上使用`Gson.fromJson()`.这是首选的方法,下面是一个例子:
-{% highlight java%}
+
 static class Event {
     private String name;
     private String source;
@@ -211,7 +209,7 @@ static class Event {
    Event event = gson.fromJson(array.get(2), Event.class);
    System.out.printf("Using Gson.fromJson() to get: %s, %d, %s", message, number, event);
  }
-{% endhighlight %}
+
 * 给`Collection.class``注册类型适配器,让每一个元素都对应自己的对象.缺点是会搞乱`GSON`中其他的集合的反序列化.
 * 通过注册一个`MyCollectionMemberType`使用`fromJson`和`Collection<MyCollectionMemberType>`,缺点就是只有数组是顶级元素才是可行的
 
@@ -222,7 +220,7 @@ static class Event {
 * java.net.URL to match it with strings like "http://code.google.com/p/google-gson/".
 * java.net.URI to match it with strings like "/p/google-gson/".
 
-{% highlight java%}
+
 JodaTime Classes
 DateTime
 private static class DateTimeTypeConverter implements JsonSerializer<DateTime>, JsonDeserializer<DateTime> {
@@ -253,7 +251,6 @@ private static class InstantTypeConverter implements JsonSerializer<Instant>, Js
    return new Instant(json.getAsLong());
  }
 }
-{% endhighlight %}
 
 ## 自定义序列化和反序列化
 
@@ -262,38 +259,38 @@ private static class InstantTypeConverter implements JsonSerializer<Instant>, Js
 * Json Serialiers: 需要定义自定义序列化对象
 * Json Deserializers: 需要定义自定义反序列化的类型
 * Instance Creators: 无参构造方法和反序列化解析器都不是必须的
-{% highlight java%}
+
 GsonBuilder gson = new GsonBuilder();
 gson.registerTypeAdapter(MyType2.class, new MyTypeAdapter());
 gson.registerTypeAdapter(MyType.class, new MySerializer());
 gson.registerTypeAdapter(MyType.class, new MyDeserializer());
 gson.registerTypeAdapter(MyType.class, new MyInstanceCreator());
-{% endhighlight %}
+
 registerTypeAdapter调用检查,如果该类型的适配器实现多个接口，并将其注册.
 
 ## 写一个序列化解释器
 
 给`JodaTime DateTime class`写一个自定义的序列化解释器的例子:
-{% highlight java%}
+
 private class DateTimeSerializer implements JsonSerializer<DateTime> {
   public JsonElement serialize(DateTime src, Type typeOfSrc, JsonSerializationContext context) {
     return new JsonPrimitive(src.toString());
   }
 }
-{% endhighlight %}
+
 需要对一个`DateTime`对象序列化的时候调用`GSON.toJson()`.
 
 ## 写一个反序列化解释器
 
 给`JodaTime DateTime class`写一个自定义的反序列化解释器的例子:
-{% highlight java%}
+
 private class DateTimeDeserializer implements JsonDeserializer<DateTime> {
   public DateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
       throws JsonParseException {
     return new DateTime(json.getAsJsonPrimitive().getAsString());
   }
 }
-{% endhighlight %}
+
 需要对一个`DateTime`对象反序列化的时候调用`GSON.fromJson()`.
 
 ## 序列化解释器和反序列化解释器的要点
@@ -310,13 +307,13 @@ private class DateTimeDeserializer implements JsonDeserializer<DateTime> {
 
 反序列化一个对象的时候,`GSON`需要创建这个对象的实例,一个良好的类应该具有无参构造方法来保证`GSON`在序列化和反序列化的时候可以使用.`private`或者`public`并不重要.一般来说,如果一个类没有无参构造方法的时候,你就应用自己写一个实例构造器了.
 一个构造器的例子:
-{% highlight java%}
+
 private class MoneyInstanceCreator implements InstanceCreator<Money> {
   public Money createInstance(Type type) {
     return new Money("1000000", CurrencyCode.USD);
   }
 }
-{% endhighlight %}
+
 `Type`可以是相应的泛型类型:
 
 * 调用一个需要具体的泛型类型的构造方法很有用
@@ -325,7 +322,7 @@ private class MoneyInstanceCreator implements InstanceCreator<Money> {
 ## 实例构造器的参数化类型
 
 有时，需要的实例类型是参数化类型。这不是一个问题,因为实际的实例是`raw type`。下面是一个例子：
-{% highlight java%}
+
 class MyList<T> extends ArrayList<T> {
 }
 class MyListInstanceCreator implements InstanceCreator<MyList<?>> {
@@ -335,9 +332,9 @@ class MyListInstanceCreator implements InstanceCreator<MyList<?>> {
     return new MyList();
   }
 }
-{% endhighlight %}
+
 有时候你需要根据实际参数化类型来创建实例。在这种情况下，你可以使用类型参数传递到实例构造器方法。下面是一个例子：
-{% highlight java%}
+
 public class Id<T> {
   private final Class<T> classOfId;
   private final long value;
@@ -353,28 +350,28 @@ class IdInstanceCreator implements InstanceCreator<Id<?>> {
     return Id.get((Class)idType, 0L);
   }
 }
-{% endhighlight %}
+
 在上面的例子中，不能在没有实际传递的实际类型参数化的类型的情况下来创建的Id类的一个实例,我们通过传递方法参数，类型解决了这个问题。在这种情况下，该类型的对象是Id<Foo>的Java的参数类型的表示，其中实际的实例应绑定到Id<Foo> 。因为标识类只有一个参数化的类型参数，T ，我们用getActualTypeArgument返回的类型的数组的第一个元素来保存Foo.class。
 
 ## 紧凑漂亮的JSON输出
 
 默认的`JSON`输出是`GSON`提供的是一种紧凑`JSON`格式。这意味着它们将不会输出`JSON`结构,任何空白。因此出现在`JSON`输出内容中的字段名和值，对象字段和对象之间没有空格。同时`null`字段将在输出忽略(注意：空值仍将被列入收藏的对象/数组)。如果你需要`JSON`保持一个清晰的格式,你需要使用`GsonBuilder`来配置`GSON`,现在`JsonFormatter`还不是一个`public API`,所以客户端不能配置默认打印设置/边距JSON输出.现我们只提供一个默认JsonPrintFormatter80字,2个字符缩进和4字右边界默认行长度.
 下面是一个例子展示了如何配置GSON实例使用默认`JsonPrintFormatter`而不是`JsonCompactFormatter`:
-{% highlight java%}
+
 Gson gson = new GsonBuilder().setPrettyPrinting().create();
 String jsonOutput = gson.toJson(someObject);
-{% endhighlight %}
+
 
 ## NULL对象的支持
 
 GSON实现的默认行为是空的对象字段被忽略,这让更紧凑的输出格式成为可能;然而,客户端必须定义这些字段的默认值作为`JSON`格式转换回`Java` 。
 这将展示如何配置`GSON`实例输出`null`
-{% highlight java%}
+
 Gson gson = new GsonBuilder().serializeNulls().create();
-{% endhighlight %}
+
 Note:使用`Gson`序列化`null`时,它会加入`JsonNull`到`JsonElement`结构。因此它可以在自定义的序列化/反序列化中使用.
 下面是一个例子:
-{% highlight java%}
+
 public class Foo {
   private final String s;
   private final int i;
@@ -395,12 +392,11 @@ System.out.println(json);
 ======== OUTPUT ========
 {"s":null,"i":5}
 null
-{% endhighlight %}
 
 ## 版本支持
 
 相同的对象的多个版本可以通过使用`@Since`注解来解决,这个注解可以在一个未来的类,字段,方法上使用.为了使用这个功能,你必须配置大于某个版本时忽略的对象,字段,如果没有配置,`GSON`会序列化全部内容.
-{% highlight java%}
+
 @Since(1.1) private final String newerField;
 @Since(1.0) private final String newField;
 private final String field;
@@ -420,7 +416,7 @@ System.out.println(jsonOutput);
 ======== OUTPUT ========
 {"newField":"new","field":"old"}
 {"newerField":"newer","newField":"new","field":"old"}
-{% endhighlight %}
+
 
 ## 从序列化和反序列化中剔除字段
 
@@ -428,18 +424,16 @@ GSON支持剔除顶层类，字段和字段类型,`Below`是一种排除字段�
 
 * `Java Modifier Exclusion` java修改的剔除
 默认的情况下,如果一个对象被声明为`transient`,`static`,那么它就会被剔除.如果你要包含这些字段,你需要做:
-{% highlight java%}
+
 Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.STATIC)
     .create();
-{% endhighlight %}
 
 NOTE: 您可以使用任意数量参数的“excludeFieldsWithModifiers”的方法.比如:
-{% highlight java%}
+
 Gson gson = new GsonBuilder()
     .excludeFieldsWithModifiers(Modifier.STATIC, Modifier.TRANSIENT, Modifier.VOLATILE)
     .create();
-{% endhighlight %}
 
 ## Gson's @Expose
 
@@ -449,7 +443,7 @@ Gson gson = new GsonBuilder()
 
 如果这些默认的策略都不能满足你的需求,你还可以自定自己的策略,更多可见[ExclusionStrategy](http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/ExclusionStrategy.html)
 下面是一个使用`@Foo`的例子
-{% highlight java%}
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD})
 public @interface Foo {
@@ -496,13 +490,12 @@ public static void main(String[] args) {
 }
 ======== OUTPUT ========
 {"longField":1234}
-{% endhighlight %}
 
 ## JSON Field Naming Support 字段命名支持
 
 `Gson`支持一些预先定义的字段命名策略转换(比如,`JAVA`,开头小写,`sampleFieldNameInJava`,驼峰命名,到一个`JSON`字段名称,即`sample_field_name_in_java`或`SampleFieldNameInJava`)
 它也有一个注释为基础的策略，以允许在每个字段的基础上定义自定义名称。请注意，该注释为基础的策略情况下,如果一个无效的字段名称作为注解值将在`Runtime`才会校验。下面是一些例子
-{% highlight java%}
+
 private class SomeObject {
   @SerializedName("custom_naming") private final String someField;
   private final String someOtherField;
@@ -517,7 +510,6 @@ String jsonRepresentation = gson.toJson(someObject);
 System.out.println(jsonRepresentation);
 ======== OUTPUT ========
 {"custom_naming":"first","SomeOtherField":"second"}
-{% endhighlight %}
 
 
 

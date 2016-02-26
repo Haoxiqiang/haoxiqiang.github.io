@@ -18,7 +18,7 @@ tags: [blog]
 ![Connect](/source/images/blog/ams01.png)
 做到这里就需要安装软件了
 终端登录过去
-{% highlight bash %}
+
 //开发工具
 #yum groupinstall "Development tools"
 //安装编译前的一些依赖
@@ -39,57 +39,57 @@ permit - 0.0.0.0/0 – 0.0.0.0/0  -  -  -  -  -
 #chkconfig –add ss5
 #chkconfig ss5 on
 #service ss5 start
-{% endhighlight %}
+
 我们需要在AMS Console添加一个端口,我这个是当时是添加了一个1080的端口
 
 ![SecurityGroups](/source/images/blog/ams03.png)
 
 测试一下
-{% highlight bash %}
+
 [root@ip-172-31-24-53 ~]# netstat  -anpt | grep ss5
 tcp        0      0 0.0.0.0:1080                0.0.0.0:*                   LISTEN      6264/ss5
-{% endhighlight %}
+
 
 现在就可以试用一下代理了,我在`Chrome`中使用了`SwitchyOmega`代理,其他的也是一样.配置一下Connect里面的那个`Ip`和添加的这个端口就可以了
 
 ### 常见错误及解决
 
 * 错误一：
-	{% highlight bash %}
+
 	checking security/pam_misc.h usability... no
 	checking security/pam_misc.h presence... no
 	checking for security/pam_misc.h... no
 	configure: error: *** Some of the headers weren't found ***
-	{% endhighlight %}
+
 	解决方法：
 	安装 pam pam-devel
-	{% highlight bash %}
+
 	[root@ip-172-31-24-53 ~]# yum install -y pam pam-devel
-	{% endhighlight %}
+
 
 * 错误二：编译报错：
- 	{% highlight bash %}
+
 	[root@ip-172-31-24-53 ~]# make
 	make[1]: Entering directory `/usr/local/src/ss5-3.8.9/common'
 	gcc -g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I ../include   -fPIC   -c -o SS5OpenLdap.o SS5OpenLdap.c
-	{% endhighlight %}
+
 	解决方法：
 	安装 openldap	
-	{% highlight bash %}
+
 	[root@ip-172-31-24-53 ~]# yum install -y openldap-devel  openldap
-	{% endhighlight %}
+
 
 * 错误三：编译报错：
-  	{% highlight bash %}
+
 	在包含自 SS5Radius.c：22 的文件中:
 	../include/SS5Radius.h:22:25: 错误：openssl/md5.h：没有那个文件或目录
 	SS5Radius.c: 在函数‘S5RadiusAuth’中:
-	{% endhighlight %}
+
 	解决方法：
 	安装 openldap	
-	{% highlight bash %}
+
 	[root@ip-172-31-24-53 ~]# yum install -y openssl-devel  openssl
-	{% endhighlight %}
+
 
 
       

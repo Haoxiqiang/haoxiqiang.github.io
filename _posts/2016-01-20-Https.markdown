@@ -68,7 +68,7 @@ Now on your server machine:
 `echo | openssl s_client -connect hostname:443 2>&1 |  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > hostname.pem`
 
 因为`Android`一般只能识别`BKS`类型的证书,需要转换一下.这个文件一般都是放到了 `raw`内的,但是很多时候不加文件直接用文本也是可以的,因为`HttpsURLConnection.setSSLSocketFactory(SSLSocketFactory)`时,创建的形式一般是
-{% highlight java%}
+
 InputStream inputStream = context.getResources().openRawResource(res);
 KeyStore keyStore = KeyStore.getInstance("BKS");
 keyStore.load(inputStream, password.toCharArray());
@@ -78,14 +78,14 @@ TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustM
 trustManagerFactory.init(keyStore);
 SSLContext sslContext = SSLContext.getInstance("TLS");
 sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), new SecureRandom());
-{% endhighlight %}
+
 所以直接用`String->Stream`也是可以的
 
 转换证书类型一般使用有:
 
 [Bouncy Castle](http://www.bouncycastle.org/java.html) 下面贴一下命令
 [Portecle](http://sourceforge.net/projects/portecle/) 这个似乎有 UI 版本的,不过没有用过
-{% highlight java%}
+
 keytool -importcert -v 
  -trustcacerts 
  -alias 0 
@@ -94,9 +94,8 @@ keytool -importcert -v
  -providerclass org.bouncycastle.jce.provider.BouncyCastleProvider 
  -providerpath bcprov-jdk16-1.46.jar 
  -storepass password
- {% endhighlight %}
+
  
-{% highlight bash %}
 #查看一些证书的信息能直接使用`openssl`来操作
 openssl x509 -in cert.pem -text -noout
 openssl x509 -in cert.cer -text -noout
@@ -117,12 +116,12 @@ $ openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer
 $ openssl pkcs12 -export -in certificate.cer -inkey privateKey.key -out certificate.pfx -certfile CAcert.cer
 # PFX to PEM
 $ openssl pkcs12 -in certificate.pfx -out certificate.cer -nodes
-{% endhighlight %}
+
 
 备注几个遇到的问题
 
 * SSLPeerUnverifiedException:Hostname not verified 因为我自签发的证书没有注意到我自己搭建的服务器域名不匹配的问题,解决的办法有
-{% highlight java %}
+
 HostnameVerifier hostnameVerifier = new HostnameVerifier() {
     @Override
     public boolean verify(String hostname, SSLSession session) {
@@ -131,6 +130,5 @@ HostnameVerifier hostnameVerifier = new HostnameVerifier() {
         return hv.verify("example.com", session);
     }
 };
-{% endhighlight %}
 
 >[Itroadmap](http://itroadmap.sinaapp.com/2015/12/07/fail-javax-net-ssl-sslpeerunverifiedexceptionhostname-not-verified/)

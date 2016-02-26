@@ -13,9 +13,9 @@ tags: [android]
 <!-- more -->
 
 ### 1.`Android Studio`新创建的工程直接报错,不能正常编译
-	{% highlight bash %}
+
 	Error:Execution failed for task ':app:mergeDebugResources'. > Crunching Cruncher ic_launcher.png failed, see logs
-	{% endhighlight %}
+
 	解决办法:
 	创建一个`drawable-hdpi`或者`drawable-xhdpi`就好了
 	
@@ -27,10 +27,9 @@ tags: [android]
 * adb kill-server dab start-server,然后重新连接usb就可以了
 
 ### 3.手机上某一个应用死活安装不上了,卸载了也不行,报报过签名错误,空间不足乱七八糟的
-	{% highlight bash %}
+
 	Package com.yuexue.tifenapp signatures do not match the previously installed version; ignoring!
-	{% endhighlight %}
+
 	最开始看到一个这样的错误,一直不明白,试着这么做了一次,问题解决
-	{% highlight bash %}
+
 	adb -e uninstall com.yuexue.tifenapp//不带-e 也可以
-	{% endhighlight %}

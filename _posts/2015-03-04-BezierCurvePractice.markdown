@@ -18,11 +18,11 @@ tags: [android]
 	给定点`P0`、`P1`，线性贝塞尔曲线只是一条两点之间的直线。这条线由下式给出:
 	
 	$$\mathbf{B}(t)=\mathbf{P}_0 + (\mathbf{P}_1-\mathbf{P}_0)t=(1-t)\mathbf{P}_0 + t\mathbf{P}_1 \mbox{ , } t \in [0,1]$$
-	{% highlight java %}
+
 private float getInterpolatorDistance(float input) {
     return (1 - input) * p0 + input * p1;
 }
-{% endhighlight %}
+
 
 * 二次方贝塞尔曲线
 

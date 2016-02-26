@@ -37,7 +37,7 @@ Canvas 在一般的情况下可以看作是一张画布，所有的绘图操作�
 
 ![Canvas04](/source/images/blog/android_canvas04.png)
 
-{% highlight java %}
+
 public class CanvasView extends View {
 
     private Paint arcPaint;
@@ -171,7 +171,7 @@ public class CanvasView extends View {
         canvas.drawBitmap(bitmap, 350, 350, arcPaint);
     }
 }
-{% endhighlight %}
+
 
 >参考<br/> [roamer' blog](http://blog.csdn.net/lonelyroamer/article/details/8264189)
 <br /> 源码:[Canvas(1)](https://github.com/Haoxiqiang/BlogCode/tree/master/Blog02)

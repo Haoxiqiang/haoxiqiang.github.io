@@ -13,7 +13,7 @@ tags: [android]
 	
 ## Fragment的状态恢复问题 [20131218]
 在FragmentActivity里，如果存在Fragment，系统恢复被销毁的Activity的同时会回复所有FragmentManager里的Fragment列表，然后添加到当前的Activity中，但问题是，Fragment虽然恢复了，状态却没有回复，这些都需要在onCreate或onRestoreInstanceState中手动处理。补充说明：onCreate()和onRestoreInstanceState()都可以用于应用的状态恢复，区别是onRestoreInstanceState()是在onStart()之后调用，可以根据具体情况选择时机。[“Failure Delivering Result ” - onActivityForResult](http://stackoverflow.com/questions/16265733/failure-delivering-result-onactivityforresult)FragmentActivity恢复状态的源码如下：
-{% highlight java %}
+
 // onCreate()中
 if (savedInstanceState != null) {
 	Parcelable p = savedInstanceState.getParcelable(FRAGMENTS_TAG);
@@ -32,16 +32,15 @@ protected void onSaveInstanceState(Bundle outState) {
     	outState.putParcelable(FRAGMENTS_TAG, p);
 	}
 }
-{% endhighlight %}
+
 Google建议onCreate中只在savedInstanceState为null的时候才创建和初始化Fragment，代码如下：
-{% highlight java %}
+
 if (savedInstanceState == null) {
 	// During initial setup, plug in the details fragment.
 	DetailsFragment details = new DetailsFragment();
 	details.setArguments(getIntent().getExtras());
 	getFragmentManager().beginTransaction().add(android.R.id.content, details).commit();
 }
-{% endhighlight %}
 
 ## Background和Seletor必须使用真实的Drawable
 否则，有些三星和摩托的机子上会没有背景，显示纯黑色，定义在colors.xml里的伪drawble不行,必须是真实的图片drawable或者定义好的shape,`<color name="mail_published_time_color">#bcbcbc</color>`
@@ -57,7 +56,7 @@ if (savedInstanceState == null) {
 
 ## Drawable填充问题 [20131017]
 如果`solid`不设置颜色的话,那么就有可能存在一个默认的色值
-{% highlight xml %}
+
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
        android:shape="rectangle">
    <!--内部用透明色填充-->
@@ -69,19 +68,18 @@ if (savedInstanceState == null) {
     <corners
             android:radius="1dp"/>
 </shape>
-{% endhighlight %}
 
 ## WebView的换行问题 [20131218]
 4.4开始，webview不会自动断行，需要在html里处理，代码里也可以这样处理：
-{% highlight java %}
+
 settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING);
 //但是很多网页这样不解决问题，还需要在Html里处理：
 <pre style="word-wrap: break-word; white-space: pre-wrap;">
-{% endhighlight %}
+
 
 ## 使用拨号键盘的SecretCode功能
 这个是我一个不知道,以后试试,Android的拨号键盘有一些特殊的定义键，可以启动自定义的Intent，[Create a secret doorway to your app](http://blog.udinic.com/2013/05/17/create-a-secret-doorway-to-your-app/)用法：
-{% highlight java %}
+
 <receiver android:name=".receiver.DiagnoserReceiver">
     <intent-filter>
         <action android:name="android.provider.Telephony.SECRET_CODE"/>
@@ -98,11 +96,10 @@ public class DiagnoserReceiver extends BroadcastReceiver {
         }
 	 }
 }
-{% endhighlight %}
 
 ## How to import existing GIT repository into another?
 I've tried several methods now and this is the one I prefer. It is from [github's "Subtree Merge" help article](https://help.github.com/articles/about-git-subtree-merges/) and it results in unmodified history of the subtree plus one merge commit to move the merged repository to the subdirectory, which is just what you want.
-{% highlight bash %}
+
 git remote add rack_remote git@github.com:schacon/rack.git
 git fetch rack_remote
 git merge -s ours --no-commit rack_remote/master
@@ -110,12 +107,12 @@ git read-tree --prefix=rack/ -u rack_remote/master
 git commit -m "Imported rack as a subtree."
 #You can track upstream changes like so:
 git pull -s subtree rack_remote master
-{% endhighlight %}
+
 Git figures out on its own where the roots are before doing the merge, so you don't need to specify the prefix on subsequent merges.I had previously recommended the ]Pro Git Subtree Merging method but recant that recommendation since as it turns out their method skips the merge -s ours step so the read-tree is effectively no different than copying the files with cp.. That's obviously no good.
 
 ## Ripple effect on Android Lollipop CardView
 The ripple effect was omitted in the appcompat support library which is what you're using. If you want to see the ripple use the Android L version and test it on an Android L device. Per the AppCompat v7 site:"Why are there no ripples on pre-Lollipop? A lot of what allows RippleDrawable to run smoothly is Android 5.0’s new RenderThread. To optimize for performance on previous versions of Android, we've left RippleDrawable out for now."
-{% highlight xml %}
+
 <android.support.v7.widget.CardView 
 	android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -123,7 +120,6 @@ The ripple effect was omitted in the appcompat support library which is what you
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true">
     ...
-{% endhighlight %}
 
 ## Mac OS X下的移动光标和文字编辑快捷键
 [苹果的快捷键文档](https://support.apple.com/zh-cn/HT201236)
@@ -144,11 +140,10 @@ The ripple effect was omitted in the appcompat support library which is what you
 
 ## 切换 git 
 因为 `Xcode` 也 自带了 `git`,以前也装过其他的版本的 `git`,现在打算都使用`brew cask`来管理,所以需要切换一下,过程中比较纠结一下
-{% highlight bash %}
+
 //change into the Xcode directory:
 $ cd /Applications/Xcode.app/Contents/Developer/usr/bin
 //rename the Xcode's git like this:
 $ sudo mv ./git ./git-xcode-usr-bin
 //link my own git which is installed through homebrew:
 $ sudo ln -s /usr/local/bin/git ./git
-{% endhighlight %}

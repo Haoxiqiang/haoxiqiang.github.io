@@ -11,7 +11,6 @@ SQLite数据库是一个非常小并且比较简单的数据库引擎,我们能�
 数据库文件对你的应用来说是私有的，数据库文件没有加密,一般在`/data/data/(packageName)/database/`路径下面,如果是root的手机任何人都可以读取的.如果在不root的情况下读取,就得在你的应用中拷贝出来db文件放置到public路径中的位置.
 <!-- more -->
 
-{% highlight java %}
 public class DBHelper extends SQLiteOpenHelper {
     private static final String TAG = "DBHelper";
    	private static final String DATABASE_NAME = "contacts.db";
@@ -35,7 +34,6 @@ public class DBHelper extends SQLiteOpenHelper {
        	Log.i(TAG, "Upgrading database["+DATABASE_NAME+" v." + newVersion+"]");
     }
 }
-{% endhighlight %}
 
 >源码地址<br />
 

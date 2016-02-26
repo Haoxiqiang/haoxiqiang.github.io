@@ -24,7 +24,7 @@ textile_ext:  "textile"
 #markdown: rdiscount
 markdown: kramdown
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-highlighter: pygments
+highlighter: rouge
 
 kramdown: 
   input: GFM

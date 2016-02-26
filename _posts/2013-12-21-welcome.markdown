@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Jekyll搭建Blog
+title: Jekyll搭建Blog
 date:   2013-12-21 22:19:05
 author: 郝锡强
 categories: blog
@@ -18,13 +18,13 @@ Jekyll also offers powerful support for code snippets:
 
 支持代码高亮
 
-{% highlight ruby %}
+
 def print_hi(name)
   puts "Hi, #{name}"
 end
 print_hi('Tom')
 #=> prints 'Hi,STDOUT.
-{% endhighlight %}
+
 
 支持letax,只需要在页面中声明`letex: true`
 

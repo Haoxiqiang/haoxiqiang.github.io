@@ -44,7 +44,7 @@ tags: [css]
 <div class="pure-u-sm-1-4 pure-u-1-2"><div class="block-level drop-shadow left">Left</div></div>
 </div>
 <!-- more -->
-{% highlight css%}
+
 .drop-shadow.top {
   box-shadow: 0 -4px 2px -2px rgba(0,0,0,0.4);
 }
@@ -57,7 +57,7 @@ tags: [css]
 .drop-shadow.left {
   box-shadow: -4px 0 2px -2px rgba(0,0,0,0.4);
 }
-{% endhighlight %}
+
 ## Emphesized Box Shadows
 <style>
 div[class*="emphasize-"] {
@@ -82,7 +82,7 @@ div[class*="emphasize-"] {
 <div class="pure-u-sm-1-4 pure-u-1-2"><div class="block-level emphasize-inset">Inset</div></div>
 <div class="pure-u-sm-1-4 pure-u-1-2"><div class="block-level emphasize-border">Border</div></div>
 </div>
-{% highlight css%}
+
 .emphasize-dark {
   box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
 }
@@ -95,7 +95,7 @@ div[class*="emphasize-"] {
 .emphasize-border {
   box-shadow: inset 0 0 0 7px rgba(255,255,255,.5);
 }
-{% endhighlight %}
+
 ## Gradients
 <style>
 div[class*="gradient"]{
@@ -137,7 +137,7 @@ div[class*="gradient"]{
 <div class="pure-u-sm-1-4 pure-u-1-2"><div class="block-level gradient-light-radial">Light Radial</div></div>
 <div class="pure-u-sm-1-4 pure-u-1-2"><div class="block-level gradient-dark-radial">Dark Radial</div></div>
 </div>
-{% highlight css%}
+
 .gradient-light-linear {
     background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
     background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
@@ -166,7 +166,7 @@ div[class*="gradient"]{
     background-image: -ms-radial-gradient(center 0, circle farthest-corner, rgba(0,0,0,0.15), rgba(0,0,0,0));
     background-image: radial-gradient(center 0, circle farthest-corner, rgba(0,0,0,0.15), rgba(0,0,0,0));
 }
-{% endhighlight %}
+
 ## Rounded Borders
 <style>
 div[class*="rounded"] {
@@ -191,7 +191,7 @@ div[class*="rounded"] {
 <div class="pure-u-sm-1-4 pure-u-1-2"><div class="block-level full-rounded">Full</div></div>
 <div class="pure-u-sm-1-4 pure-u-1-2"><div class="block-level barrel-rounded">Barrel</div></div>
 </div>
-{% highlight css%}
+
 .light-rounded {
   border-radius: 3px;
 }
@@ -204,7 +204,7 @@ div[class*="rounded"] {
 .barrel-rounded {
     border-radius: 20px/60px;
 }
-{% endhighlight %}
+
 ## Embossed Box Shadows
 <style>
 div[class*="embossed"] {
@@ -227,7 +227,7 @@ div[class*="embossed"] {
 <div class="pure-u-sm-1-4 pure-u-1-2"><div class="block-level embossed-light">Light</div></div>
 <div class="pure-u-sm-1-4 pure-u-1-2"><div class="block-level embossed-heavy">Heavy</div></div>
 </div>
-{% highlight css%}
+
 .embossed-light {
     border: 1px solid rgba(0,0,0,0.05);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
@@ -239,7 +239,6 @@ div[class*="embossed"] {
         inset 0 -2px 3px rgba(0,0,0,0.3),
         0 1px 1px rgba(255,255,255,0.9);
 }
-{% endhighlight %}
 
 
 >引用<br />
