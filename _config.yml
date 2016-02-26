@@ -32,7 +32,7 @@ kramdown:
 permalink: /:categories/:year:month:day-:title.html
 paginate: 5
 paginate_path: /page/:num
-relative_permalinks: true
+# relative_permalinks: true
 
 
 #在发布文章时使用一个未来的日期
