@@ -47,3 +47,24 @@ if (mBackground != null) {
 }
 ...
 {% endhighlight %}
+
+`WebView`加载中在链接上添加参数,需要注意的是要对参数编码,以前可能使用的是`NameValuePair`,`API 23`以后会提示`@deprecated`,其实这里根据自己的喜好习惯可以自己去操作,比如
+{% highlight java %}
+ JSONObject json = new JSONObject();
+ Iterator<String> keys = json.keys();
+ StringBuilder stringBuilder = new StringBuilder();
+ try {
+     while (keys.hasNext()) {
+         String key = keys.next();
+         String value = json.optString(key);
+         if (value != null) {
+             stringBuilder.append(URLEncoder.encode(key, "UTF-8"))
+                     .append("=")
+                     .append(URLEncoder.encode(value, "UTF-8"));
+         }
+     }
+ } catch (UnsupportedEncodingException e) {
+     e.printStackTrace();
+ }
+{% endhighlight %}
+本质还是一样的,原来的使用方式中,会有两次 `toString`的操作,也是类似的操作,具体不写了
