@@ -68,3 +68,39 @@ if (mBackground != null) {
  }
 
 本质还是一样的,原来的使用方式中,会有两次 `toString`的操作,也是类似的操作,具体不写了
+
+`WebView`设置 `Cookies`的过程中无效
+
+以前直接使用的`android.webkit.CookieManager`,现在使用`OkHttpClient`的时候就得自己同步一下`Cookies`,抓包看了半天确实没有 `Cookies`,研究了一下文档才知道哪里问题,简略的记录一下
+
+Uri uri = API.getUri();
+
+HttpUrl httpUrl = new HttpUrl.Builder()
+        .scheme(uri.getScheme())
+        .host(uri.getHost())
+        .build();
+
+OkHttpClient okHttpClient = ClientManager.getInstance();
+CookieJar cookieJar = okHttpClient.cookieJar();
+
+List<Cookie> cookies = cookieJar.loadForRequest(httpUrl);
+
+for (Cookie cookie : cookies) {
+    if (cookie != null) {
+        String cookieString = cookie.name() + "=" + cookie.value() + "; domain=" + cookie.domain();
+        cookieManager.setCookie(httpUrl.toString(), cookieString);
+    }
+}
+
+重点就是,接收的参数竟然是 `URL` 而不是 `Host`
+
+    /**
+     * Sets a cookie for the given URL. Any existing cookie with the same host,
+     * path and name will be replaced with the new cookie. The cookie being set
+     * will be ignored if it is expired.
+     *
+     * @param url the URL for which the cookie is to be set
+     * @param value the cookie as a string, using the format of the 'Set-Cookie'
+     *              HTTP response header
+     */
+    public abstract void setCookie(String url, String value);
