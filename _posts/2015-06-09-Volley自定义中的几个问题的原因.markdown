@@ -14,27 +14,27 @@ tags: [android]
 ## 如何添加参数
 
 很简单重写`getParams`方法
-
+{% highlight java %}
 @Override
 public Map<String, String> getParams() {
    return mParams;
 }
-
+{% endhighlight %}
 
 ## 如何使用Cookie
 
 `HttpURLConnection`已经直接支持了,[HttpURLConnection.html](http://developer.android.com/reference/java/net/HttpURLConnection.html)
-
-CookieHandler.setDefault(new CookieManager()); 
+{% highlight java %}
+CookieHandler.setDefault(new CookieManager());
 CookieHandler.setDefault( new CookieManager( null, CookiePolicy.ACCEPT_ALL ) );
-
+{% endhighlight %}
 
 * Prepare the request. The primary property of a request is its URI. Request headers may also include metadata such as credentials, preferred content types, and session cookies.
 * Read the response. Response headers typically include metadata such as the response body's content type and length, modified dates and session cookies. The response body may be read from the stream returned by getInputStream(). If the response has no body, that method returns an empty stream.
 
 ## Attempt to read from field 'com.android.volley.Cache$Entry
 
-
+{% highlight java %}
 NetworkDispatcher.run: Unhandled exception java.lang.NullPointerException: Attempt to read from field 'com.android.volley.Cache$Entry com.android.volley.Response.cacheEntry' on a null object reference java.lang.NullPointerException: Attempt to read from field 'com.android.volley.Cache$Entry com.android.volley.Response.cacheEntry' on a null object reference at com.android.volley.NetworkDispatcher.run(NetworkDispatcher.java:126)
 //must return cache
  @Override
@@ -42,14 +42,15 @@ NetworkDispatcher.run: Unhandled exception java.lang.NullPointerException: Attem
 	...
 	return Response.success(parsed, HttpHeaderParser.parseCacheHeaders(response));
 }
-
+{% endhighlight %}
 ##  int statusCode = statusLine.getStatusCode();报NullPointer
 
 如果Request中的参数有为null的就可能报这个错误,比如listener为null
 
 ## Set Timeout Time
-
+{% highlight java %}
 myRequest.setRetryPolicy(new DefaultRetryPolicy(
-                MY_SOCKET_TIMEOUT_MS, 
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES, 
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+{% endhighlight %}

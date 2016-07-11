@@ -21,9 +21,10 @@ tags: [android]
 [http://developer.android.com/guide/topics/graphics/prop-animation.html#how](http://developer.android.com/guide/topics/graphics/prop-animation.html#how)
 
 ## API Overview
-	
-* ObjectAnimator
 
+* ObjectAnimator
+{% highlight java %}
 ObjectAnimator anim = ObjectAnimator.ofFloat(foo, "alpha", 0f, 1f);
 anim.setDuration(1000);
 anim.start();
+{% endhighlight %}

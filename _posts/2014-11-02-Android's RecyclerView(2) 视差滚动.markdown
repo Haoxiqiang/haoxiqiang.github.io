@@ -11,7 +11,7 @@ RecyclerView的视差滚动<br />
 ![parallaxrecycler](/source/images/blog/parallaxrecycler.gif)
 <!-- more -->
 实现的这个需求的话,需要知道当前滚动的距离,这里可以通过设置监听`setOnScrollListener`的方式获取,这样就有视差滚动的视差效果了,但是
-
+{% highlight java %}
 RecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
     @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -27,11 +27,11 @@ RecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
         }
     }
 });
-
+{% endhighlight %}
 
 因为这个View虽然移动的,占据的位置没有变化,我们应该切掉这部分多余的,于是对于header 部分剪掉多余的
 
-
+{% highlight java %}
 @Override
 protected void dispatchDraw(Canvas canvas) {
     Log.i("dispatchDraw", "mOffset=" + mOffset + " ;getLeft()=" + getLeft()
@@ -45,7 +45,7 @@ public void setClipY(int offset) {
     mOffset = offset;
     invalidate();
 }
-
+{% endhighlight %}
 
 
 当前的滚动的进度就是`startTop/mHeader.getHeight()`.

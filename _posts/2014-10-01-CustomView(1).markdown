@@ -14,7 +14,7 @@ tags: [android]
 * 另外一种就是,扩展现有的View，比如再增加几个View进去,或者复写一些方法来改变原有的逻辑.
 <!-- more -->
 我们先写一个继承View的,看看View都需要写什么:
-
+{% highlight java %}
 public class SimpleView extends View {
 
     public SimpleView(Context context) {
@@ -25,10 +25,10 @@ public class SimpleView extends View {
         super(context, attrs);
     }
 }
-
+{% endhighlight %}
 如果你不需要xml配置属性的话AttributeSet这个构造方法可以不写,当然这个时候你不能把这个View写到xml中了,AttributeSet的使用方法其实就是把一堆xml的属性解析成了一个Array来方便你的使用,xml的属性的类型需要你事先声明,我们一般写到这个里面`res/values/attrs.xml`,称之为`<declare-styleable>`,这里面的数据类型支持的有:`boolean`,`string`,`dimension`,`enum`,`fraction`,`reference`,`color`.在这当中我们也可以使用`|`来制定多种类型
 
-
+{% highlight xml %}
 <declare-styleable name="SimpleView">
 	<attr name="showContent" format="boolean" />
 	<attr name="showPosition" format="enum">
@@ -36,10 +36,10 @@ public class SimpleView extends View {
 		<enum name="right" value="1" />
 	</attr>
 </declare-styleable>
-
+{% endhighlight %}
 
 现在我们写好了一个带参数的View,在xml中可以设置一个自定义的命名空间,这个命名空间的写法`http://schemas.android.com/apk/res/[your package name]` 或者 `http://schemas.android.com/apk/res/auto`,举个例子:
-
+{% highlight xml %}
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:hxq="http://schemas.android.com/apk/res/blog.haoxiqiang"
@@ -55,11 +55,11 @@ public class SimpleView extends View {
         android:text="@string/hello_world" />
 
 </RelativeLayout>
-
+{% endhighlight %}
 
 我这里使用的是包名的形式,我现在想要做这样一个View,画一个圆,配上文字,`showContent`控制文字的显示与否,`showPosition`控制在屏幕的左半部分还是右半部分绘制,View的完整代码如下
 
-
+{% highlight java %}
 package blog.haoxiqiang;
 
 public class SimpleView extends View {
@@ -123,7 +123,7 @@ public class SimpleView extends View {
         }
     }
 }
-
+{% endhighlight %}
 
 在第二部分中,准备写一下Measure
 

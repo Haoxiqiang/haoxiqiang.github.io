@@ -17,7 +17,7 @@ tags: [android]
 
 ## FragmentTransaction使用replace方法
 
-
+{% highlight java %}
 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack so the user can navigate back
@@ -25,11 +25,11 @@ transaction.replace(R.id.fragment_container, newFragment);
 transaction.addToBackStack(null);
 // Commit the transaction
 transaction.commit();
-
+{% endhighlight %}
 
 ## DB的BaseColumns声明
 
-
+{% highlight java %}
 /* Inner class that defines the table contents */
 public static abstract class FeedEntry implements BaseColumns {
     public static final String TABLE_NAME = "entry";
@@ -38,11 +38,11 @@ public static abstract class FeedEntry implements BaseColumns {
     public static final String COLUMN_NAME_SUBTITLE = "subtitle";
     ...
 }
-
+{% endhighlight %}
 
 ## 启动一个匿名的Intent之前的校验
 
-
+{% highlight java %}
 PackageManager packageManager = getPackageManager();
 List activities = packageManager.queryIntentActivities(intent,
         PackageManager.MATCH_DEFAULT_ONLY);
@@ -54,11 +54,11 @@ Intent chooser = Intent.createChooser(intent, title);
 if (intent.resolveActivity(getPackageManager()) != null) {
     startActivity(chooser);
 }
-
+{% endhighlight %}
 
 ## 提供给第三方应用使用的Activity
 
-
+{% highlight xml %}
 <activity android:name="ShareActivity">
     <!-- filter for sending text; accepts SENDTO action with sms URI schemes -->
     <intent-filter>
@@ -75,9 +75,9 @@ if (intent.resolveActivity(getPackageManager()) != null) {
         <data android:mimeType="text/plain"/>
     </intent-filter>
 </activity>
+{% endhighlight %}
 
-
-
+{% highlight java %}
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -96,14 +96,14 @@ protected void onCreate(Bundle savedInstanceState) {
 Intent result = new Intent("com.example.RESULT_ACTION", Uri.parse("content://result_uri");
 setResult(Activity.RESULT_OK, result);
 finish();
-
+{% endhighlight %}
 
 ## Handler的使用
 
 这个说一说,这个怪自己,没弄清楚Handler的机制,如果外部new的话,取决于new时所在线程,除非你指定Looper,否则postRunnable是否在主线程运行是不确定的
-
+{% highlight java %}
 private static Handler INSTANCE = new Handler(Looper.getMainLooper());
-
+{% endhighlight %}
 
 ## WebView在加载页面时候会发出facicon请求
 
@@ -116,8 +116,8 @@ private static Handler INSTANCE = new Handler(Looper.getMainLooper());
 * "GET /apple-touch-icon.png HTTP/1.1" 404 189
 
 > The following uses data URI and can be used to avoid fake favicon requests:
- 
-	<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+
+	<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 	For references see here:
 	https://github.com/h5bp/html5-boilerplate/issues/1103
 	https://twitter.com/diegoperini/status/4882543836930048

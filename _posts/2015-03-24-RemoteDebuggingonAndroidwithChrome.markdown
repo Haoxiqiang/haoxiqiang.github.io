@@ -28,11 +28,11 @@ tags: [blog]
 * 这时候`Chrome`会展示出来已打开的可调试的设备端的浏览器`Tab`,点击`inspect`即可查看
 <br />![chrome-inspect-tabs](/source/images/blog/chrome-inspect-tabs.png)
 * 如果我们想调试自己的应用的话,需要在代码中增加`WebView.setWebContentsDebuggingEnabled(true);`这样就可以了
-
+{% highlight java %}
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
     WebView.setWebContentsDebuggingEnabled(true);
 }
-
+{% endhighlight %}
 ![chrome-debug-webview](/source/images/blog/chrome-debug-webview.png)
 * `Chrome`的调试就不说了,如果需要实时显示的话,点击`Screencast`
 <br />![screencast-icon-location](/source/images/blog/screencast-icon-location.png)
@@ -43,7 +43,7 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 * Keep the device on a cellular network. Use the Network panel to view the network waterfall under actual mobile conditions.
 * Use the Timeline panel to analyze rendering and CPU usage. Hardware on mobile devices often runs much slower than on your development machine.
 * If you’re running a local web server, use port forwarding or virtual host mapping to access the site on your device.
-      
+
 
 
 下面的部分不翻译了,直接贴上来吧
@@ -57,9 +57,9 @@ To enable port forwarding:
 
 * Open chrome://inspect on your development machine.
 * Click Port Forwarding. The port forwarding settings display.
-* In the Device port field, enter the port number you want your Android device to listen on. 
+* In the Device port field, enter the port number you want your Android device to listen on.
 (The default port is 8080.)
-* In the Host field, enter the IP address (or hostname) and port number where your web application is running. 
+* In the Host field, enter the IP address (or hostname) and port number where your web application is running.
 This address can be any local location accessible from your development machine. Currently, port numbers must be between 1024 and 65535 (inclusive).
 * Check Enable port forwarding.
 * Click Done.

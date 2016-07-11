@@ -10,28 +10,28 @@ tags: [go]
 ## 第一节 hello,go
 这部分内容简直是把我搞得欲仙欲死,安装完`pkg`包以后,为了方便,把这部分内容加入到环境变量中:
 
-
+{% highlight bash %}
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-
+{% endhighlight %}
 注意这里我是在我的用户目录下建立了一个`go`的文件夹用来开发,这些内容在文档中都被标记为不必要,但是一定这么做,否则找问题太痛苦了.我也按照文档中创建了目录,方便我提交代码.在我的用户名下面创建一个文件夹,名字是`hello`,然后在这个文件夹内再创建一个`hello.go`的源文件.创建以下代码
 <!-- more -->
-
+{% highlight go %}
 package main
 import "fmt"
 func main() {
     fmt.Printf("hello, go\n");
 }
-
+{% endhighlight %}
 
 能运行的话就得保证至少存在一个包名是`main`的.这个时候可以直接使用`go run hello.go`来直接运行,也可以编译好了之后运行,命令忽略`src`这层路径`go install info.haoxiqiang/first/hello`,也可以直接在源码一级目录执行`go install`.运行成功的表现就是没有报错信息....同时在`go/bin`中生成了可执行文件,我们可以直接执行,比如进入到`bin`,然后`hello`,或者在任意位置,换一个姿势`$GOPATH/bin/hello`.
 ## 第二节 library
 在一般的项目中,我们经常使用一些工具类,或者第三库,下面展示一下基本的`go library`的用法
-
+{% highlight bash %}
 mkdir $GOPATH/go/src/info.haoxiqiang/tool/stringutil
 vi util1.go
-
-
+{% endhighlight %}
+{% highlight go %}
 package stringutil
 func Reverse(s string) string{
 	r:=[]rune(s);
@@ -40,9 +40,9 @@ func Reverse(s string) string{
 	}
 	return string(r);
 }
-
+{% endhighlight %}
 需要注意的包名为引用位置调用的名字,调用方式为
-
+{% highlight go %}
 package main
 import (
 	"fmt"
@@ -50,11 +50,11 @@ import (
 func main() {
     fmt.Printf(stringutil.Reverse("123456789\n"));
 }
-
+{% endhighlight %}
 ## 第三节 go test
 `go`本身有一个轻量的`test`框架,使用起来也很简单,直接上代码,建立测试文件的时候建议直接`xxx_test.go`的样式
 
-
+{% highlight go %}
 package stringutil
 import "testing"
 func TestReverse(t *testing.T) {
@@ -72,25 +72,28 @@ func TestReverse(t *testing.T) {
 		}
 	}
 }
+{% endhighlight %}
 
+{% highlight bash %}
 ➜  go git:(master) ✗ go test info.haoxiqiang/tool/stringutil
 ok  	info.haoxiqiang/tool/stringutil	0.005s
-
+{% endhighlight %}
 ## 第四节
 `go`支持远程的包,我们可以直接使用一些`golang`的样例,比如
-
+{% highlight bash %}
 	go git:(master) ✗ go get github.com/golang/example/hello
-
+{% endhighlight %}
 这样就会在你本地src下面直接创建这些路径以及内部文件,这个时候在执行`$GOPATH/bin/hello`就是示例的模样了`Hello, Go examples!`
 我们也可以直接在`import`中使用,`go`会自动抓取,构建,安装.
-
+{% highlight go %}
 import (
 	"fmt"
 	"github.com/golang/example/stringutil")
-
+{% endhighlight %}
+{% highlight bash %}
 ➜  go git:(master) ✗ go get info.haoxiqiang/first/hello
 ➜  go git:(master) ✗ go install  info.haoxiqiang/first/hello
 ➜  go git:(master) ✗ bin/hello
-
+{% endhighlight %}
 
 > 源码 [https://github.com/Haoxiqiang/go-practise](https://github.com/Haoxiqiang/go-practise)

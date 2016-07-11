@@ -13,7 +13,7 @@ tags: [java]
 
 <!-- more -->
 对于`HashMap`来说,你的每一次`put`操作后,都会对`key`取一次`hashcode`放入`table`中.`table`的每一个位置是一个`HashMapEntry`,因为`key`的`hashcode`有可能相同,这时`table`同一个位置的`HashMapEntry`就会`next`中追加一个`HashMapEntry`.
-
+{% highlight java %}
 @Override public V put(K key, V value) {
     if (key == null) {
         return putValueForNullKey(value);
@@ -41,7 +41,7 @@ tags: [java]
 void addNewEntry(K key, V value, int hash, int index) {
 	table[index] = new HashMapEntry<K, V>(key, value, hash, table[index]);
 }
-
+{% endhighlight %}
 计算 Hash 码的方法：hash()，这个方法是一个纯粹的数学计算，其方法如下：
 
 ...
@@ -58,13 +58,13 @@ h&(table.length-1)|&nbsp;&nbsp;hash&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|t
 8&(16-1)          |0100|  &  |1111          |  =  |0100
 9&(16-1)          |0101|  &  |1111          |  =  |0101
 
-
-static int indexFor(int h, int length) { 
+{% highlight java %}
+static int indexFor(int h, int length) {
 	//android 的实现是直接使用h & (length-1),无此方法
-    return h & (length-1); 
+    return h & (length-1);
 }
+{% endhighlight %}
 
-
-当`hashmap`中的元素越来越多的时候，碰撞的几率也就越来越高（因为数组的长度是固定的），所以为了提高查询的效率，就要对`hashmap`的数组进行扩容，数组扩容这个操作也会出现在`ArrayList`中，所以这是一个通用的操作，很多人对它的性能表示过怀疑，不过想想我们的“均摊”原理，就释然了，而在`hashmap`数组扩容之后，最消耗性能的点就出现了：原数组中的数据必须重新计算其在新数组中的位置，并放进去，这就是`resize`。那么`hashmap`什么时候进行扩容呢？当`hashmap`中的元素个数超过数组大小`*loadFactor`时，就会进行数组扩容，`loadFactor`的默认值为0.75，也就是说，默认情况下，数组大小为16，那么当`hashmap`中元素个数超过`16*0.75=12`的时候，就把数组的大小扩展为`2*16=32`，即扩大一倍，然后重新计算每个元素在数组中的位置，而这是一个非常消耗性能的操作，所以如果我们已经预知`hashmap`中元素的个数，那么预设元素的个数能够有效的提高`hashmap`的性能。比如说，我们有1000个元素`new HashMap(1000)`, 但是理论上来讲`new HashMap(1024)`更合适，不过上面[angeyu](http://www.iteye.com/topic/539465)已经说过，即使是1000，`hashmap`也自动会将其设置为1024。 但是`new HashMap(1024)`还不是更合适的，因为`0.75*1000 < 1000`, 也就是说为了让`0.75 * size > 1000`, 我们必须这样`new HashMap(2048)`才最合适，既考虑了&的问题，也避免了resize的问题。 
+当`hashmap`中的元素越来越多的时候，碰撞的几率也就越来越高（因为数组的长度是固定的），所以为了提高查询的效率，就要对`hashmap`的数组进行扩容，数组扩容这个操作也会出现在`ArrayList`中，所以这是一个通用的操作，很多人对它的性能表示过怀疑，不过想想我们的“均摊”原理，就释然了，而在`hashmap`数组扩容之后，最消耗性能的点就出现了：原数组中的数据必须重新计算其在新数组中的位置，并放进去，这就是`resize`。那么`hashmap`什么时候进行扩容呢？当`hashmap`中的元素个数超过数组大小`*loadFactor`时，就会进行数组扩容，`loadFactor`的默认值为0.75，也就是说，默认情况下，数组大小为16，那么当`hashmap`中元素个数超过`16*0.75=12`的时候，就把数组的大小扩展为`2*16=32`，即扩大一倍，然后重新计算每个元素在数组中的位置，而这是一个非常消耗性能的操作，所以如果我们已经预知`hashmap`中元素的个数，那么预设元素的个数能够有效的提高`hashmap`的性能。比如说，我们有1000个元素`new HashMap(1000)`, 但是理论上来讲`new HashMap(1024)`更合适，不过上面[angeyu](http://www.iteye.com/topic/539465)已经说过，即使是1000，`hashmap`也自动会将其设置为1024。 但是`new HashMap(1024)`还不是更合适的，因为`0.75*1000 < 1000`, 也就是说为了让`0.75 * size > 1000`, 我们必须这样`new HashMap(2048)`才最合适，既考虑了&的问题，也避免了resize的问题。
 
 >参考<br/> [通过分析 JDK 源代码研究 Hash 存储机制](http://www.ibm.com/developerworks/cn/java/j-lo-hash/?ca=drs-tp4608)

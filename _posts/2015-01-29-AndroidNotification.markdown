@@ -13,7 +13,7 @@ tags: [android]
 <!-- more -->
 
 考虑到对低版本的兼容性,所有例子都通过`android.support.v4.app.NotificationCompat`来实现,效果这不同手机上会有不同
-
+{% highlight java %}
 public static void showNotification(Context context,int mNotificationId){
     NotificationCompat.Builder mBuilder =
             new NotificationCompat.Builder(context)
@@ -24,9 +24,9 @@ public static void showNotification(Context context,int mNotificationId){
             (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
     mNotifyMgr.notify(mNotificationId, mBuilder.build());
 }
-
+{% endhighlight %}
 这样就能`show`出来一个`notification`的最基本的模样了,如果我们想在通知栏点击,然后跳转到一个应用内的页面,我们还得给这个`notification`设置一个行为
-
+{% highlight java %}
 Intent resultIntent = new Intent(context, ResultActivity.class);
 // Because clicking the notification opens a new ("special") activity, there's
 // no need to create an artificial back stack.
@@ -34,23 +34,23 @@ PendingIntent resultPendingIntent = PendingIntent.getActivity(context,0,resultIn
 ...
 mBuilder.setContentIntent(resultPendingIntent);
 ...
-
+{% endhighlight %}
 我这里发现一个以前没有注意到的细节,`android:excludeFromRecents`可以控制`Activity`是否会出现在`recently list`中
-
+{% highlight xml %}
 //Indicates that an Activity should be excluded from the list of recently launched activities.
 //public static final int FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS,If set, the new activity is not kept in the list of recently launched activities.
 <activity android:name=".ResultActivity"
     android:launchMode="singleTask"
     android:taskAffinity=""
     android:excludeFromRecents="false"/>
-
+{% endhighlight %}
 这个行为指向的页面一般分为两种
 
 * 常规`Activity`,你启动的是你`application`工作流中的一部分`Activity`。
 * 特定`Activity` 用户只能从`notification`中启动，才能看到这个`Activity`，在某种意义上，这个`Activity`是`notification`的扩展，额外展示了一些`notification`本身难以展示的信息。
 
 第一种
-
+{% highlight java %}
 Intent resultIntent = new Intent(context, ParentActivity.class);
 TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
 // Adds the back stack
@@ -60,9 +60,9 @@ stackBuilder.addNextIntent(resultIntent);
 // Gets a PendingIntent containing the entire back stack
 PendingIntent resultPendingIntent =
         stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
+{% endhighlight %}
 第二种
-
+{% highlight java %}
 // Creates an Intent for the Activity
 Intent notifyIntent = new Intent();
 notifyIntent.setComponent(new ComponentName(context,NewTaskActivity.class));
@@ -70,15 +70,15 @@ notifyIntent.setComponent(new ComponentName(context,NewTaskActivity.class));
 notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 // Creates the PendingIntent
 PendingIntent notifyPendingIntent = PendingIntent.getActivity(context,0,notifyIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-
+{% endhighlight %}
 
 以上是创建一个`Notification`的方式,如果现在已经发出来了一个`Notification`,你应该避免每次都生成一个全新的`Notification`。你应该考虑去更新先前的`Notification`，或者改变它的值，或者增加一些值.想要设置一个可以被更新的`Notification`,需要在发布它的时候调用`NotificationManager.notify(ID, notification))`方法为它指定一个`notification ID`。更新一个已经发布的`Notification`,需要更新或者创建一个`NotificationCompat.Builder`对象,并从这个对象创建一个`Notification`对象，然后用与先前一样的`ID`去发布这个`Notification`。
-
+{% highlight java %}
 ...
 //like this,notification will be 20.
 mBuilder.setNumber(20);
 ...
-
+{% endhighlight %}
 我们每次创建出来的`Notifications`不会消失,除非除非下面任何一种情况发生。
 
 * 用户清除`Notification`,单独或者使用`清除所有`(如果`Notification`能被清除)
@@ -87,7 +87,7 @@ mBuilder.setNumber(20);
 * 你调用了[cancelAll()](http://developer.android.com/reference/android/app/NotificationManager.html#cancelAll())方法，它将会移除你先前发布的所有`Notification`。
 
 在`Android4.1`引进了`Big views`,使用起来也很简单,比如这个是`BigTextStyle`
-
+{% highlight java %}
 ...
 .setStyle(new NotificationCompat.BigTextStyle().setBigContentTitle("BigContentTitle").setSummaryText("SummaryTextSummaryText")
         .bigText("I'm a big text message"))
@@ -95,18 +95,18 @@ mBuilder.setNumber(20);
 .addAction (R.mipmap.ic_stat_snooze,
         "snooze", notifyPendingIntent);
 ...
-
+{% endhighlight %}
 ![notification03](/source/images/blog/notification03.png)
-
+{% highlight java %}
 ...
 .setStyle(new NotificationCompat.BigPictureStyle()
             .setBigContentTitle("BigContentTitle")
             .setSummaryText("SummaryTextSummaryText")
             .bigPicture(bitmapDrawable.getBitmap()))
 ...
-
+{% endhighlight %}
 ![notification05](/source/images/blog/notification05.png)
-
+{% highlight java %}
 ...
 .setStyle(new NotificationCompat.InboxStyle()
             .setBigContentTitle("BigContentTitle")
@@ -117,11 +117,11 @@ mBuilder.setNumber(20);
             .addLine("ddddddddddddddddd")
     )
 ...
-
+{% endhighlight %}
 ![notification04](/source/images/blog/notification04.png)
 
 `Notifications`可以包含一个进度条。如果你可以在任何时候估算这个操作得花多少时间以及当前已经完成多少,如果是`determinate`就显示一个百分比的进度条,如果`indeterminate`则显示一个连续的进度显示.
-
+{% highlight java %}
 ...
 // Start a lengthy operation in a background thread
 new Thread(
@@ -151,3 +151,4 @@ new Thread(
 ...
 .setProgress(0, 0, true);
 ...
+{% endhighlight %}
