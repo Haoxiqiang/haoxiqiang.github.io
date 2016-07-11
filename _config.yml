@@ -24,10 +24,10 @@ textile_ext:  "textile"
 #markdown: rdiscount
 markdown: kramdown
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-highlighter: rouge
 
-kramdown: 
+kramdown:
   input: GFM
+  syntax_highlighter: rouge
 
 permalink: /:categories/:year:month:day-:title.html
 paginate: 5

@@ -15,11 +15,11 @@ tags: [android]
 
 4.4开始有一个新的Intent,SMS_DELIVER_ACTION(短信),WAP_PUSH_DELIVER_ACTION(彩信),更改默认应用的方式很简单
 
-
+{% highlight java %}
 Intent intent = new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
 intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, getPackageName());
 startActivity(intent);
-
+{% endhighlight %}
 
 加一段代码
 
