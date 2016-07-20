@@ -14,12 +14,12 @@ Canvas的裁剪Clip，即裁剪Canvas图层，我们绘制的东西，只能在�
 * UNION(2),      //最终区域为region1 与 region2组合一起的区域  
 * XOR(3),        //最终区域为region1 与 region2相交之外的区域  
 * REVERSE_DIFFERENCE(4), //最终区域为region2 与 region1不同的区域  
-* REPLACE(5); //最终区域为为region2的区域
+* REPLACE(5); //最终区域为为region2的区域 
 <!-- more -->
 <br />
 ![Canvas05](/source/images/blog/android_canvas05.png)
 
-{% highlight java %}
+
 private void drawScene(Canvas canvas) {
     canvas.clipRect(0, 0, 100 * factor, 100 * factor);
 
@@ -85,7 +85,7 @@ protected void onDraw(Canvas canvas) {
     drawScene(canvas);
     canvas.restore();
 }
-{% endhighlight %}
+
 
 >参考<br/> [roamer' blog](http://blog.csdn.net/lonelyroamer/article/details/8349601)
 <br/>[源码  Blog02](https://github.com/Haoxiqiang/BlogCode/tree/master/Blog02)

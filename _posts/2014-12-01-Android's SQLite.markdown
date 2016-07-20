@@ -11,28 +11,29 @@ SQLite数据库是一个非常小并且比较简单的数据库引擎,我们能�
 数据库文件对你的应用来说是私有的，数据库文件没有加密,一般在`/data/data/(packageName)/database/`路径下面,如果是root的手机任何人都可以读取的.如果在不root的情况下读取,就得在你的应用中拷贝出来db文件放置到public路径中的位置.
 <!-- more -->
 
-{% highlight java %}
 public class DBHelper extends SQLiteOpenHelper {
     private static final String TAG = "DBHelper";
    	private static final String DATABASE_NAME = "contacts.db";
    	private static final int DATABASE_VERSION = 1;
 
    	public DBHelper(Context context) {
-       	super(context, DATABASE_NAME, null, DATABASE_VERSION);    	
-    }
+       	super(context, DATABASE_NAME, null, DATABASE_VERSION);    	}
 
-   	//if the database named DATABASE_NAME doesn't exist in order to create it.    	
+   	/**
+   	* if the database named DATABASE_NAME doesn't exist in order to create it.     	*/
+    @Override
    	public void onCreate(SQLiteDatabase sqLiteDatabase) {
        	Log.i(TAG, "["+DATABASE_NAME+"v."+DATABASE_VERSION+"]");
     	//TODO: Create the Database
     }
 
-    //Called when the DATABASE_VERSION is increased.
+   	/**
+   	* Called when the DATABASE_VERSION is increased.    	*/
+    @Override
    	public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
        	Log.i(TAG, "Upgrading database["+DATABASE_NAME+" v." + newVersion+"]");
     }
 }
-{% endhighlight %}
 
 >源码地址<br />
 

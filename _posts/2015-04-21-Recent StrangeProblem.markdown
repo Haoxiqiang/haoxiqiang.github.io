@@ -18,10 +18,10 @@ tags: [android]
 
 	解决办法:
 	创建一个`drawable-hdpi`或者`drawable-xhdpi`就好了
-
+	
 ### 2.魅蓝note不能连接adb,或者其他不能连接的错误
 	有些手机,注意是其他一切条件正常的时候,不能连接到电脑,需要考虑是不是需要加一下`vendor id`,提供`mac os`解决办法:
-
+	
 * 找到vendor id,一般在设备管理中可以看到对应的usb的vendor id
 * vi ~/.android/adb_usb.ini 最后增加0x2a45//这里是你找到的vendor id,我的是0x2a45,魅族厂商的
 * adb kill-server dab start-server,然后重新连接usb就可以了
@@ -31,6 +31,5 @@ tags: [android]
 	Package com.yuexue.tifenapp signatures do not match the previously installed version; ignoring!
 
 	最开始看到一个这样的错误,一直不明白,试着这么做了一次,问题解决
-{% highlight bash %}
+
 	adb -e uninstall com.yuexue.tifenapp//不带-e 也可以
-{% endhighlight %}

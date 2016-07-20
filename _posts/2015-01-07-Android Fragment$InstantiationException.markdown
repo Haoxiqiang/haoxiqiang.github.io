@@ -8,7 +8,7 @@ letex: false
 tags: [android]
 ---
 
-android.support.v4.app.Fragment$InstantiationException: Unable to instantiate fragment
+android.support.v4.app.Fragment$InstantiationException: Unable to instantiate fragment 
 make sure class name exists, is public, and has an empty constructor that is public
 
 以前其实也有这个问题,但是发生量不大,没有引起注意,最近突然增加了很多这个错误,仔细研究了一下,弄明白了一些解决办法.
@@ -20,7 +20,7 @@ make sure class name exists, is public, and has an empty constructor that is pub
 <!-- more -->
 重现的这些问题的手段就是让`activity`的状态发生一些改变就可以了,比如横竖向切换`portrait<->landscape`.所以大部分的`InstantiationException`都在屏幕变化或者接打电话后切回来的时候发生.
 解决的方法经实践我是这么解决的:
-{% highlight java %}
+
 //保证存在public
 public class CourseFragment extends BaseThemeFragment{
     public CourseFragment() {
@@ -35,7 +35,7 @@ public static PageFragment newInstance(int currentResId) {
     fragment.setArguments(args);
     return fragment;
 }
-{% endhighlight %}
+
 
 在查阅过程中发现,这个`public constructor`最好还是写上
 原因如下:

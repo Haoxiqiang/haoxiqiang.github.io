@@ -22,7 +22,7 @@ startActivity(intent);
 {% endhighlight %}
 
 加一段代码
-{% highlight java %}
+
 currentPackageName = getPackageName();
 String defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(this);
 if (currentPackageName != null && !currentPackageName.equals(defaultSmsApp)) {
@@ -53,4 +53,3 @@ unregister.setOnClickListener(new View.OnClickListener() {
         }
     }
 });
-{% endhighlight %}

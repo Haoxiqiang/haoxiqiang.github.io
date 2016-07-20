@@ -17,13 +17,12 @@ tags: [android]
 
 一些签名的类型
 
-* `.DER` 一般是一个二进制的证书,扩展名是 `CER`或者 `CRT`,指的是一个`DER`编码的证书
-* `.PEM` 这个我们看起来就是一个`---BEGIN...`开头的一个密钥,其实是一个用 `Base64`对`X.509v3`不同类型密钥编码出来的一个证书
+* `.DER` 一般是一个二进制的证书,扩展名是 `CER`或者 `CRT`,指的是一个`DER`编码的证书 
+* `.PEM` 这个我们看起来就是一个`---BEGIN...`开头的一个密钥,其实是一个用 `Base64`对`X.509v3`不同类型密钥编码出来的一个证书 
 * `.CRT` 和`CER` 两个基本差不多,不过`CRT`符合微软的标准
 * `.key` 使用`PKCS #8`算法处理完成私钥和公钥的一种证书
 
 对于自签名或者说自己测试的话最好安装`openssl`自己体验一下,一般签名生成的过程如下
-{% highlight bash %}
 `$ openssl genrsa -out key.pem 1024`
 Generating RSA private key, 1024 bit long modulus
 ....................++++++
@@ -62,14 +61,14 @@ From internet explorer, open the Tools menu, and choose Internet options. On the
 Select that you want to export the private key, on the .PFX options, DO NOT include all certificate in the path and DO NOT enable strong protection. When asked to, provide a nice and long password if you need to transfer the resulting certificate.pfx file over email.
 Now on your server machine:
 `$ openssl pkcs12 -nodes -in certificate.pfx -out certificate.pem `
-{% endhighlight %}
+	
 
  对于服务端已有证书的可以直接取下来使用
- {% highlight bash %}
+ 
 `echo | openssl s_client -connect hostname:443 2>&1 |  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > hostname.pem`
-{% endhighlight %}
+
 因为`Android`一般只能识别`BKS`类型的证书,需要转换一下.这个文件一般都是放到了 `raw`内的,但是很多时候不加文件直接用文本也是可以的,因为`HttpsURLConnection.setSSLSocketFactory(SSLSocketFactory)`时,创建的形式一般是
-{% highlight java %}
+
 InputStream inputStream = context.getResources().openRawResource(res);
 KeyStore keyStore = KeyStore.getInstance("BKS");
 keyStore.load(inputStream, password.toCharArray());
@@ -79,26 +78,25 @@ TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustM
 trustManagerFactory.init(keyStore);
 SSLContext sslContext = SSLContext.getInstance("TLS");
 sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), new SecureRandom());
-{% endhighlight %}
+
 所以直接用`String->Stream`也是可以的
 
 转换证书类型一般使用有:
 
 [Bouncy Castle](http://www.bouncycastle.org/java.html) 下面贴一下命令
 [Portecle](http://sourceforge.net/projects/portecle/) 这个似乎有 UI 版本的,不过没有用过
-{% highlight bash %}
-keytool -importcert -v
- -trustcacerts
- -alias 0
- -file <(openssl x509 -in hostname.pem)
- -keystore $CERTSTORE -storetype BKS
- -providerclass org.bouncycastle.jce.provider.BouncyCastleProvider
- -providerpath bcprov-jdk16-1.46.jar
- -storepass password
-{% endhighlight %}
 
+keytool -importcert -v 
+ -trustcacerts 
+ -alias 0 
+ -file <(openssl x509 -in hostname.pem) 
+ -keystore $CERTSTORE -storetype BKS 
+ -providerclass org.bouncycastle.jce.provider.BouncyCastleProvider 
+ -providerpath bcprov-jdk16-1.46.jar 
+ -storepass password
+
+ 
 #查看一些证书的信息能直接使用`openssl`来操作
-{% highlight bash %}
 openssl x509 -in cert.pem -text -noout
 openssl x509 -in cert.cer -text -noout
 openssl x509 -in cert.crt -text -noout
@@ -118,12 +116,12 @@ $ openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer
 $ openssl pkcs12 -export -in certificate.cer -inkey privateKey.key -out certificate.pfx -certfile CAcert.cer
 # PFX to PEM
 $ openssl pkcs12 -in certificate.pfx -out certificate.cer -nodes
-{% endhighlight %}
+
 
 备注几个遇到的问题
 
 * SSLPeerUnverifiedException:Hostname not verified 因为我自签发的证书没有注意到我自己搭建的服务器域名不匹配的问题,解决的办法有
-{% highlight java %}
+
 HostnameVerifier hostnameVerifier = new HostnameVerifier() {
     @Override
     public boolean verify(String hostname, SSLSession session) {
@@ -132,5 +130,5 @@ HostnameVerifier hostnameVerifier = new HostnameVerifier() {
         return hv.verify("example.com", session);
     }
 };
-{% endhighlight %}
+
 >[Itroadmap](http://itroadmap.sinaapp.com/2015/12/07/fail-javax-net-ssl-sslpeerunverifiedexceptionhostname-not-verified/)

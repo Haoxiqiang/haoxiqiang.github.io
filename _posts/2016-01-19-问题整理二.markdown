@@ -8,7 +8,7 @@ letex: false
 tags: [android]
 ---
 对于`WebView`来讲,不要直接在`xml`中使用,因为这样,在`Activity`销毁的时候,内存也不会被释放,一些值得去做的方法:
-{% highlight java %}
+
 //使用ApplicationContext初始化
 WebView webView = new WebView(getApplicationContext());
 //如果在 fragment 里面
@@ -18,9 +18,7 @@ public void onDetach(){
     webView.removeAllViews();
     webView.destroy();
 }
-{% endhighlight %}
-{% highlight xml %}
-//清单文件中统一管理进程,这么做的话就意味这你要处理多进程问题
+//清单文件中统一管理进程
 <application
     android:process="com.processkill.p1">
     <activity
@@ -32,12 +30,12 @@ public void onDetach(){
         android:process="com.processkill.p3">
     </activity>
 </application>
-{% endhighlight %}
+
 
 <!-- more -->
 
 `Romain Guy`写过这样一个文章[avoid-memory-leaks-on-android](http://www.curious-creature.com/2008/12/18/avoid-memory-leaks-on-android/).当然现在看起来有些过时了,现在会在设置第二次的时候检查并释放前一个引用,当然我们应该避免这样使用 `static` 关键字
-{% highlight java %}
+
 ...
 /*
  * Regardless of whether we're setting a new background or not, we want
@@ -48,10 +46,10 @@ if (mBackground != null) {
     unscheduleDrawable(mBackground);
 }
 ...
-{% endhighlight %}
+
 
 `WebView`加载中在链接上添加参数,需要注意的是要对参数编码,以前可能使用的是`NameValuePair`,`API 23`以后会提示`@deprecated`,其实这里根据自己的喜好习惯可以自己去操作,比如
-{% highlight java %}
+
  JSONObject json = new JSONObject();
  Iterator<String> keys = json.keys();
  StringBuilder stringBuilder = new StringBuilder();
@@ -68,13 +66,13 @@ if (mBackground != null) {
  } catch (UnsupportedEncodingException e) {
      e.printStackTrace();
  }
-{% endhighlight %}
+
 本质还是一样的,原来的使用方式中,会有两次 `toString`的操作,也是类似的操作,具体不写了
 
 `WebView`设置 `Cookies`的过程中无效
 
 以前直接使用的`android.webkit.CookieManager`,现在使用`OkHttpClient`的时候就得自己同步一下`Cookies`,抓包看了半天确实没有 `Cookies`,研究了一下文档才知道哪里问题,简略的记录一下
-{% highlight java %}
+
 Uri uri = API.getUri();
 
 HttpUrl httpUrl = new HttpUrl.Builder()
@@ -93,9 +91,9 @@ for (Cookie cookie : cookies) {
         cookieManager.setCookie(httpUrl.toString(), cookieString);
     }
 }
-{% endhighlight %}
+
 重点就是,接收的参数竟然是 `URL` 而不是 `Host`
-{% highlight java %}
+
     /**
      * Sets a cookie for the given URL. Any existing cookie with the same host,
      * path and name will be replaced with the new cookie. The cookie being set
@@ -106,4 +104,3 @@ for (Cookie cookie : cookies) {
      *              HTTP response header
      */
     public abstract void setCookie(String url, String value);
-{% endhighlight %}
