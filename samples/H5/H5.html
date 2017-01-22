@@ -35,7 +35,7 @@
 			var control = document.getElementById('control');
 
 			_player.load();
-			
+
 			let t = 0;
 			var timeout = setInterval(function(){
 				t+=1;
@@ -48,7 +48,7 @@
 
 				if (/loaded|complete/.test(document.readyState)&&t>1) {
 					imgContainer.style.display = "none";
-
+					_player.play();
 					clearInterval(everythingLoaded);
 				}
 				var src = loadingImg.src;
