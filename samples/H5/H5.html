@@ -34,6 +34,8 @@
 			let _player = document.getElementById('music');
 			var control = document.getElementById('control');
 
+			_player.load();
+			
 			let t = 0;
 			var timeout = setInterval(function(){
 				t+=1;
@@ -58,6 +60,7 @@
 					loadingImg.src = "H5.hyperesources/loadingclose.png"
 				}
 			}, 350);
+
 
 			control.onclick = function () {
 				if(_player.paused){
