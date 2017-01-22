@@ -45,10 +45,7 @@
 			var everythingLoaded = setInterval(function() {			  
 
 				if (/loaded|complete/.test(document.readyState)&&t>1) {
-					
 					imgContainer.style.display = "none";
-					imgContainer.parentNode.removeChild( imgContainer ); 
-					_player.play();
 
 					clearInterval(everythingLoaded);
 				}
@@ -60,7 +57,6 @@
 				}else{
 					loadingImg.src = "H5.hyperesources/loadingclose.png"
 				}
-
 			}, 350);
 
 			control.onclick = function () {
@@ -78,7 +74,7 @@
 <body>
 	<!-- copy these lines to your document: -->
 	<div class="c_layout">
-		<audio id="music" src="H5.hyperesources/1-10 Athretic Stage BGM.mp3" loop="1" autoplay='0' style="display: none;" controls="false" preload="auto" oncanplaythrough="this.pause();"></audio>
+		<audio id="music" src="H5.hyperesources/1-10 Athretic Stage BGM.mp3" loop="1" autoplay='0' style="display: none;" controls="false" preload="auto" oncanplaythrough="this.play();"></audio>
 		<img id="control" src="H5.hyperesources/musicoff.png" style="width: 35px;height: 35px;" />
 	</div>
 
