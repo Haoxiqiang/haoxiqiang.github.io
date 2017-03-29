@@ -2,10 +2,14 @@
 layout: post
 title:  Android Fragment$InstantiationException
 date:   2015-01-07 08:35:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 
 android.support.v4.app.Fragment$InstantiationException: Unable to instantiate fragment 

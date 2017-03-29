@@ -2,10 +2,14 @@
 layout: post
 title:  Git的一些操作
 date:   2015-09-10 16:02:39
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [blog]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 比较基础的不提了,文档一大堆,工程中遇到的一些操作自己记录一下
 

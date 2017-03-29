@@ -2,10 +2,14 @@
 layout: post
 title:  Java 8的Lambda表达式
 date:   2014-12-07 15:35:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [java]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 啥是`Lambda`表达式?写个最简单的看看:
 

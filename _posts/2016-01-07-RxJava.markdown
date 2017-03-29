@@ -2,10 +2,14 @@
 layout: post
 title:  使用 RxJava 来写一个应用
 date:   2016-01-07 14:05:45
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 这些天准备写一个自己的知乎日报,主要是练习和验证一下 RxJava 对项目实现的利弊.RxJava 在国外的社区很是火热,目前直接支持的语言包括
 

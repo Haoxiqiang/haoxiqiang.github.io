@@ -2,10 +2,14 @@
 layout: post
 title:  Android的自定义View
 date:   2014-10-01 19:19:06
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 
 <!-- more -->

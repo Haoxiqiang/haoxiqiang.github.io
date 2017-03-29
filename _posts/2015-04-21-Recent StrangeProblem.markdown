@@ -2,10 +2,14 @@
 layout: post
 title:  最近遇到的一些奇怪的问题
 date:   2015-04-21 14:41:34
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 * `Android Studio`新创建的工程直接报错,不能正常编译
 * 魅蓝note不能连接adb,或者其他不能连接的错误

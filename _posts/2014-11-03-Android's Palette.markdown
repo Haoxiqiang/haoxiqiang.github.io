@@ -2,10 +2,14 @@
 layout: post
 title:  Android's Palette
 date:   2014-11-03 10:01:22
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 Palette是一个v7包中提供的工具,可以用来在你的一个Bitmap中提取出一些代表色值,就想下面的这一幅图<br />
 ![palette01](/source/images/blog/palette01.png)

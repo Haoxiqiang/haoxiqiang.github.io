@@ -2,10 +2,14 @@
 layout: post
 title:  Design Patterns
 date:   2015-03-30 10:08:26
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [java]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 早上看到一篇[smallnest](https://github.com/smallnest)的一篇设计模式的博客,仔细的看了看,觉得很好,特此转载整理一下
 转载的原帖地址 [http://colobu.com/2014/09/05/design-pattern-cheatsheet/](http://colobu.com/2014/09/05/design-pattern-cheatsheet/)

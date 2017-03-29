@@ -2,10 +2,14 @@
 layout: post
 title:  Android 源码下载
 date:   2015-06-04 15:45:04
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 最近开着VPN下载源码,略坑,找了一下国内代理,操作起来很简单,AOSP,国内的镜像很多的,现在把科大的帮助部分摘抄过来
 **注意这几天发现科大的镜像挂了,改用清华的了**

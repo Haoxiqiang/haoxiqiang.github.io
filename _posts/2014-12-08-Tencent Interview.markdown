@@ -2,10 +2,14 @@
 layout: post
 title:  Tencent Interview
 date:   2014-12-08 10:35:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [java]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 前几天看到[stormzhang](http://stormzhang.com/android/other/2014/05/03/tencent-interview/)发出的一些腾讯的面试题,拿来做一遍看看:
 

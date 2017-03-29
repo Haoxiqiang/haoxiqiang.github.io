@@ -1,5 +1,11 @@
 title: 郝锡强的博客
-email: haoxiqiang@live.com
+tagline:
+author:
+  name:              "haoxiqiang"
+  email:             "haoxiqiang@live.com"
+  github:            "haoxiqiang"
+  qq:                "653979558"
+
 #production_url是sitemap.txt生成的url,方便百度谷歌收录
 production_url: http://haoxiqiang.github.io
 #
@@ -7,14 +13,10 @@ production_url: http://haoxiqiang.github.io
 #
 
 # Serving
-detach:  false
 url: "http://haoxiqiang.github.io"
 baseurl: ""
-twitter_username: haoxiqiang
-github_username:  haoxiqiang
 
 # Handling Reading
-safe:         false
 include:      [".htaccess"]
 exclude:      []
 keep_files:   [".git", ".svn"]
@@ -23,31 +25,34 @@ textile_ext:  "textile"
 
 #markdown: rdiscount
 markdown: kramdown
+highlighter:         rouge
+permalink:           none
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 kramdown:
   input: GFM
   syntax_highlighter: rouge
 
+paginate: 10
+paginate_path: /blog/page/:num
 permalink: /:categories/:year:month:day-:title.html
-paginate: 5
-paginate_path: /page/:num
-# relative_permalinks: true
-
-
-#在发布文章时使用一个未来的日期
-future: true
-#产生相关页面的索引
-lsi:      false
-#禁用定制插件
-safe:     true
-
-comments: true
+gems: [jekyll-paginate]
 
 sass:
   sass_dir: _sass
   style: compressed
   compile_in_place: true
+
+
+# Site Settings
+navigation:
+- title: About
+  url: /about
+- title: Writing
+  url: /writing
+- title: Contact
+  url: /contact
+
 
 
 

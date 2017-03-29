@@ -2,10 +2,14 @@
 layout: post
 title:  Android学习资料指南
 date:   2015-01-26 16:35:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 `#Hello，2015征文#``Android`资料指南
 

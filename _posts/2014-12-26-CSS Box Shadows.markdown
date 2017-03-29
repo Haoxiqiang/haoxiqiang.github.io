@@ -2,10 +2,14 @@
 layout: post
 title:  CSS Box Shadows
 date:   2014-12-26 23:35:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [css]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 ## Directional Box Shadows
 <style>

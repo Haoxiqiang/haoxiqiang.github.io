@@ -1,10 +1,20 @@
 <div class="footer">
-    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+  {% if site.author.github %}
+    <a href="https://github.com/{{site.author.github}}"><i class="fa fa-github" aria-hidden="true" target="_blank"></i></a>
+  {% endif %}
+  {% if site.author.qq %}
+    <a href="tencent://message/?uin={{site.author.qq}}"><i class="fa fa-qq" aria-hidden="true" target="_blank"></i></a>
+  {% endif %}
+  {% if site.author.email %}
+    <a href="mailto:{{site.author.email}}"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+  {% endif %}
+  <div class="post-date"><a href="{{ site.github.url }}/action/about.html">{{ site.title }} | {{ site.tagline }} by {{ site.author.name }}</a>
+</div>
+<!--     <div class="pure-menu pure-menu-horizontal pure-menu-open">
         <ul width="24px" height="24px">
             <li><a href="http://github.com/haoxiqiang/">Github</a></li>
             <li><a href="tencent://message/?uin=653979558">QQ</a></li>
             <li><a href="http://haoxiqiang.github.io/static/resume.html">About</a></li>
 
         </ul>
-    </div>
-</di
+    </div> -->

@@ -2,10 +2,14 @@
 layout: post
 title:  Amazon Web Services‏搭建一个Socket 5代理来访问google
 date:   2015-03-17 15:20:57
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
-tags: [blog]
+tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 最开始怎么注册账号就不说了,附上地址[https://console.aws.amazon.com](https://console.aws.amazon.com)
 不翻墙也可以访问,前面都是中文的, 唯一的需求的就是你要有一张信用卡,注册好了,然后就建立一个最基础的虚拟机.建立方式按照提示一步步走,看见可以选择`Free tier eligible`就要选择这个就对了.附上一张配置图,差不多照着来就OK了,唯一需要注意的就是`Auto-assign Public IP`要设置成`Enable` 

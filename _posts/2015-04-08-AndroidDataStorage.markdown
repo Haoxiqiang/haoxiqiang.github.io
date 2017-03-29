@@ -2,10 +2,14 @@
 layout: post
 title:  Android Data Storage
 date:   2015-04-08 11:38:49
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 `Android`存储一些持久数据的方式一般有:
 

@@ -2,10 +2,14 @@
 layout: post
 title:  Lorem ipsum 乱数假文
 date:   2015-12-04 12:04:00
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [blog]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 今天有一个小妹妹问了我一段话是什么意思:
 >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid veniam harum quas similique quis, quisquam tempore iste. Alias soluta dolorum ratione, dolorem quia corrupti, suscipit eveniet dolor dignissimos voluptas laborum debitis ea fugiat aliquam rem ullam minus a aliquid pariatur!

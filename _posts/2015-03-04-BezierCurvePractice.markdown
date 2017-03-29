@@ -2,10 +2,14 @@
 layout: post
 title:  Bezier Curve Pratice
 date:   2015-03-04 14:11:48
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: true
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 贝塞尔曲线被广泛地在计算机图形中用来为平滑曲线建立模型,下面是一个三元的示例
 

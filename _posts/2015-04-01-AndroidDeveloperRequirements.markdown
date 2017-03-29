@@ -2,10 +2,14 @@
 layout: post
 title:  Android Developer Requirements
 date:   2015-04-01 09:50:52
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [blog]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 给别人总结的一个`Android`开发环境配置,没有提到版本的都是使用最新版本
 

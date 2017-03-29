@@ -2,10 +2,14 @@
 layout: post
 title:  Make your app the default SMS app
 date:   2015-05-18 16:49:21
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 最近使用`Google Messenger`发现有一个设定默认短信的功能,很好奇,研究了一下.
 现在有很多短信应用,很强大,可以帮助用户把一个短信费用转化成流量费用,于是google出来说话了

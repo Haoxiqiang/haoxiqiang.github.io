@@ -2,10 +2,14 @@
 layout: post
 title:  Dart Web Apps on Android
 date:   2015-05-05 17:46:58
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 您可以启动或者调试一个并没有预编译成`JavaScript`的`Android`网络应用程序。要做到这一点，你需要`Dart Editor` 和`Dart Content Shell`.`Dart Editor`会自动安装在`Android`设备上。您还可以在`Android`上调试应用程序。
 配置环境针对移动开发:

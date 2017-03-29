@@ -2,10 +2,14 @@
 layout: post
 title:  Android的自定义View
 date:   2014-10-01 17:19:06
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 
 在第一部分写一些自定义View的规则吧,说实话,其实我也挺菜比的.刚开始写自定义的View的时候,难免不知道如何下手.一般说来有两种

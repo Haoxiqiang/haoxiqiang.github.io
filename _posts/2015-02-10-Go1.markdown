@@ -2,10 +2,14 @@
 layout: post
 title:  Go 第一章
 date:   2015-02-10 22:48:55
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [go]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 ## 第一节 hello,go
 这部分内容简直是把我搞得欲仙欲死,安装完`pkg`包以后,为了方便,把这部分内容加入到环境变量中:

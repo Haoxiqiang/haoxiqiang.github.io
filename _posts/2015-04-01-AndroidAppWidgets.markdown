@@ -2,10 +2,14 @@
 layout: post
 title:  Android App Widgets
 date:   2015-04-01 10:37:26
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [blog]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 原文地址:
 [http://developer.android.com/guide/topics/appwidgets/index.html](http://developer.android.com/guide/topics/appwidgets/index.html)

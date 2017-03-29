@@ -2,10 +2,14 @@
 layout: post
 title:  Cache algorithms
 date:   2015-05-05 16:31:28
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [java]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 * Bélády's Algorithm
 * Least Recently Used (LRU)

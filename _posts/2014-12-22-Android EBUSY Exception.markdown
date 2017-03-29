@@ -2,10 +2,14 @@
 layout: post
 title:  Android EBUSY Exception
 date:   2014-12-22 15:35:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [java]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 最近写一个图片上传的东西,在一些手机出现了这个样的Runtime Exception:
 

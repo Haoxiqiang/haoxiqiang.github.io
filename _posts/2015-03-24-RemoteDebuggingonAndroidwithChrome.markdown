@@ -2,10 +2,14 @@
 layout: post
 title:  Remote Debugging on Android with Chrome
 date:   2015-03-24 14:54:02
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [blog]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 今天前端同学告诉我说在`Chrome`能调试`Android`应用,搜了一下,设备是4.4以上的确实都是可以的,简述一下过程,技术人员应该一看就懂,不细翻译了,喜欢原味的直接走连接
 

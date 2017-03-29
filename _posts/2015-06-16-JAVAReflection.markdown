@@ -2,10 +2,14 @@
 layout: post
 title:  Java Reflection
 date:   2015-06-16 11:09:06
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [java]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 [change-private-static-final-field-using-java-reflection](http://stackoverflow.com/questions/3301635/change-private-static-final-field-using-java-reflection)
 最近搞内存泄露很多地方得自己反射去改值,看到一个不错的回答,记录一下

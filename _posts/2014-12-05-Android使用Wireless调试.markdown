@@ -2,10 +2,14 @@
 layout: post
 title:  Android使用Wireless调试
 date:   2014-12-05 11:35:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
-tags: [blog]
+tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 自从换了我心爱的Nexus,再也不想用USB来爆Nexus的菊花,好在可以直接支持`adb`通过`WiFi`来直接调试,别和说360神马的都有这个功能,为了躲这些个手机助手,我都把电脑换成`Mac`了,你还想怎样!
 首先保证手机和同样心爱的`Mac`在一个局域网下,然后用USB连接上,开启`开发者模式`,`USB调试模式`,打开命令行

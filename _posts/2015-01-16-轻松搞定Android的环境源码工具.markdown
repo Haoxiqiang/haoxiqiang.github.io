@@ -2,10 +2,14 @@
 layout: post
 title:  轻松搞定Android的环境,源码,工具
 date:   2015-01-16 08:35:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 此篇为GFW内的程序员专用,涉及的内容
 

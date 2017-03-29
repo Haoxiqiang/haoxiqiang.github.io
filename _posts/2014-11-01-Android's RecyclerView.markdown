@@ -2,11 +2,16 @@
 layout: post
 title:  Android's RecyclerView
 date:   2014-11-01 17:03:26
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
+
 RecyclerView 是一个更加灵活的ListView.在google的文档中说,这个控件能非常有效的维护数量有限的滚动数据集合,当你的View有用户行为和网络数据交互的需求的时候都建议使用RecyclerView.
 ## RecyclerView简化了View的显示和数据的处理:
 

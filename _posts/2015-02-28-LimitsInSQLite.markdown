@@ -2,10 +2,14 @@
 layout: post
 title:  Limits In SQLite
 date:   2015-02-28 22:48:55
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: true
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 最近检查`BUG`,发下一个奇怪的问题,[android.database.sqlite.SQLiteFullException database ](https://www.google.com/search?q=android.database.sqlite.SQLiteFullException+database+or+disk+is+full+(code+13)&oq=android.database.sqlite.SQLiteFullException+database+or+disk+is+full+(code+13)&aqs=chrome..69i57j69i60.479j0j4&sourceid=chrome&es_sm=119&ie=UTF-8),查阅很多资料也没有弄明白所以然,把一些整理的资料放上来,希望遇到的朋友指教.
 ![limitsinsqlite01](/source/images/blog/limitsinsqlite01.png)

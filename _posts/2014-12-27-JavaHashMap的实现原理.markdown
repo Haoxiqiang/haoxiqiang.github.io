@@ -2,10 +2,14 @@
 layout: post
 title:  Java HashMap的实现原理
 date:   2014-12-27 08:35:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [java]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 昨天在群里讨论的时候,有人突然说HashMap的实现做面试题考新人一考一个准,一下子就能区分开是不是真的有工作经验.妈蛋,我竟然也不是很确认,特此总结一下:
 

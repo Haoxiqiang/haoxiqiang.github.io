@@ -2,10 +2,14 @@
 layout: post
 title:  Android Property Animation
 date:   2015-03-03 10:31:21
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: true
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 `Property Animation`是一个非常强大的架构,它可以在任何时候改变一个可见或者不可见的View的属性,你能使用它把一个View的属性变化做成动画.
 属性动画允许你定义动画的属性包括:

@@ -2,10 +2,14 @@
 layout: post
 title:  Android的Canvas(1)
 date:   2014-10-02 13:19:06
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 View能够显示出来内容,都是通过"画"出来的,所谓画是因为我们操作View仿佛画画一样,在画板上使用画笔来绘制,这里的画布是Canvas,画笔是Paint.Canvas可使用的地方有很多,通过onDraw方法获取到的Canvas内容可以直接反应到View上.
 

@@ -2,10 +2,14 @@
 layout: post
 title:  Bugly博客的整理
 date:   2015-07-29 12:00:39
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [java]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 目前使用的是腾讯的Bugly,市面上面的此类工具大抵相似,选择腾讯的主要的统计端的界面看起来舒服点,招牌大一点,以下是整理出来的一些Tips,有些是开发过程中遇到的,有些给了自己很大启发
 

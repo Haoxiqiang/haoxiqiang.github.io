@@ -2,10 +2,14 @@
 layout: post
 title:  Android的Canvas(2)
 date:   2014-10-03 14:19:06
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 Canvas的裁剪Clip，即裁剪Canvas图层，我们绘制的东西，只能在裁剪区域的范围能才能显示出来。
 

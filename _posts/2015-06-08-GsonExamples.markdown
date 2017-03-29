@@ -2,10 +2,14 @@
 layout: post
 title:  Gson的官方帮助文档
 date:   2015-06-08 12:37:45
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [java]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 不考虑每次都会初始化`GSON`的情况下,`GSON`的性能不会比其他框架低,考虑到`Google`牌的因素决定主要使用`GSON`来操作`JSON`数据,全面的查看一遍文档,作为备忘,E文有些着实不知道如何翻译,贴出来了原文.
 

@@ -2,10 +2,14 @@
 layout: post
 title:  Android的Notification
 date:   2015-01-29 15:26:07
-author: 郝锡强
+author: haoxiqiang
 categories: blog
-letex: false
 tags: [android]
+image:
+  feature:
+  teaser:
+  credit:
+  creditlink:
 ---
 通知系统使用户得知应用中重要的事情，例如有新信息到来或者日历事件提醒。将通知作为一个新的通道，提醒用户重要的事情或者记录下用户没有注意到的事情。但是我们要注意到`Notification`本身在`Android 4.1`的时候有过重大升级,一直到`5.0`微小修改很多.从`4.1`开始,`Android`支持在通知底部显示附加操作。通过这些操作，用户可以对通知直接执行常见的任务，而不用打开应用。这样可以加快操作，配合上滑出消失操作，使用户的通知抽屉体验更加顺滑。上一张`5.0`的图
 
