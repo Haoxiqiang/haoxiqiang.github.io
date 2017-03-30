@@ -7,12 +7,12 @@ categories: blog
 tags: [android]
 image:
   feature:
-  teaser:
+  teaser: palette01.png
   credit:
   creditlink:
 ---
 Palette是一个v7包中提供的工具,可以用来在你的一个Bitmap中提取出一些代表色值,就想下面的这一幅图<br />
-![palette01](/source/images/blog/palette01.png)
+![palette01](/images/palette01.png)
 <!-- more -->
 现在支持这几种代表色:
 
@@ -23,18 +23,18 @@ Palette是一个v7包中提供的工具,可以用来在你的一个Bitmap中提�
 * Muted Dark（暗淡的 暗色）
 * Muted Light（暗淡的 亮色）
 
-
+``` java
 public static Palette generate (Bitmap bitmap);
 public static Palette generate (Bitmap bitmap, int numColors);
 public static AsyncTask<Bitmap, Void, Palette> generateAsync (Bitmap bitmap, Palette.PaletteAsyncListener listener)
 public static AsyncTask<Bitmap, Void, Palette> generateAsync (Bitmap bitmap, int numColors, Palette.PaletteAsyncListener listener);
-
+```
 
 generate的生成速度很快,大约几十毫秒的样子,取色的时候可以加上默认值.对于numColors,风景画类的12-16就可以了,要是人脸就得24-32,肯定是越少越快,越多越精细
 ```
 Generate a Palette from a Bitmap using the specified numColors. Good values for numColors depend on the source image type. For landscapes, a good values are in the range 12-16. For images which are largely made up of people's faces then this value should be increased to 24-32.
 ```
-
+``` java
 Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.strictdroid);
 Palette.generateAsync(bitmap, new PaletteAsyncListener() {
 
@@ -68,7 +68,7 @@ Palette.generateAsync(bitmap, new PaletteAsyncListener() {
         }
     }
 });
-
+```
 >源码地址<br />
 [PaletteDemo](https://github.com/Haoxiqiang/BlogCode/tree/master/PaletteDemo)
 >参考<br />

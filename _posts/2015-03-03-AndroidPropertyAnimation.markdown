@@ -27,7 +27,8 @@ image:
 ## API Overview
 	
 * ObjectAnimator
-
+``` java
 ObjectAnimator anim = ObjectAnimator.ofFloat(foo, "alpha", 0f, 1f);
 anim.setDuration(1000);
 anim.start();
+```

@@ -30,4 +30,4 @@ image:
 
 现在非常不建议使用`Eclipse`,单从生产效率上讲`Android studio`优势非常大,剩下的随时补充吧
 
-![android_dev_sdk_01](/source/images/blog/android_dev_sdk_01.png)
+![android_dev_sdk_01](/images/android_dev_sdk_01.png)

@@ -18,10 +18,10 @@ image:
 
 ### 1.`Android Studio`新创建的工程直接报错,不能正常编译
 
-	Error:Execution failed for task ':app:mergeDebugResources'. > Crunching Cruncher ic_launcher.png failed, see logs
+	Error:Execution failed for task :app:mergeDebugResources. > Crunching Cruncher ic_launcher.png failed, see logs
 
 	解决办法:
-	创建一个`drawable-hdpi`或者`drawable-xhdpi`就好了
+	创建一个drawable-hdpi或者drawable-xhdpi就好了
 	
 ### 2.魅蓝note不能连接adb,或者其他不能连接的错误
 	有些手机,注意是其他一切条件正常的时候,不能连接到电脑,需要考虑是不是需要加一下`vendor id`,提供`mac os`解决办法:

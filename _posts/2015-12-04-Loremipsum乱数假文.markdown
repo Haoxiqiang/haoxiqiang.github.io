@@ -15,7 +15,8 @@ image:
 >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid veniam harum quas similique quis, quisquam tempore iste. Alias soluta dolorum ratione, dolorem quia corrupti, suscipit eveniet dolor dignissimos voluptas laborum debitis ea fugiat aliquam rem ullam minus a aliquid pariatur!
 <!-- more -->
 
-=================================================================
+----
+
 第一眼以为是英文结果没有看懂啥意思,仔细看了看还是没有看懂,有点晦涩啊,于是我找了 google 翻译了一下,这尼玛是拉丁文啊,于是我就好奇了,为什么有程序员会写这么一段话,结果一搜:
 >Lorem ipsum从西元15世纪开始就被广泛地使用在西方的印刷、设计领域中，在电脑排版盛行之后，这段被传统印刷产业使用几百年的无意义文字又再度流行。由于这段文字以“Lorem ipsum”起头，并且常被用于标题的测试中，所以一般称为Lorem ipsum，简称为Lipsum。常见的Lorem ipsum起头如下：
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

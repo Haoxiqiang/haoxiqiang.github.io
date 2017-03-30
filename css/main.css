@@ -20,7 +20,7 @@ body {
 }
 
 h1{
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 h1 a {
@@ -77,15 +77,16 @@ blockquote p:last-child {
 
 blockquote {
   border-left: 0.25rem solid #ccc;
-  margin: 1.5em 10px;
   color: #999;
   padding: 0.5em 10px;
   quotes: "\201C""\201D""\2018""\2019";
+  -webkit-margin-start: 0;
+  marker-start: 0;
 }
 blockquote:before {
   color: #ccc;
   content: open-quote;
-  font-size: 4em;
+  font-size: 2em;
   line-height: 0.1em;
   margin-right: 0.25em;
   vertical-align: -0.4em;
@@ -460,4 +461,8 @@ pre {
 
 .fa-codepen:hover {
 	color: black;
+}
+
+.center-image {
+  text-align: center;
 }

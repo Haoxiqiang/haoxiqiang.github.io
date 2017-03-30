@@ -19,9 +19,8 @@ image:
 Assuming no SecurityManager is preventing you from doing this, you can use setAccessible to get around private and resetting the modifier to get rid of final, and actually modify a private static final field.
 
 ## Here's an example:
-
+``` java
 import java.lang.reflect.*;
-
 public class EverythingIsTrue {
    static void setFinalStatic(Field field, Object newValue) throws Exception {
       field.setAccessible(true);
@@ -38,6 +37,7 @@ public class EverythingIsTrue {
       System.out.format("Everything is %s", false); // "Everything is true"
    }
 }
+```
 Assuming no SecurityException is thrown, the above code prints "Everything is true".
 
 ## What's actually done here is as follows:

@@ -7,13 +7,13 @@ author:
   qq:                "653979558"
 
 #production_url是sitemap.txt生成的url,方便百度谷歌收录
-production_url: http://haoxiqiang.github.io
+production_url: https://haoxiqiang.github.io
 #
 # Jekyll Settings
 #
 
 # Serving
-url: "http://haoxiqiang.github.io"
+url: "https://haoxiqiang.github.io"
 baseurl: ""
 
 # Handling Reading
@@ -34,9 +34,12 @@ kramdown:
   syntax_highlighter: rouge
 
 paginate: 10
-paginate_path: /blog/page/:num
 permalink: /:categories/:year:month:day-:title.html
-gems: [jekyll-paginate]
+gems:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
 
 sass:
   sass_dir: _sass
@@ -52,9 +55,5 @@ navigation:
   url: /writing
 - title: Contact
   url: /contact
-
-
-
-
 
 

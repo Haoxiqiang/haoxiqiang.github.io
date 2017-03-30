@@ -7,12 +7,15 @@ categories: blog
 tags: [android]
 image:
   feature:
-  teaser:
+  teaser: limitsinsqlite01.png
   credit:
   creditlink:
 ---
-最近检查`BUG`,发下一个奇怪的问题,[android.database.sqlite.SQLiteFullException database ](https://www.google.com/search?q=android.database.sqlite.SQLiteFullException+database+or+disk+is+full+(code+13)&oq=android.database.sqlite.SQLiteFullException+database+or+disk+is+full+(code+13)&aqs=chrome..69i57j69i60.479j0j4&sourceid=chrome&es_sm=119&ie=UTF-8),查阅很多资料也没有弄明白所以然,把一些整理的资料放上来,希望遇到的朋友指教.
-![limitsinsqlite01](/source/images/blog/limitsinsqlite01.png)
+最近检查`BUG`,发下一个奇怪的问题,[android.database.sqlite.SQLiteFullException database ](https://www.google.com/search?q=android.database.sqlite.SQLiteFullException+database+or+disk+is+full+(code+13)&oq=android.database.sqlite.SQLiteFullException+database+or+disk+is+full+(code+13)&aqs=chrome..69i57j69i60.479j0j4&sourceid=chrome&es_sm=119&ie=UTF-8),
+查阅很多资料也没有弄明白所以然,把一些整理的资料放上来,希望遇到的朋友指教.
+
+![limitsinsqlite01](/images/limitsinsqlite01.png){:class="center-image"}
+
 <!-- more -->
 最开始的时候我觉得是空间满了,但是根据上图的信息应该不是,然后就觉得是`SQLite`存在大小限制,于是我遇到了这样的说明[maximum-number-of-rows-in-a-sqlite-table](http://stackoverflow.com/questions/1546947/maximum-number-of-rows-in-a-sqlite-table)
 

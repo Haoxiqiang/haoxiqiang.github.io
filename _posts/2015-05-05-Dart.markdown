@@ -45,7 +45,7 @@ image:
 
 测试你的Android设备上的应用程序最简单的方法是用鼠标右键单击Dart编辑HTML文件，弹出菜单：
 
-![ContextRunMenu](/source/images/blog/ContextRunMenu.png)
+![ContextRunMenu](/images/ContextRunMenu.png)
 
 从上下文菜单中的三个运行选项,点击移动运行。
 
@@ -57,8 +57,8 @@ Problems?
 
 如果你看到在DART编辑以下对话框之一，按照指示来解决这个问题。 （弹出一个“Embedded server over WiFi network”失败时，将第一个对话框出现，当一个“Pub serve over USB”启动失败出现的第二个对话框。 ）
 
-![PubServeLaunchFailed](/source/images/blog/PubServeLaunchFailed.png)
-![EmbeddedServerLaunchFailed](/source/images/blog/EmbeddedServerLaunchFailed.png)
+![PubServeLaunchFailed](/images/PubServeLaunchFailed.png)
+![EmbeddedServerLaunchFailed](/images/EmbeddedServerLaunchFailed.png)
 
 
 ### Step 6: Debug your app
@@ -76,7 +76,7 @@ Problems?
 	
 * 什么是端口转发，我为什么会需要它？
 
-![MobileDeployment](/source/images/blog/MobileDeployment.png)
+![MobileDeployment](/images/MobileDeployment.png)
 
 *  “Pub serve over USB”和“Embedded server over WiFi network”有什么区别
 	
@@ -99,7 +99,7 @@ Problems?
 
 Dart Editor中`File > Open Existing Folder`,然后找到你clone代码的地方
 
-![filesanddirs.png](/source/images/blog/filesanddirs.png)
+![filesanddirs.png](/images/filesanddirs.png)
 
 ### Step 1: Run the skeleton app
 

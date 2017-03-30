@@ -11,6 +11,9 @@ image:
   credit:
   creditlink:
 ---
+
+这几天在看一些缓存算法,先熟悉熟悉
+
 * Bélády's Algorithm
 * Least Recently Used (LRU)
 * Most Recently Used (MRU)

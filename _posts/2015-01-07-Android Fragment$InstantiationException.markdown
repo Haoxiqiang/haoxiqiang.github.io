@@ -24,7 +24,7 @@ make sure class name exists, is public, and has an empty constructor that is pub
 <!-- more -->
 重现的这些问题的手段就是让`activity`的状态发生一些改变就可以了,比如横竖向切换`portrait<->landscape`.所以大部分的`InstantiationException`都在屏幕变化或者接打电话后切回来的时候发生.
 解决的方法经实践我是这么解决的:
-
+``` java
 //保证存在public
 public class CourseFragment extends BaseThemeFragment{
     public CourseFragment() {
@@ -39,7 +39,7 @@ public static PageFragment newInstance(int currentResId) {
     fragment.setArguments(args);
     return fragment;
 }
-
+```
 
 在查阅过程中发现,这个`public constructor`最好还是写上
 原因如下:

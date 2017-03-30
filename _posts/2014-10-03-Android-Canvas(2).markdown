@@ -7,7 +7,7 @@ categories: blog
 tags: [android]
 image:
   feature:
-  teaser:
+  teaser: android_canvas05.png
   credit:
   creditlink:
 ---
@@ -21,9 +21,9 @@ Canvas的裁剪Clip，即裁剪Canvas图层，我们绘制的东西，只能在�
 * REPLACE(5); //最终区域为为region2的区域 
 <!-- more -->
 <br />
-![Canvas05](/source/images/blog/android_canvas05.png)
+![Canvas05](/images/android_canvas05.png)
 
-
+``` java
 private void drawScene(Canvas canvas) {
     canvas.clipRect(0, 0, 100 * factor, 100 * factor);
 
@@ -89,7 +89,7 @@ protected void onDraw(Canvas canvas) {
     drawScene(canvas);
     canvas.restore();
 }
-
+```
 
 >参考<br/> [roamer' blog](http://blog.csdn.net/lonelyroamer/article/details/8349601)
 <br/>[源码  Blog02](https://github.com/Haoxiqiang/BlogCode/tree/master/Blog02)

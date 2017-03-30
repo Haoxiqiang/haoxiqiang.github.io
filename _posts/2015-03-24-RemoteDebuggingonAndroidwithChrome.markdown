@@ -7,7 +7,7 @@ categories: blog
 tags: [blog]
 image:
   feature:
-  teaser:
+  teaser: remote-debug-banner.png
   credit:
   creditlink:
 ---
@@ -15,7 +15,7 @@ image:
 
 [https://developer.chrome.com/devtools/docs/remote-debugging](https://developer.chrome.com/devtools/docs/remote-debugging)
 
-![remote-debug](/source/images/blog/remote-debug-banner.png)
+![remote-debug](/images/remote-debug-banner.png)
 <!-- more -->
 ## 要求
 
@@ -28,18 +28,18 @@ image:
 
 * 打开设备的开发者模式并用数据线连接手机
 * 打开`Chrome`,地址栏输入`chrome://inspect`,确保选中,设备连接的时候可能会弹出来授权界面,不用说直接`OK`
-<br />![chrome-discover-usb](/source/images/blog/chrome-discover-usb.png)
+<br />![chrome-discover-usb](/images/chrome-discover-usb.png)
 * 这时候`Chrome`会展示出来已打开的可调试的设备端的浏览器`Tab`,点击`inspect`即可查看
-<br />![chrome-inspect-tabs](/source/images/blog/chrome-inspect-tabs.png)
+<br />![chrome-inspect-tabs](/images/chrome-inspect-tabs.png)
 * 如果我们想调试自己的应用的话,需要在代码中增加`WebView.setWebContentsDebuggingEnabled(true);`这样就可以了
 
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
     WebView.setWebContentsDebuggingEnabled(true);
 }
 
-![chrome-debug-webview](/source/images/blog/chrome-debug-webview.png)
+![chrome-debug-webview](/images/chrome-debug-webview.png)
 * `Chrome`的调试就不说了,如果需要实时显示的话,点击`Screencast`
-<br />![screencast-icon-location](/source/images/blog/screencast-icon-location.png)
+<br />![screencast-icon-location](/images/screencast-icon-location.png)
 
 ### Debugging tips
 
@@ -67,7 +67,7 @@ To enable port forwarding:
 This address can be any local location accessible from your development machine. Currently, port numbers must be between 1024 and 65535 (inclusive).
 * Check Enable port forwarding.
 * Click Done.
-<br />![port-forwarding-on-device](/source/images/blog/port-forwarding-on-device.png)
+<br />![port-forwarding-on-device](/images/port-forwarding-on-device.png)
 
 ### Virtual host mapping
 

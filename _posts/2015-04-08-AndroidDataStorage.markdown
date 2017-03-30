@@ -24,12 +24,12 @@ image:
 ## SharedPreferences
 
 写值,`commit`现在可以使用`apply`替代,会直接刷新内存然后异步写入数据:
-
+``` java
 SharedPreferences.Editor editor = settings.edit();
 editor.putBoolean("silentMode", mSilentMode);
 // Commit the edits!
 editor.commit();
-
+```
 读取,直接调用`getXX(key)`即可,比如`getBoolean()`` getString()`
 
 ## Internal Storage && External Storage
@@ -48,7 +48,7 @@ editor.commit();
 	如果你希望这些数据能够被分享,或者希望用户可以在电脑上访问这些文件,那么就用外部存储吧
 	
 **Internal Storage**
-
+``` java
 //1
 File file = new File(context.getFilesDir(), filename);
 //2
@@ -72,10 +72,10 @@ public File getTempFile(Context context, String url) {
     }
     return file;
 }
-
+```
 **External Storage**
 如果是外部存储要先判断是否存在和是否可以读写
-
+``` java
 //Checks if external storage is available for read and write
 public boolean isExternalStorageWritable() {
     String state = Environment.getExternalStorageState();
@@ -93,7 +93,7 @@ public boolean isExternalStorageReadable() {
     }
     return false;
 }
-
+```
 **Query Free Space**
 如果你想知道你现在的存储控件大小,在API 8 以上可以使用`getFreeSpace()`,`getTotalSpace()`两个方法来计算,这样在写入前先判断空间大小可以避免空间不足.但是系统不能保证你一定能够使用`getFreeSpace()`获取的大小,如果返回的大小比你需要的多的多,或者系统还没有使用了90%,那么一般是安全的,否则你就不应该继续写入了.
 

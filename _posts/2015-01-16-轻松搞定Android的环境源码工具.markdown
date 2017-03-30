@@ -25,10 +25,10 @@ image:
 * IPv4: http://ubuntu.buct.edu.cn/
 * IPv4: http://ubuntu.buct.cn/
 
-	![Android SDK Manager 01](/source/images/blog/android_buct_p01.png)
+	![Android SDK Manager 01](/images/android_buct_p01.png)
 
 <br />
 [NDK地址](http://ubuntu.buct.edu.cn/android/ndk/)	更新非常及时,提供了`Google`的提供的`NDK`工具
 
-![Android SDK Manager 02](/source/images/blog/android_buct_p02.png)
+![Android SDK Manager 02](/images/android_buct_p02.png)
 	
