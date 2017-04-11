@@ -55,6 +55,12 @@ If you delete a lot of data and want to shrink the database file, run the [VACUU
 
 An alternative to using the VACUUM command is auto-vacuum mode, enabled using the [auto_vacuum pragma](http://www.sqlite.org/pragma.html#pragma_auto_vacuum).
 
+----
+2017-04-01 17:49:02
+补充一个可能的原因
+可能限制了数据库最大体积导致的，如果条件允许，可以考虑放松限制。如果这个数据库是别人提供的，那么可以使用 getMaximumSize 获取当前最大容量,做一些兼容处理
+[Bugly SQLiteFullException](http://bugly.qq.com/bbs/forum.php?mod=viewthread&tid=1010)
+
 
 
 > [Limits In SQLite](http://www.sqlite.org/limits.html)<br />
