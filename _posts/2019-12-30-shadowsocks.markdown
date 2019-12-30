@@ -52,7 +52,7 @@ sysctl -p
 vi /etc/systemd/system/shadowsocks-server.service
 ExecStartPre=/bin/sh -c 'ulimit -n 51200'
 ```
-``` javascript
+`
 [Unit]
 Description=Shadowsocks Server
 After=network.target
@@ -63,11 +63,11 @@ Restart=on-abort
 
 [Install]
 WantedBy=multi-user.target
-```
+`
 ``` bash
 vi /etc/sysctl.d/local.conf
 ```
-``` javascript
+`
 # max open files
 fs.file-max = 51200
 # max read buffer
@@ -109,7 +109,7 @@ net.ipv4.tcp_wmem = 4096 65536 67108864
 net.ipv4.tcp_mtu_probing = 1
 
 net.ipv4.tcp_congestion_control = bbr
-```
+`
 ``` bash
 sysctl --system
 systemctl start shadowsocks-server
