@@ -35,9 +35,10 @@ kramdown:
 
 paginate: 10
 permalink: /:categories/:year:month:day-:title.html
-gems:
-  - jekyll-paginate
+plugins:
   - jekyll-sitemap
+  - jekyll-minifier
+  - jekyll-paginate
   - jekyll-gist
   - jekyll-feed
 
@@ -46,14 +47,25 @@ sass:
   style: compressed
   compile_in_place: true
 
+atom:
+  buildCommand:
+    - jekyll
+    - build
+    - --option
+    - --this
+  buildEnv:
+    JEKYLL_ENV: development
+  postDirs:
+    - _posts
+  defaultPostDir: _drafts
 
 # Site Settings
 navigation:
-- title: About
-  url: /about
+- title: Home
+  url: index
 - title: Writing
-  url: /writing
+  url: action/writing
+- title: About
+  url: action/about
 - title: Contact
-  url: /contact
-
-
+  url: action/contact
