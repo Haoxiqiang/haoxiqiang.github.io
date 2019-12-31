@@ -12,19 +12,20 @@ image:
   creditlink:
 ---
 
-### ShadowSocks的配置与优化
 
 最近两天办公室网络波动比较影响工作,在自己的vps上重新给自己设置一套ss用来拉源码
 适用于大多数linux,已在ubuntu 16,18测试过
 
 #### 安装并配置ss
 ``` bash
+#install ss
 apt install python3-pip
 pip3 install https://github.com/shadowsocks/shadowsocks/archive/master.zip
+```
+``` bash
+#config ss
 mkdir /etc/shadowsocks
 vi /etc/shadowsocks/config.json
-```
-``` javascript
 {
     "server":"::",
     "server_port":8888,
@@ -35,10 +36,12 @@ vi /etc/shadowsocks/config.json
     "method":"aes-256-cfb",
     "fast_open": true
 }
+#可以测试一下,是否可用
+ssserver -c /etc/shadowsocks/config.json
 ```
 #### 优化网络延迟吞吐(bbr/fast tcp/..)
-#### BBR
 ``` bash
+#BBR
 lsmod | grep bbr
 #如果没有bbr则继续,有就忽略
 modprobe tcp_bbr
@@ -47,27 +50,28 @@ echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 sysctl -p
 ```
-#### 优化网络延迟吞吐
+#### 配置自启动
 ``` bash
 vi /etc/systemd/system/shadowsocks-server.service
-ExecStartPre=/bin/sh -c 'ulimit -n 51200'
-```
-`
+
 [Unit]
 Description=Shadowsocks Server
 After=network.target
 
 [Service]
+ExecStartPre=/bin/sh -c 'ulimit -n 51200'
 ExecStart=/usr/local/bin/ssserver -c /etc/shadowsocks/config.json
 Restart=on-abort
 
 [Install]
 WantedBy=multi-user.target
-`
+````
+
+#### 优化网络延迟吞吐
+
 ``` bash
 vi /etc/sysctl.d/local.conf
-```
-`
+
 # max open files
 fs.file-max = 51200
 # max read buffer
@@ -109,7 +113,9 @@ net.ipv4.tcp_wmem = 4096 65536 67108864
 net.ipv4.tcp_mtu_probing = 1
 
 net.ipv4.tcp_congestion_control = bbr
-`
+```
+
+#### 启动SS
 ``` bash
 sysctl --system
 systemctl start shadowsocks-server
