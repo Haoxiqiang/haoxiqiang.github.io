@@ -16,6 +16,12 @@ image:
 最近两天办公室网络波动比较影响工作,在自己的vps上重新给自己设置一套ss用来拉源码
 适用于大多数linux,已在ubuntu 16,18测试过
 
+####
+```bash
+apt update && apt upgrade
+
+```
+
 #### 安装并配置ss
 ``` bash
 #install ss
@@ -36,6 +42,11 @@ vi /etc/shadowsocks/config.json
     "method":"aes-256-cfb",
     "fast_open": true
 }
+#firewall
+iptables -I INPUT -p tcp --dport 8888 -j ACCEPT
+iptables -I INPUT -p udp --dport 8888 -j ACCEPT
+#If you are using UFW firewall, then run the following commands:
+ufw allow 8888
 #可以测试一下,是否可用
 ssserver -c /etc/shadowsocks/config.json
 ```

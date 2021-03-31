@@ -64,6 +64,7 @@ public class Course {
 }
 ```
 * 如何递归呢?也是很简单的,我这么写其实是有点冗余了,不过是个 Demo 就不改了
+
 ``` java
 private void createTree(Course container, JSONArray children, String parentId, int level) throws JSONException {
 	if (children != null) {
@@ -92,6 +93,7 @@ private void createTree(Course container, JSONArray children, String parentId, i
 }
 ```
 * 每次 item 的点击的时候我们需要判断这个 item 的对象是不是一个拥有子节点的对象,然后做分发处理,这个一般需要获取到 Adapter 的实例以及全部数据,我的 Demo 就不注意结构了,我这里考虑了动画效果而使用了notifyItemRangeInserted,notifyItemRangeRemoved,如果你不需要动画,直接获取dispatchClick返回值是 true 时直接调用notifyDataSetChanged也是可以的,如果是 false 则表示这个是一个最终节点
+
 ``` java
 public boolean dispatchClick(LinkedList<Course> container, Course course) {
 	if (container == null || course == null) {
@@ -130,7 +132,9 @@ private void removeAllChildren(LinkedList<Course> container, Course course) {
 	container.removeAll(course.children);
 }
 ```
+
 * 现在基本的结构就完成了,RecyclerView默认的动画可能看不出来弹出效果,我们需要重写一个,现在需要继承SimpleItemAnimator,修改两个方法
+
 ``` java
 @Override
 public boolean animateAdd(final RecyclerView.ViewHolder holder) {
