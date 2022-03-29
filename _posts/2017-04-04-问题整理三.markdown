@@ -66,7 +66,8 @@ sudo chmod 777 ××× （每个人都有读和写以及执行的权限）
 
 项目之前给的一些域名包含了`_`,在`https`中报错了,解决办法就是去掉,以前只知道不适合用,现在记录一下原因
 
-From http://en.wikipedia.org/wiki/Hostname#Restrictions_on_valid_host_names
+From [Restrictions_on_valid_host_names](http://en.wikipedia.org/wiki/Hostname#Restrictions_on_valid_host_names
+)
 
 Hostnames are composed of series of labels concatenated with dots, as are all domain names. For example, 
 "en.wikipedia.org" is a hostname. Each label must be between 1 and 63 characters long,[2] and the entire 
@@ -80,7 +81,7 @@ hostname labels to start with digits. No other symbols, punctuation characters, 
 
 While a hostname may not contain other characters, such as the underscore character (_), other 
 DNS names may contain the underscore.
-or from http://domainkeys.sourceforge.net/underscore.html
+or from `http://domainkeys.sourceforge.net/underscore.html`
 
 Underscores allowed, except in host names
 
