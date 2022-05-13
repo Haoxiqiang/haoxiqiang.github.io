@@ -70,7 +70,6 @@ Description=Shadowsocks Server
 After=network.target
 
 [Service]
-ExecStartPre=/bin/sh -c 'ulimit -n 51200'
 ExecStartPre=/bin/sh -c 'iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8888'
 ExecStartPre=/bin/sh -c 'iptables -t nat -A PREROUTING -p udp --dport 443 -j REDIRECT --to-port 8888'
 ExecStart=/usr/local/bin/ssserver -c /etc/shadowsocks/config.json
@@ -136,4 +135,7 @@ systemctl enable shadowsocks-server
 #如果有其他修改或者不可用可以重新处理一下
 systemctl daemon-reload
 systemctl restart shadowsocks-server
+
+systemctl status shadowsocks-server
+netstat -tunlp
 ```
