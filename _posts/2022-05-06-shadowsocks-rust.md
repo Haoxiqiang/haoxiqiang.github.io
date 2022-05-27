@@ -16,7 +16,7 @@ image:
 
 ####
 ```bash
-apt update && apt upgrade
+sudo apt update && sudo apt upgrade
 ```
 
 #### 安装并配置ss
@@ -33,7 +33,8 @@ RUSTFLAGS="-C target-cpu=native"
 source .profile
 
 # install llvm (Option)
-```
+
+``` bash
 #Add the following lines to your /etc/apt/sources.list:
 deb http://apt.llvm.org/buster/ llvm-toolchain-buster main 
 deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster main 
@@ -42,13 +43,15 @@ deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster-10 main
 deb http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main 
 deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main
 ```
-```
+
+``` bash
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 apt-get update
 apt-get install clang-11
 export CMAKE_C_COMPILER=clang-11
 export CMAKE_CXX_COMPILER=clang++-11
 ```
+
 # install shadowsocks-rust
 cargo install shadowsocks-rust
 ```
