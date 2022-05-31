@@ -53,7 +53,16 @@ export CMAKE_CXX_COMPILER=clang++-11
 ```
 
 # install shadowsocks-rust
+```bash
 cargo install shadowsocks-rust
+```
+or install binary
+```bash
+wget https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.14.3/shadowsocks-v1.14.3.x86_64-unknown-linux-gnu.tar.xz
+tar -xf shadowsocks-v1.14.3.x86_64-unknown-linux-gnu.tar.xz
+cp ssserver /usr/local/bin
+chmod a+x /usr/local/bin/ssserver
+```
 ```
 ``` bash
 #config ss
