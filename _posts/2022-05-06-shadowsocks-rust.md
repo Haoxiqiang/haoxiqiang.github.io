@@ -32,28 +32,9 @@ CARGO_HOME=/root/cargo
 RUSTFLAGS="-C target-cpu=native"
 source .profile
 
-# install llvm (Option)
-
-``` bash
-#Add the following lines to your /etc/apt/sources.list:
-deb http://apt.llvm.org/buster/ llvm-toolchain-buster main 
-deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster main 
-deb http://apt.llvm.org/buster/ llvm-toolchain-buster-10 main 
-deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster-10 main 
-deb http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main 
-deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main
-```
-
-``` bash
-wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-apt-get update
-apt-get install clang-11
-export CMAKE_C_COMPILER=clang-11
-export CMAKE_CXX_COMPILER=clang++-11
-```
-
 # install shadowsocks-rust
 ```bash
+sudo apt install build-essential
 cargo install shadowsocks-rust
 ```
 or install binary
