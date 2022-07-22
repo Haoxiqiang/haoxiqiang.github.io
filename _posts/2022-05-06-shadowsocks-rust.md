@@ -50,19 +50,10 @@ chmod a+x /usr/local/bin/ssserver
 mkdir /etc/shadowsocks
 vi /etc/shadowsocks/config.json
 {
-    "servers": [
-        {
-            "server": "0.0.0.0",
-            "server_port":8888,
-            "method":"aes-256-gcm",
-            "password":"pwd"
-        }
-    ],
-    "mode": "tcp",
-    "keep_alive": 15,
-    "nofile": 10240,
-    "ipv6_first": false,
-    "ipv6_only": false
+    "server": "::",
+    "server_port":8888,
+    "method":"aes-256-gcm",
+    "password":"pw"
 }
 
 #可以测试一下,是否可用
@@ -79,7 +70,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/root/.cargo/bin/ssserver -c /etc/shadowsocks/config.json
+ExecStart=ssserver -c /etc/shadowsocks/config.json
 ExecStop=/usr/bin/killall ssserver
 Restart=always
 RestartSec=10
@@ -120,3 +111,20 @@ systemctl restart shadowsocks-server
 systemctl status shadowsocks-server
 netstat -tunlp
 ```
+
+#### x-ui
+交流时候发下x-ui对于大多数更省事,尝试一次
+```bash
+# install x-ui, visit:  ip:54321
+bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+```
+
+```bash
+# install acme,create https cer.
+curl https://get.acme.sh | sh -s email=your@email.com
+~/.acme.sh/acme.sh --register-account -m your@email.com
+~/.acme.sh/acme.sh --issue -d yourdomain --standalone
+```
+
+https://github.com/vaxilu/x-ui
+https://github.com/acmesh-official/acme.sh
