@@ -108,6 +108,7 @@ systemctl enable shadowsocks-server
 systemctl daemon-reload
 systemctl restart shadowsocks-server
 
+
 systemctl status shadowsocks-server
 netstat -tunlp
 ```
