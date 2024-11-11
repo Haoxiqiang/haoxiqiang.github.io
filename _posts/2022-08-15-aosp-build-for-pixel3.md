@@ -20,7 +20,6 @@ image:
     搜索 Pixel 3 XL 获取最新BuildId `SP1A.210812.016.C2`
 * 搜索下载对应BuildID的驱动
     https://developers.google.com/android/drivers/
-    ![Img](./FILES/2022-08-15-aosp-build-for-pixel3.md/img-20220816110939.png)
 * 解压提取驱动
    ```bash
     mkdir vendor_backup && cd vendor_backup

@@ -25,8 +25,9 @@ textile_ext:  "textile"
 
 #markdown: rdiscount
 markdown: kramdown
-highlighter:         rouge
-permalink:           none
+theme: minima
+highlighter: rouge
+permalink: none
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 kramdown:
@@ -46,18 +47,6 @@ sass:
   sass_dir: _sass
   style: compressed
   compile_in_place: true
-
-atom:
-  buildCommand:
-    - jekyll
-    - build
-    - --option
-    - --this
-  buildEnv:
-    JEKYLL_ENV: development
-  postDirs:
-    - _posts
-  defaultPostDir: _drafts
 
 # Site Settings
 navigation:
