@@ -1,0 +1,101 @@
+---
+layout: post
+title:  利用自建Nexus仓库优化构建
+date:   2019-12-31 21:29:27
+author: haoxiqiang
+categories: blog
+tags: [Nexus]
+
+---
+
+
+在Android的依赖管理中,可能依赖非常多的仓库,比如常见的`jcenter`,`jitpack`等,像是`最右`已经依赖了超过10个仓库,这样导致初始化项目或者依赖发生变化,网络问题时,构建排查是一个非常大的问题.
+其实很早之前就发现了这个问题,主要时因为懒没有处理,记录一下`Nexus`的使用
+
+#### 安装并配置Nexus
+``` bash
+#require jdk8
+#install Nexus
+mkdir /app && cd /app
+wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+tar -xvf nexus.tar.gz
+mv nexus-3* nexus
+#使用一个单独的用户来作为服务提供者
+adduser nexus
+#修改权限组
+chown -R nexus:nexus /app/nexus
+chown -R nexus:nexus /app/sonatype-work
+```
+``` bash
+#config
+vi  /app/nexus/bin/nexus.rc
+#添加一条用户信息
+run_as_user="nexus"
+```
+``` bash
+#如果需要修改存储位置等配置可以修改
+vi /app/nexus/bin/nexus.vmoptions
+
+-Xms2703m
+-Xmx2703m
+-XX:MaxDirectMemorySize=2703m
+-XX:+UnlockDiagnosticVMOptions
+-XX:+UnsyncloadClass
+-XX:+LogVMOutput
+-XX:LogFile=../sonatype-work/nexus3/log/jvm.log
+-XX:-OmitStackTraceInFastThrow
+-Djava.net.preferIPv4Stack=true
+-Dkaraf.home=.
+-Dkaraf.base=.
+-Dkaraf.etc=etc/karaf
+-Djava.util.logging.config.file=etc/karaf/java.util.logging.properties
+-Dkaraf.data=/nexus/nexus-data
+-Djava.io.tmpdir=../sonatype-work/nexus3/tmp
+-Dkaraf.startLocalConsole=false
+```
+#### 创建自启动服务
+``` bash
+vi /etc/systemd/system/nexus.service
+
+[Unit]
+Description=nexus service
+After=network.target
+
+[Service]
+Type=forking
+LimitNOFILE=65536
+User=nexus
+Group=nexus
+ExecStart=/app/nexus/bin/nexus start
+ExecStop=/app/nexus/bin/nexus stop
+User=nexus
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+```
+```bash
+#检查并启动
+chkconfig nexus on
+systemctl start nexus
+```
+#### 配置
+* 打开 http://ip:8081
+* 触发登录admin
+* 获取默认密码 cat /app/sonatype-work/nexus3/admin.password
+* 修改密码后可以使用
+```bash
+#重新启动
+systemctl stop nexus
+systemctl restart nexus
+```
+此时安装与配置就完成了
+
+
+### 建立镜像
+create repositories有以下几种概念
+* group 组,可以把多个仓库整合为一个
+* host 可以理解为一个存储实例,类似第三方上传的位置
+* proxy 用于代理,类似阿里这种镜像
+
+我们做的优化就是把多个仓库整合成一个group的,这样就可以加快索引速度,不用多个仓库搜索了

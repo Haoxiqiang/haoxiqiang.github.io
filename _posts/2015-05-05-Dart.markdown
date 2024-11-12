@@ -1,0 +1,107 @@
+---
+layout: post
+title:  Dart Web Apps on Android
+date:   2015-05-05 17:46:58
+author: haoxiqiang
+categories: blog
+tags: [android]
+
+---
+您可以启动或者调试一个并没有预编译成`JavaScript`的`Android`网络应用程序。要做到这一点，你需要`Dart Editor` 和`Dart Content Shell`.`Dart Editor`会自动安装在`Android`设备上。您还可以在`Android`上调试应用程序。
+配置环境针对移动开发:
+
+* Android设备，如手机或平板电脑
+* USB线缆将你的Android设备连接到您的电脑
+* Chrome浏览器安装在您的电脑和Android设备上
+<!-- more -->
+
+原文所在:[https://www.dartlang.org/tools/editor/mobile.html](https://www.dartlang.org/tools/editor/mobile.html)
+
+## 第一部分
+
+### Step 1: Set up your computer
+
+下载安装`Dart`:[Download Dart Editor](https://www.dartlang.org/downloads/)
+
+### Step 2: Set up your Android device
+
+打开USB调试:[ Set up remote debugging](https://developer.chrome.com/devtools/docs/remote-debugging#setting-up-device)
+
+### Step 3: Connect the device to your computer
+
+连接设备:[ Connect your device via USB](https://developer.chrome.com/devtools/docs/remote-debugging#connect-device-via-usb)
+
+### Step 4: Set up port forwarding
+
+除非您使用的是家庭网络，否则您可能需要设置端口转发。
+
+具体的一些搞法不翻译了,看这里 [Remote Debugging on Android with Chrome](http://www.haoxiqiang.info/blog/20150324-RemoteDebuggingonAndroidwithChrome.html)
+
+### Step 5: Launch your app on the Android device
+
+测试你的Android设备上的应用程序最简单的方法是用鼠标右键单击Dart编辑HTML文件，弹出菜单：
+
+![ContextRunMenu](/images/ContextRunMenu.png)
+
+从上下文菜单中的三个运行选项,点击移动运行。
+
+Problems?
+
+如果您正在使用端口转发，确保Chrome浏览器正在运行测试您的应用程序。您可以设置端口转发让Chrome浏览器获取数据包。
+
+如果您已执行的步骤和`Dart Editor`仍然不能看到你的Android设备（报告的消息“没有发现手机或USB开发手机上的未启用” ） ，尝试拔出并重新插入该设备。
+
+如果你看到在DART编辑以下对话框之一，按照指示来解决这个问题。 （弹出一个“Embedded server over WiFi network”失败时，将第一个对话框出现，当一个“Pub serve over USB”启动失败出现的第二个对话框。 ）
+
+![PubServeLaunchFailed](/images/PubServeLaunchFailed.png)
+![EmbeddedServerLaunchFailed](/images/EmbeddedServerLaunchFailed.png)
+
+
+### Step 6: Debug your app
+
+当您的应用程序在Android设备上运行，你可以在DART编辑器中设置断点来调试任何Dart应用程序,如果你看到在调试视图（Tools > Debugger） “远程”连接，您可以调试应用程序。如果调试器视图显示远程终止，重新启动应用程序。
+
+### 常见问题解答（FAQ）
+
+* 哪些应用程序下载到Android设备？
+	
+	在第一个Dart Editor会话中，两个应用程序被下载到你的Andr​​oid设备：
+	
+	* The Dart Content Shell, a streamlined version of Chromium that includes the Dart VM. During testing, your app runs in the content shell.一个是Dart虚拟机,你的应用程序测试的时候会在这里运行
+	* A small connection test app, designed to detect problems accessing the web server. If any problems are detected, this app communicates back to Dart Editor.一个用来测试web服务的小程序,发生问题的时候,这个将会给Dart Editor反馈
+	
+* 什么是端口转发，我为什么会需要它？
+
+![MobileDeployment](/images/MobileDeployment.png)
+
+*  “Pub serve over USB”和“Embedded server over WiFi network”有什么区别
+	
+	如果您选择`Manage Launches`对话框的时候，你会看到在服务器框中下拉菜单提供了两个选项： 
+	
+	* Pub serve over USB:如果你有防火墙，或使用公共WiFi热点，或您的计算机和Android设备不在同一个WiFi网络上，选择通过USB端口转发。大多数开发人员使用此选项。
+	
+	* Embedded server over WiFi network:如果你正在开发一个没有防火墙家庭网络上的应用，例如，你在使用一个嵌入Dart Editor的服务器。在这种情况下，选择这个选项。没必要设置端口转发。
+	
+## 第二部分
+###  Start the edito
+
+进入到解压文件夹,双击DartEditor
+
+### Get the sample code.
+
+直接上git吧:`git clone https://github.com/dart-lang/one-hour-codelab.git`
+
+### Open the one-hour-codelab sample.
+
+Dart Editor中`File > Open Existing Folder`,然后找到你clone代码的地方
+
+![filesanddirs.png](/images/filesanddirs.png)
+
+### Step 1: Run the skeleton app
+
+打开`1-blankbadge`,右键`piratebadge.html`,然后选择`Run in Dartium`.
+
+...下面的太简单了,看着就会做了[点击我查看例子说明](https://www.dartlang.org/codelabs/darrrt/#i-classfa-fa-anchor-i-open-the-one-hour-codelab-sample).说明一下,例子1-6就是这部分教程的源码
+
+
+	

@@ -1,0 +1,168 @@
+---
+layout: post
+title:  一些 Https 方面的记录
+date:   2016-01-20 11:50:30
+author: haoxiqiang
+categories: blog
+tags: [android]
+
+---
+
+使用`Https`建议先读一下官方[Training Security SSL](https://developer.android.com/intl/zh-cn/training/articles/security-ssl.html),很多公司现在都有已经是全站`Https`了,有些用的并不正确,我这里简单记录一下自己遇到的问题
+
+<!-- more -->
+需要自己去了解的问题:
+
+* 对称加密
+* 非对称加密
+
+一些签名的类型
+
+* `.DER` 一般是一个二进制的证书,扩展名是 `CER`或者 `CRT`,指的是一个`DER`编码的证书 
+* `.PEM` 这个我们看起来就是一个`---BEGIN...`开头的一个密钥,其实是一个用 `Base64`对`X.509v3`不同类型密钥编码出来的一个证书 
+* `.CRT` 和`CER` 两个基本差不多,不过`CRT`符合微软的标准
+* `.key` 使用`PKCS #8`算法处理完成私钥和公钥的一种证书
+
+对于自签名或者说自己测试的话最好安装`openssl`自己体验一下,一般签名生成的过程如下
+``` bash
+$ openssl genrsa -out key.pem 1024
+Generating RSA private key, 1024 bit long modulus
+....................++++++
+.....................++++++
+e is 65537 (0x10001)
+To create a certificate request with that key, you will need to answer some questions. 
+The most important one is "Common Name" which MUST be the hostname of the server you're 
+creating a certificate for. Only "Common Name" is required, for the SSL-RFC, but your 
+Certificate Authority (Verisign, Thawte, etc.) will require some of the other fields. 
+Just fill them all out, to be safe. The last two questions may be required for the 
+registration procedure of some certificate authorities.
+```
+
+``` bash
+$ openssl req -new -key key.pem -out request.pem
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:CN
+State or Province Name (full name) [Some-State]:Beijing
+Locality Name (eg, city) []:Beijing
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Hxq
+Organizational Unit Name (eg, section) []:hxq
+Common Name (e.g. server FQDN or YOUR name) []:hao
+Email Address []:haoxiqiang@live.com
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:haoxiqiang
+An optional company name []:Hxq
+You can now send the request.pem file to some commercial Certificate Authority and wait for 
+the certificate, or create your own "self-signed" certificate for testing purposes.
+To create the self-signed certificate, do the following:
+```
+``` bash
+$ openssl req -x509 -days 30 -key key.pem -in request.pem -out certificate.pem
+This may be wrong. The right way may be:
+```
+``` bash
+$ openssl x509 -req -days 30 -in request.pem -signkey key.pem -out certificate.pem
+When you get your actual certificate from the CA, you may have to convert it from binary/DER to PEM format:
+```
+``` bash
+$ openssl x509 -inform der -in certificate.crt -out certificate.pem
+Obtaining a server certificate with Internet Explorer
+Most Certificate Authorities have an website that lets you request a certificate with Internet 
+Explorer. It is very simple to convert such a certificate to a cert.pem and key.pem file. After 
+you have obtained the certificate (do make sure that you keep the key exportable when you request 
+the certificate!), you must first export it to a file:
+From internet explorer, open the Tools menu, and choose Internet options. On the 'Content' tab 
+click the 'Certificates' button. Select your server certificate and click 'export'.
+Select that you want to export the private key, on the .PFX options, DO NOT include all certificate 
+in the path and DO NOT enable strong protection. When asked to, provide a nice and long password 
+if you need to transfer the resulting certificate.pfx file over email.
+Now on your server machine:
+```
+``` bash
+$ openssl pkcs12 -nodes -in certificate.pfx -out certificate.pem
+```	
+
+ 对于服务端已有证书的可以直接取下来使用
+``` bash
+echo | openssl s_client -connect hostname:443 2>&1 |  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > hostname.pem
+```
+
+因为`Android`一般只能识别`BKS`类型的证书,需要转换一下.
+这个文件一般都是放到了 `raw`内的,但是很多时候不加文件直接用文本也是可以的,
+因为`HttpsURLConnection.setSSLSocketFactory(SSLSocketFactory)`时,创建的形式一般是
+``` java
+InputStream inputStream = context.getResources().openRawResource(res);
+KeyStore keyStore = KeyStore.getInstance("BKS");
+keyStore.load(inputStream, password.toCharArray());
+KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+keyManagerFactory.init(keyStore, password.toCharArray());
+TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+trustManagerFactory.init(keyStore);
+SSLContext sslContext = SSLContext.getInstance("TLS");
+sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), new SecureRandom());
+```
+所以直接用`String->Stream`也是可以的
+
+转换证书类型一般使用有:
+
+[Bouncy Castle](http://www.bouncycastle.org/java.html) 下面贴一下命令
+[Portecle](http://sourceforge.net/projects/portecle/) 这个似乎有 UI 版本的,不过没有用过
+
+``` bash
+keytool -importcert -v 
+ -trustcacerts 
+ -alias 0 
+ -file <(openssl x509 -in hostname.pem) 
+ -keystore $CERTSTORE -storetype BKS 
+ -providerclass org.bouncycastle.jce.provider.BouncyCastleProvider 
+ -providerpath bcprov-jdk16-1.46.jar 
+ -storepass password
+```
+
+ 
+#查看一些证书的信息能直接使用`openssl`来操作
+``` bash
+openssl x509 -in cert.pem -text -noout
+openssl x509 -in cert.cer -text -noout
+openssl x509 -in cert.crt -text -noout
+```
+``` bash
+# PEM to DER
+$ openssl x509 -outform der -in certificate.pem -out certificate.der
+# PEM to P7B
+$ openssl crl2pkcs7 -nocrl -certfile certificate.cer -out certificate.p7b -certfile CAcert.cer
+# PEM to PFX
+$ openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CAcert.crt
+# DER to PEM
+$ openssl x509 -inform der -in certificate.cer -out certificate.pem
+# P7B to PEM
+$ openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer
+# P7B to PFX
+$ openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer
+$ openssl pkcs12 -export -in certificate.cer -inkey privateKey.key -out certificate.pfx -certfile CAcert.cer
+# PFX to PEM
+$ openssl pkcs12 -in certificate.pfx -out certificate.cer -nodes
+```
+
+备注几个遇到的问题
+
+* SSLPeerUnverifiedException:Hostname not verified 
+因为我自签发的证书没有注意到我自己搭建的服务器域名不匹配的问题,解决的办法有
+``` java
+HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+    @Override
+    public boolean verify(String hostname, SSLSession session) {
+        HostnameVerifier hv =
+            HttpsURLConnection.getDefaultHostnameVerifier();
+        return hv.verify("example.com", session);
+    }
+};
+```
+
+>[Itroadmap](http://itroadmap.sinaapp.com/2015/12/07/fail-javax-net-ssl-sslpeerunverifiedexceptionhostname-not-verified)
