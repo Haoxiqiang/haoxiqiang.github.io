@@ -1,11 +1,9 @@
 ---
-layout: post
 title:  利用自建Nexus仓库优化构建
 date:   2019-12-31 21:29:27
 author: haoxiqiang
 categories: blog
 tags: [Nexus]
-
 ---
 
 

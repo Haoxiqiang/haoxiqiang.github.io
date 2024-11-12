@@ -1,11 +1,9 @@
 ---
-layout: post
 title:  ShadowSocks的配置与优化
 date:   2019-12-31 20:29:27
 author: haoxiqiang
 categories: blog
 tags: [shadowsocks]
-
 ---
 
 

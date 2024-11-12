@@ -1,11 +1,9 @@
 ---
-layout: post
 title:  ShadowSocks Rust的配置与优化
 date:   2022-05-06 16:10:22
 author: haoxiqiang
 categories: blog
 tags: [shadowsocks]
-
 ---
 
 5.1在家替换一下之前的实践,家里网络重新弄了一次,这样保证可以刷剧可以看4k的不卡,既然服务器也准备重新弄下,就干脆直接迁移到新的shadowsocks-rust上面
