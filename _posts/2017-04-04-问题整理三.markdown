@@ -1,0 +1,88 @@
+---
+layout: post
+title:  问题整理三
+date:   2017-04-05 11:00:06
+author: haoxiqiang
+categories: blog
+tags: [android]
+
+---
+
+### DialogFragment的返回键处理
+
+因为没有直接的复写方式,有两个方式都可以实现
+``` java
+@Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+    return new Dialog(getActivity(), getTheme()){
+        @Override
+        public void onBackPressed() {
+            // On backpress, do your stuff here.
+        }
+    };
+}
+```
+``` java
+@Override
+public void onResume() {
+    super.onResume();
+    Dialog dialog = getDialog();
+    if (dialog != null) {
+        dialog.setOnKeyListener(this);
+    }
+}
+
+@Override
+public void onPause() {
+    super.onPause();
+    Dialog dialog = getDialog();
+    if (dialog != null) {
+        dialog.setOnKeyListener(null);
+    }
+}
+```
+
+### chmod
+
+用法：chmod XXX filename
+×××（所有者\组用户\其他用户）
+×=4 读的权限
+×=2 写的权限
+×=1 执行的权限
+常用修改权限的命令：
+``` bash
+sudo chmod 600 ××× （只有所有者有读和写的权限）
+sudo chmod 644 ××× （所有者有读和写的权限，组用户只有读的权限）
+sudo chmod 700 ××× （只有所有者有读和写以及执行的权限）
+sudo chmod 666 ××× （每个人都有读和写的权限）
+sudo chmod 777 ××× （每个人都有读和写以及执行的权限） 
+```
+
+### javax.net.ssl.SSLHandshakeException: Invalid input to toASCII
+
+项目之前给的一些域名包含了`_`,在`https`中报错了,解决办法就是去掉,以前只知道不适合用,现在记录一下原因
+
+From [Restrictions_on_valid_host_names](http://en.wikipedia.org/wiki/Hostname#Restrictions_on_valid_host_names
+)
+
+Hostnames are composed of series of labels concatenated with dots, as are all domain names. For example, 
+"en.wikipedia.org" is a hostname. Each label must be between 1 and 63 characters long,[2] and the entire 
+hostname (including the delimiting dots but not a trailing dot) has a maximum of 253 ASCII characters.[3]
+
+The Internet standards for protocols mandate that component hostname labels may contain only the ASCII 
+letters 'a' through 'z' (in a case-insensitive manner), the digits '0' through '9', and the hyphen ('-'). 
+The original specification of hostnames in RFC 952, mandated that labels could not start with a digit or 
+with a hyphen, and must not end with a hyphen. However, a subsequent specification (RFC 1123) permitted 
+hostname labels to start with digits. No other symbols, punctuation characters, or white space are permitted.
+
+While a hostname may not contain other characters, such as the underscore character (_), other 
+DNS names may contain the underscore.
+or from `http://domainkeys.sourceforge.net/underscore.html`
+
+Underscores allowed, except in host names
+
+Host names are not allowed to have underscores in them. In DNS, host names are the name fields of A or MX 
+records or the data fields of the SOA and NS records. Thus, there are many DNS entries that are not hostnames.
+Summary: you cannot use underscores in a host name. You shouldn't want to either.
+
+[http://stackoverflow.com/questions/10959757/the-use-of-the-underscore-in-host-names](http://stackoverflow.com/questions/10959757/the-use-of-the-underscore-in-host-names)

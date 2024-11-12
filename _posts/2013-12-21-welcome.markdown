@@ -1,0 +1,48 @@
+---
+title:  Jekyll搭建Blog
+description:
+author: haoxiqiang
+layout: post
+date: 2013-12-21 22:19:05
+categories: [Blogging]
+tags: [Blogging]
+---
+
+看过很多jekyll模板,借鉴`Pure`我做了一个自己的模板,不定期更新,连接跳转到:
+[haoxiqiang-template](https://github.com/Haoxiqiang/haoxiqiang-template)
+
+in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+
+To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+下面的分割线,预览与全文的分割线
+<!-- more -->
+Jekyll also offers powerful support for code snippets:
+
+支持代码高亮
+
+``` ruby
+def print_hi(name)
+  puts "Hi, #{name}"
+end
+print_hi('Tom')
+#=> prints 'Hi,STDOUT.
+```
+
+支持letax,只需要在页面中声明`letex: true`
+
+$$ 
+\begin{aligned} \dot{x} &= \sigma(y-x) \\ 
+\dot{y} &= \rho x - y - xz \\ 
+\dot{z} &= -\beta z + xy \end{aligned} 
+$$
+
+$$a^2 + b^2 = c^2$$
+When $a \ne 0$, there are two solutions to $ \(ax^2 + bx + c = 0\) $ and they are 
+
+涉及技术的链接:
+
+|[Jekyll](http://jekyllrb.com/)  |静态博客| Version 2.5.2|
+|[MathJax](http://www.mathjax.org/)  |Letex| Version 2.4.0|
+|[Duoshuo](http://duoshuo.com/)|多说评论|Version 1.0.0|
+|[Disqus](https://disqus.com/)|Disqus|Version 1.0.0|
+|[haoxiqiang-template](https://github.com/Haoxiqiang/haoxiqiang-template)|博客模板|Version 1.0.0|

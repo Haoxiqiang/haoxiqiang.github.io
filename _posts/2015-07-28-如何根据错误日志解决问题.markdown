@@ -1,0 +1,22 @@
+---
+layout: post
+title:  Bugly博客的整理
+date:   2015-07-29 12:00:39
+author: haoxiqiang
+categories: blog
+tags: [java]
+
+---
+目前使用的是腾讯的Bugly,市面上面的此类工具大抵相似,选择腾讯的主要的统计端的界面看起来舒服点,招牌大一点,以下是整理出来的一些Tips,有些是开发过程中遇到的,有些给了自己很大启发
+
+
+<!-- more -->
+
+* [全系统栈崩溃是什么鬼？腾讯手机管家高级工程师 jaylin，教你如何抓鬼！](http://bugly.qq.com/blog/?p=174) [pdf 版本](/source/pdf/全系统栈崩溃是什么鬼.pdf)
+* [论FileDescriptor泄漏如何导致Crash](http://bugly.qq.com/blog/?p=156) [pdf 版本](/source/pdf/论FileDescriptor泄漏如何导致Crash.pdf)
+* [常见Android Native崩溃及错误原因](http://bugly.qq.com/blog/?p=131) [pdf 版本](/source/pdf/常见AndroidNative崩溃及错误原因.pdf)
+* [Android堆栈慘遭毁容精神哥揭露毁容真相](http://bugly.qq.com/blog/?p=110) [pdf 版本](/source/pdf/Android堆栈慘遭毁容精神哥揭露毁容真相.pdf)
+* [ANR到底是什么](http://bugly.qq.com/blog/?p=365) [pdf 版本](/source/pdf/ANR到底是什么.pdf)
+* [读懂ANR的trace文件](http://bugly.qq.com/blog/?p=379) [pdf 版本](/source/pdf/读懂ANR的trace文件.pdf)
+* [UnsatisfiedLinkError](http://bugly.qq.com/blog/?p=34) [pdf 版本](/source/pdf/UnsatisfiedLinkError.pdf)
+* [java.lang.NoSuchMethodError](http://bugly.qq.com/blog/?p=61) [pdf 版本](/source/pdf/java.lang.NoSuchMethodError.pdf)
