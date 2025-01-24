@@ -40,6 +40,16 @@ mv vendor/ ../
 
 * Build [Doc](https://source.android.com/docs/setup/build/building)
 
+```bash
+cd ~/aosp
+source build/envsetup.sh
+lunch aosp_crosshatch-userdebug # 对应机型 Pixel 3 XL, (user/userdebug/eng) 对应不同的构建类型 https://source.android.com/docs/setup/build/building
+m # 构建
+export ANDROID_PRODUCT_OUT='/home/haoxiqiang/workspace/aosp/out/target/product/crosshatch'
+adb reboot fastboot
+fastboot flashall -w
+```
+
 以上为AOSP构建,对于其他也是类似,以`LineageOS`为例
 
 ```shell
