@@ -6,6 +6,8 @@ Refactor and improve an existing blog post — output both Chinese and English v
 
 The user will specify a post file path, e.g. `content/posts/2022-08-08-openssl-rsa.md`
 
+Optionally, a review report may be provided as additional context (from `/review-post`). If review feedback is present, treat each improvement point as a hard requirement to address during refactoring. Do NOT re-trigger a review after this refactoring — the cycle is: review → refactor → done.
+
 ## Goals
 
 1. **Improve structure** — Reorganize into clear sections with logical flow
