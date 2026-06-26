@@ -1,40 +1,40 @@
-# Translate Blog Posts
+# 翻译博客文章
 
-Translate Chinese blog posts to English for the Hugo multilingual blog.
+将中文博客文章翻译为英文，用于 Hugo 多语言博客。
 
-## Rules
+## 规则
 
-1. Only translate posts that need translation. A post needs translation when:
-   - It has no corresponding `.en.md` file, OR
-   - The Chinese source file (`.md`) has been modified since the last time the `.en.md` was generated (compare via git log)
+1. 只翻译需要翻译的文章。需要翻译的条件：
+   - 没有对应的 `.en.md` 文件，或者
+   - 中文源文件（`.md`）在英文版本生成之后有过修改（通过 git log 对比）
 
-2. To check if a post has changed since its English version was created:
+2. 判断文章是否需要翻译：
    ```bash
-   # Get last modified time of the Chinese source
+   # 获取中文源文件最后修改时间
    git log -1 --format="%aI" -- "content/posts/<post>.md"
-   # Get last modified time of the English version (if exists)
+   # 获取英文版本最后修改时间（如存在）
    git log -1 --format="%aI" -- "content/posts/<post>.en.md"
    ```
-   If the Chinese source is newer than the English version, or the English version doesn't exist, translate it.
+   如果中文源比英文版新，或英文版不存在，则需要翻译。
 
-3. Translation guidelines:
-   - Preserve all front matter fields, translate `title` and `description` to English
-   - Keep `date`, `author`, `tags`, `categories`, `ShowToc`, `TocOpen` unchanged
-   - Translate the body content naturally — not word-by-word, but convey the same meaning
-   - Keep all code blocks, URLs, and technical terms unchanged
-   - Keep markdown formatting intact
-   - Replace `<!--more-->` markers as-is
+3. 翻译准则：
+   - 保留所有 front matter 字段，将 `title` 和 `description` 翻译为英文
+   - `date`、`author`、`tags`、`categories`、`ShowToc`、`TocOpen` 保持不变
+   - 自然翻译正文内容 — 传达相同含义，不逐字翻译
+   - 代码块、URL、技术术语保持不变
+   - Markdown 格式保持不变
+   - `<!--more-->` 标记原样保留
 
-4. Output file naming: for `content/posts/YYYY-MM-DD-slug.md`, create `content/posts/YYYY-MM-DD-slug.en.md`
+4. 输出文件命名：`content/posts/YYYY-MM-DD-slug.md` → `content/posts/YYYY-MM-DD-slug.en.md`
 
-## Workflow
+## 工作流程
 
-1. List all `.md` files in `content/posts/` (excluding `.en.md` files)
-2. For each file, check if translation is needed (no `.en.md` or source is newer)
-3. Translate only the ones that need it
-4. Report what was translated and what was skipped
+1. 列出 `content/posts/` 下所有 `.md` 文件（排除 `.en.md`）
+2. 逐个检查是否需要翻译（无 `.en.md` 或源文件更新）
+3. 只翻译需要处理的文章
+4. 报告翻译了哪些、跳过了哪些
 
-## Example
+## 示例
 
-Input: `content/posts/2026-06-26-blog-migration-to-hugo.md`
-Output: `content/posts/2026-06-26-blog-migration-to-hugo.en.md`
+输入：`content/posts/2026-06-26-blog-migration-to-hugo.md`
+输出：`content/posts/2026-06-26-blog-migration-to-hugo.en.md`

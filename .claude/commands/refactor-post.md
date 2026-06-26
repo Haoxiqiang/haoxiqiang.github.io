@@ -1,116 +1,116 @@
-# Refactor Blog Post
+# 重构博客文章
 
-Refactor and improve an existing blog post — output both Chinese and English versions.
+重构并改进现有博客文章 — 输出中英文两个版本。
 
-## Input
+## 输入
 
-The user will specify a post file path, e.g. `content/posts/2022-08-08-openssl-rsa.md`
+用户指定文章路径，如 `content/posts/2022-08-08-openssl-rsa.md`
 
-Optionally, a review report may be provided as additional context (from `/review-post`). If review feedback is present, treat each improvement point as a hard requirement to address during refactoring. Do NOT re-trigger a review after this refactoring — the cycle is: review → refactor → done.
+可选：来自 `/review-post` 的评审报告作为额外上下文。如果有评审意见，将每条改进点视为硬性要求逐一落实。重构后不再触发评审 — 流程为：评审 → 重构 → 结束。
 
-## Goals
+## 目标
 
-1. **Improve structure** — Reorganize into clear sections with logical flow
-2. **Enhance content** — Search for additional technical context, fill knowledge gaps with high-confidence information only
-3. **Sharpen language** — Concise, to the point, no filler. Every sentence should carry weight
-4. **Show depth** — Surface the "why" behind technical decisions, not just the "how"
-5. **Fix formatting** — Proper markdown, consistent code blocks, clean front matter
-6. **Add references** — Collect all key citations and further reading links at the end
+1. **改进结构** — 重新组织为清晰的章节，逻辑流畅
+2. **充实内容** — 搜索补充技术背景，仅使用高置信度信息填补知识空白
+3. **精炼语言** — 简洁直接，无废话，每句话都有信息量
+4. **体现深度** — 不只是 "怎么做"，更要解释 "为什么"
+5. **规范格式** — 正确的 Markdown、统一的代码块、规范的 front matter
+6. **添加引用** — 收集关键引用和延伸阅读链接置于文末
 
-## Process
+## 流程
 
-### Step 1: Analyze Current Post
+### 第一步：分析现有文章
 
-- Read the post fully
-- Identify: topic, target audience, current quality level, gaps
+- 通读全文
+- 识别：主题、目标读者、当前质量水平、内容缺口
 
-### Step 2: Research
+### 第二步：搜索补充资料
 
-- Search for relevant, up-to-date technical references on the topic
-- Only use high-confidence information from authoritative sources (official docs, RFCs, reputable engineering blogs)
-- Do NOT add speculative or uncertain content
-- Collect all valuable reference URLs for the References section
+- 搜索相关的最新技术参考资料
+- 仅使用权威来源的高置信度信息（官方文档、RFC、知名工程博客）
+- 不添加推测性或不确定的内容
+- 收集所有有价值的参考链接用于 References 区域
 
-### Step 3: Refactor (Chinese version)
+### 第三步：重构中文版本
 
-Apply these principles:
+遵循以下原则：
 
-**Structure:**
-- Lead with context/problem statement (1-2 sentences max)
-- Use clear H2/H3 hierarchy
-- Put the most valuable insight early
-- End with concise takeaway, then References section
+**结构：**
+- 开头用 1-2 句话点明问题/背景
+- 使用清晰的 H2/H3 层级
+- 最有价值的洞察放在前面
+- 结尾简洁收束，然后是 References
 
-**Language:**
-- 简练 — Remove redundant words, filler phrases, obvious statements
-- 直接 — State conclusions first, then explain
-- 精确 — Use exact technical terms, no vague language
+**语言：**
+- 简练 — 去除冗余词句、口水话、显而易见的陈述
+- 直接 — 先说结论，再做解释
+- 精确 — 使用准确的技术术语，不含糊
 
-**Content:**
-- Add missing context that a reader would need
-- Include version numbers, links to official docs where relevant
-- Remove outdated information or mark it clearly
-- Add brief explanations for non-obvious technical decisions
-- If code samples exist, ensure they are correct and complete
-- Inline links for key references that are worth reading in context (use `[text](url)` inline)
+**内容：**
+- 补充读者需要的缺失上下文
+- 在相关处标注版本号、添加官方文档链接
+- 移除过时信息或明确标记
+- 对非显而易见的技术决策添加简要解释
+- 如有代码示例，确保正确且完整
+- 正文中关键引用使用行内链接（`[文字](url)`），方便读者直接跳转
 
-**Format:**
-- Standardize front matter to project convention
-- Ensure proper code block language annotations
-- Use tables for comparisons
-- Use `>` blockquotes for important callouts sparingly
+**格式：**
+- 统一 front matter 为项目规范
+- 代码块标注语言
+- 用表格做对比
+- `>` 引用块用于重要提示（适度使用）
 
-**References Section:**
-- Add `## References` at the end of the post
-- List all key links that are worth further reading
-- Format: `- [Title or Description](url) — one-line note on why it's relevant`
-- Prioritize: official docs > RFCs/specs > authoritative engineering blogs > others
-- Only include links you have high confidence are valid and valuable
+**References 区域：**
+- 在文章末尾添加 `## References`
+- 列出所有值得深入阅读的链接
+- 格式：`- [标题或描述](url) — 一句话说明为什么值得读`
+- 优先级：官方文档 > RFC/规范 > 权威工程博客 > 其他
+- 仅收录有高置信度的有效链接
 
-### Step 4: Create English Version
+### 第四步：生成英文版本
 
-- Create `.en.md` file alongside the Chinese version
-- Translate naturally, not word-by-word
-- Keep all code blocks, URLs, technical terms unchanged
-- Translate `title` and `description` in front matter
-- Keep the same References section (links are language-neutral)
+- 在中文版本旁创建 `.en.md` 文件
+- 自然翻译，不逐字对照
+- 代码块、URL、技术术语保持不变
+- 翻译 front matter 中的 `title` 和 `description`
+- References 区域保持一致（链接语言无关）
 
-### Step 5: Validate
+### 第五步：验证
 
-- The refactored post must still represent the author's experience and perspective
-- Do not change the fundamental topic or conclusions
-- Do not add opinions the author didn't express
-- Preserve all original code samples (may reformat but not alter logic)
+- 重构后的文章必须仍然代表作者的经验和视角
+- 不改变根本主题或结论
+- 不添加作者未表达的观点
+- 保留所有原始代码示例（可调整格式但不改逻辑）
 
-## Output
+## 输出
 
-Write two files:
-1. Overwrite original: `content/posts/YYYY-MM-DD-slug.md` (Chinese, refactored)
-2. Create/overwrite: `content/posts/YYYY-MM-DD-slug.en.md` (English translation)
+写入两个文件：
+1. 覆写原文：`content/posts/YYYY-MM-DD-slug.md`（中文重构版）
+2. 创建/覆写：`content/posts/YYYY-MM-DD-slug.en.md`（英文翻译版）
 
-Report:
-- What was changed (brief summary)
-- What references were added
-- What was removed and why
+报告：
+- 改了什么（简要总结）
+- 添加了哪些引用
+- 删除了什么及原因
 
-## Example Transformation
+## 转换示例
 
-Before:
+改进前：
 ```
 我本来很清楚不同加密方式的区别和使用,今天在写一个RSA的时候发现公钥加密出来的结果每次都不一样,这就触发了盲点,很奇怪这里的实现,去看了一下原理
 ```
 
-After (Chinese):
+改进后（中文）：
 ```
 RSA 公钥加密的输出每次不同 — 这不是 bug，是 PKCS 填充机制的设计。记录一下排查过程和原理。
 ```
 
-After (English):
+改进后（英文）：
 ```
 RSA public key encryption produces different output each time — this isn't a bug, it's by design in the PKCS padding scheme. Here's the investigation and the underlying mechanism.
 ```
 
-## Example References Section
+## References 区域示例
 
 ```markdown
 ## References
