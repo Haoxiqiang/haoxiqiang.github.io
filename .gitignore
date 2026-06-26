@@ -1,4 +1,24 @@
-_site
-.sass-cache
-Gemfile.lock
-bin/
+# Hugo output
+public/
+resources/_gen/
+
+# Hugo cache
+hugo_stats.json
+.hugo_build.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Node (if using any tooling)
+node_modules/
+
+# Scripts (dev only)
+scripts/

@@ -1,0 +1,208 @@
+baseURL: "https://blog.substitute.tech"
+title: "Haoxiqiang's Blog"
+theme: "PaperMod"
+paginate: 10
+defaultContentLanguage: zh
+defaultContentLanguageInSubdir: false
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+
+# Multilingual
+languages:
+  zh:
+    label: "中文"
+    weight: 1
+    params:
+      profileMode:
+        enabled: true
+        title: "郝锡强"
+        subtitle: "Chromium / Android / Server 都搞了一点"
+        imageUrl: "images/avatar.jpg"
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+          - name: 文章
+            url: posts
+          - name: 归档
+            url: archives
+          - name: 标签
+            url: tags
+          - name: 搜索
+            url: search
+    menu:
+      main:
+        - identifier: posts
+          name: 文章
+          url: /posts/
+          weight: 10
+        - identifier: archives
+          name: 归档
+          url: /archives/
+          weight: 20
+        - identifier: tags
+          name: 标签
+          url: /tags/
+          weight: 30
+        - identifier: categories
+          name: 分类
+          url: /categories/
+          weight: 40
+        - identifier: search
+          name: 搜索
+          url: /search/
+          weight: 50
+        - identifier: about
+          name: 关于
+          url: /about/
+          weight: 60
+
+  en:
+    label: "English"
+    weight: 2
+    params:
+      profileMode:
+        enabled: true
+        title: "Haoxiqiang"
+        subtitle: "Working on Chromium / Android / Server"
+        imageUrl: "images/avatar.jpg"
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+          - name: Posts
+            url: posts
+          - name: Archives
+            url: archives
+          - name: Tags
+            url: tags
+          - name: Search
+            url: search
+    menu:
+      main:
+        - identifier: posts
+          name: Posts
+          url: /posts/
+          weight: 10
+        - identifier: archives
+          name: Archives
+          url: /archives/
+          weight: 20
+        - identifier: tags
+          name: Tags
+          url: /tags/
+          weight: 30
+        - identifier: categories
+          name: Categories
+          url: /categories/
+          weight: 40
+        - identifier: search
+          name: Search
+          url: /search/
+          weight: 50
+        - identifier: about
+          name: About
+          url: /about/
+          weight: 60
+
+# Global params
+params:
+  env: production
+  description: "技术博客 - Chromium / Android / Server"
+  author: "haoxiqiang"
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: false
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: true
+  tocopen: false
+  comments: true
+
+  assets:
+    favicon: "img/favicons/favicon.ico"
+    favicon16x16: "img/favicons/favicon-16x16.png"
+    favicon32x32: "img/favicons/favicon-32x32.png"
+    apple_touch_icon: "img/favicons/apple-touch-icon.png"
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/haoxiqiang"
+    - name: email
+      url: "mailto:haoxiqiang@live.com"
+    - name: rss
+      url: "index.xml"
+
+  # Giscus comments
+  giscus:
+    repo: "haoxiqiang/haoxiqiang.github.io"
+    repoID: ""
+    category: ""
+    categoryID: ""
+    mapping: "pathname"
+    strict: "0"
+    reactionsEnabled: "1"
+    emitMetadata: "0"
+    inputPosition: "top"
+    theme: "preferred_color_scheme"
+    lang: "zh-CN"
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+# Output formats
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+# Markup
+markup:
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    noClasses: false
+    style: monokai
+  goldmark:
+    renderer:
+      unsafe: true
+
+# Sitemap
+sitemap:
+  changeFreq: ""
+  priority: -1
+
+# Privacy
+privacy:
+  googleAnalytics:
+    disable: false
+    respectDoNotTrack: true
+  x:
+    enableDNT: true
+  youtube:
+    privacyEnhanced: true
+
+# Minify
+minify:
+  disableXML: true
+  minifyOutput: true
