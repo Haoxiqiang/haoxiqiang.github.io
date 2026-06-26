@@ -17,6 +17,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Claude Code local config (contains API keys)
+.claude/settings.local.json
+
 # Node (if using any tooling)
 node_modules/
 
