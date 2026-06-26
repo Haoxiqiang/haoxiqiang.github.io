@@ -1,63 +1,115 @@
 ---
-title: "Limits In SQLite"
+title: "SQLite 限制详解：从一次 SQLiteFullException 说起"
 date: 2015-02-28 22:48:55
 author: "haoxiqiang"
-tags: ["android"]
-categories: ["Blog"]
+tags: ["android", "sqlite", "database"]
+categories: ["Android"]
 ShowToc: true
 TocOpen: false
 ---
-最近检查`BUG`,发下一个奇怪的问题,[android.database.sqlite.SQLiteFullException database ](https://www.google.com/search?q=android.database.sqlite.SQLiteFullException+database+or+disk+is+full+(code+13)&oq=android.database.sqlite.SQLiteFullException+database+or+disk+is+full+(code+13)&aqs=chrome..69i57j69i60.479j0j4&sourceid=chrome&es_sm=119&ie=UTF-8),
-查阅很多资料也没有弄明白所以然,把一些整理的资料放上来,希望遇到的朋友指教.
 
-![limitsinsqlite01](/images/limitsinsqlite01.png){:class="center-image"}
+最近排查一个 BUG 时遇到一个奇怪的问题：`android.database.sqlite.SQLiteFullException: database or disk is full (code 13)`。查阅了很多资料也没能完全弄清楚根因，这里把整理的资料分享出来，希望遇到类似问题的朋友共同探讨。
+
+![limitsinsqlite01](/images/limitsinsqlite01.png)
 
 <!--more-->
-最开始的时候我觉得是空间满了,但是根据上图的信息应该不是,然后就觉得是`SQLite`存在大小限制,于是我遇到了这样的说明[maximum-number-of-rows-in-a-sqlite-table](http://stackoverflow.com/questions/1546947/maximum-number-of-rows-in-a-sqlite-table)
 
->In July 2011 the sqlite3 limits page was updated to define the practical limits to this question based on the maximum size of the database which is 14 terabytes:
-Maximum Number Of Rows In A Table
-The theoretical maximum number of rows in a table is 264 (18446744073709551616 or about 1.8e+19). This limit is unreachable since the maximum database size of 14 terabytes will be reached first. A 14 terabytes database can hold no more than approximately 1e+13 rows, and then only if there are no indices and if each row contains very little data.So with a max database size of 14 terabytes you'd be lucky to get ~1 Trillion rows since if you actually had a useful table with data in it the number of rows would be constrained by the size of the data. You could probably have up to 10s of billions of rows in a 14 TB database.
+最开始怀疑是磁盘空间满了，但从上图信息来看应该不是。然后猜测是 SQLite 存在大小限制。Stack Overflow 上有一个经典的讨论：[maximum-number-of-rows-in-a-sqlite-table](http://stackoverflow.com/questions/1546947/maximum-number-of-rows-in-a-sqlite-table)：
 
-论行数,论体积我这个都排不上啊!!!然后我就想到是不是平台的关系,我又找到了[Comparison_of_relational_database_management_systems](http://en.wikipedia.org/wiki/Comparison_of_relational_database_management_systems#Limits),也不是啊,这可如何是好,我有开始逐一的排查官方文档[Limits In SQLite](http://www.sqlite.org/limits.html)
+> In July 2011 the sqlite3 limits page was updated to define the practical limits...The theoretical maximum number of rows in a table is 2^64 (about 1.8e+19). This limit is unreachable since the maximum database size of 14 terabytes will be reached first. A 14 terabytes database can hold no more than approximately 1e+13 rows...So with a max database size of 14 terabytes you'd be lucky to get ~1 Trillion rows since if you actually had a useful table with data in it the number of rows would be constrained by the size of the data.
 
-* Maximum length of a string or BLOB 支持`string`或`BLOB`的长度是$$2^{31}-1 或者 2147483647 $$
-* Maximum Number Of Columns 默认最多的列数是2000,可以在编译的时候设置为32767
-* Maximum Length Of An SQL Statement 默认的限制是1000000,可以重新定义到1073741824
-* Maximum Number Of Tables In A Join 最多只支持64个以内的链表查询
-* Maximum Depth Of An Expression Tree 建议不要有深度过大,现在默认是1000,如果设置成0,是不强制限制
-* Maximum Number Of Arguments On A Function 默认100
-* Maximum Number Of Terms In A Compound SELECT Statement 默认值500,我觉得这个也不会超过啊
-* Maximum Length Of A LIKE Or GLOB Pattern 默认值50000,特别标注了时间复杂度是$$N^2$$,N是字符总数
-* Maximum Number Of Host Parameters In A Single SQL Statement 默认是999
-* Maximum Depth Of Trigger Recursion v3.6.18 开始支持,v3.7.0默认值是1000
-* Maximum Number Of Attached Databases 支持的DB数,默认是10,最大不能超过125
-* Maximum Number Of Pages In A Database File 一般设置1073741823,最大数字2147483646,When used with the maximum page size of 65536, this gives a maximum SQLite database size of about 140 terabytes.
-* Maximum Number Of Rows In A Table $$2^{64} $$(18446744073709551616 or about 1.8e+19),这是一个不可到达的数字,因为会先超过文件大小
-* Maximum Database Size Every database consists of one or more "pages". Within a single database, every page is the same size, but different database can have page sizes that are powers of two between 512 and 65536, inclusive. The maximum size of a database file is 2147483646 pages. At the maximum page size of 65536 bytes, this translates into a maximum database size of approximately 1.4e+14 bytes (140 terabytes, or 128 tebibytes, or 140,000 gigabytes or 128,000 gibibytes).
-* Maximum Number Of Tables In A Schema  
+论行数、论体积，我这边的情况都排不上号。接着怀疑是平台相关，查了 [Comparison of relational database management systems](http://en.wikipedia.org/wiki/Comparison_of_relational_database_management_systems#Limits) 也不对。于是逐一排查官方文档 [Limits In SQLite](https://www.sqlite.org/limits.html)，以下是整理出的关键限制清单。
 
-please help the poor man.
+## SQLite 关键限制汇总
 
-------------------------
+### 字符串 / BLOB 长度
+最大支持 2^31 - 1 字节，即 2147483647 字节（约 2 GB）。
 
-今天发现了一点蛛丝马迹,不确定是不是这个问题:
+### 列数
+默认最多 2000 列，可在编译时调整为 32767。
 
-* I deleted a lot of data but the database file did not get any smaller. Is this a bug?
+### SQL 语句长度
+默认限制 1000000 字节，可上调至 1073741824 字节（1 GB）。
 
-No. When you delete information from an SQLite database, the unused disk space is added to an internal "free-list" and is reused the next time you insert data. The disk space is not lost. But neither is it returned to the operating system.
+### JOIN 中的表数
+最多支持 64 个表的连接查询。
 
-If you delete a lot of data and want to shrink the database file, run the [VACUUM](http://www.sqlite.org/lang_vacuum.html) command. VACUUM will reconstruct the database from scratch. This will leave the database with an empty free-list and a file that is minimal in size. Note, however, that the VACUUM can take some time to run and it can use up to twice as much temporary disk space as the original file while it is running.
+### 表达式树深度
+默认限制 1000，设为 0 则不强制限制。
 
-An alternative to using the VACUUM command is auto-vacuum mode, enabled using the [auto_vacuum pragma](http://www.sqlite.org/pragma.html#pragma_auto_vacuum).
+### 函数参数
+默认最多 100 个参数。
 
-----
-2017-04-01 17:49:02
-补充一个可能的原因
-可能限制了数据库最大体积导致的，如果条件允许，可以考虑放松限制。如果这个数据库是别人提供的，那么可以使用 getMaximumSize 获取当前最大容量,做一些兼容处理
-[Bugly SQLiteFullException](http://bugly.qq.com/bbs/forum.php?mod=viewthread&tid=1010)
+### 复合 SELECT 的项数
+默认值 500。
 
+### LIKE / GLOB 模式长度
+默认 50000 字节。官方特别标注了时间复杂度为 O(N^2)，N 为字符总数。
 
+### SQL 语句中的宿主参数
+默认 999 个。
 
-> [Limits In SQLite](http://www.sqlite.org/limits.html)<br />
-[what-are-the-performance-characteristics-of-sqlite-with-very-large-database-files](http://stackoverflow.com/questions/784173/what-are-the-performance-characteristics-of-sqlite-with-very-large-database-files)
+### 触发器递归深度
+从 v3.6.18 开始支持，v3.7.0 起默认值为 1000。
+
+### 附加的数据库数
+默认最多附加 10 个数据库，最大不超过 125 个。
+
+### 数据库文件页数
+一般设置为 1073741823，最大为 2147483646。配合最大页大小 65536 字节，最大数据库体积约为 140 TB（新版 SQLite 的理论上限已达 281 TB）。
+
+### 表中的行数
+理论上限为 2^64（约 1.8e+19），实际上在此之前会先达到文件大小上限。
+
+### 数据库最大体积
+每个数据库由一个或多个"页"组成。页大小可以是 512 到 65536 字节之间（2 的幂）。数据库文件最大为 2147483646 页。在最大页大小 65536 字节下，最大数据库体积约 140 TB（或 128 TiB）。**注**：自 SQLite 3.45.0 起，页数上限提升至 2^32 - 2，对应最大体积约 281 TB。
+
+## 排查方向
+
+从以上限制来看，SQLite 自身的上限远高于实际场景，所以方向需要调整。以下两个方向值得关注。
+
+### 数据库体积与 VACUUM
+
+如果你删除了大量数据但数据库文件大小没有减小——这不是 BUG。SQLite 将被释放的空间放入内部的"空闲列表"（free-list），下一次插入数据时优先复用，但不会返还给操作系统。
+
+如果希望缩小数据库文件，可以执行 VACUUM 命令：
+
+```sql
+VACUUM;
+```
+
+VACUUM 会从头重建数据库，生成一个空闲列表为空的最小体积文件。但需要注意，VACUUM 执行时需要最多 2 倍于原文件的临时磁盘空间，且耗时较长。
+
+作为替代方案，可以启用自动清理模式：
+
+```sql
+PRAGMA auto_vacuum = FULL;   -- 1: fully auto-vacuum
+```
+
+需要权衡的是，auto_vacuum 虽然自动回收空闲页，但可能导致更严重的碎片化，且不会像 VACUUM 那样压缩未完全使用的页。
+
+### 数据库最大容量限制（Android 平台）
+
+如果数据库来自第三方或底层框架，可能显式限制了最大体积。可以通过以下方式检查：
+
+```java
+SQLiteDatabase db = getWritableDatabase();
+long maxSize = db.getMaximumSize(); // 获取当前最大容量
+```
+
+确认限制后，可以酌情调用 `setMaximumSize()` 放宽限制，或做兼容处理。
+
+相关讨论：[Bugly SQLiteFullException](http://bugly.qq.com/bbs/forum.php?mod=viewthread&tid=1010)（链接可能已失效）
+
+---
+
+如果你有类似经验或知道其他可能的原因，请多指教。
+
+## 参考资料
+
+- [Limits In SQLite (sqlite.org)](https://www.sqlite.org/limits.html)
+- [VACUUM Command (sqlite.org)](https://www.sqlite.org/lang_vacuum.html)
+- [Maximum number of rows in a SQLite table (Stack Overflow)](http://stackoverflow.com/questions/1546947/maximum-number-of-rows-in-a-sqlite-table)
+- [Comparison of relational database management systems (Wikipedia)](http://en.wikipedia.org/wiki/Comparison_of_relational_database_management_systems#Limits)
+- [SQLiteFullException (Android Developers)](https://developer.android.com/reference/android/database/sqlite/SQLiteFullException)
+- [Performance characteristics of SQLite with very large database files (Stack Overflow)](http://stackoverflow.com/questions/784173/what-are-the-performance-characteristics-of-sqlite-with-very-large-database-files)

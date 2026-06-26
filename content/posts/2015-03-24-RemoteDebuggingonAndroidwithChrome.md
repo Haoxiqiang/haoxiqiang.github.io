@@ -2,119 +2,119 @@
 title: "Remote Debugging on Android with Chrome"
 date: 2015-03-24 14:54:02
 author: "haoxiqiang"
-tags: ["blog"]
-categories: ["Blog"]
+tags: ["android", "chrome", "debug"]
+categories: ["Android"]
 ShowToc: true
 TocOpen: false
 ---
-今天前端同学告诉我说在`Chrome`能调试`Android`应用,搜了一下,设备是4.4以上的确实都是可以的,简述一下过程,技术人员应该一看就懂,不细翻译了,喜欢原味的直接走连接
 
-[https://developer.chrome.com/devtools/docs/remote-debugging](https://developer.chrome.com/devtools/docs/remote-debugging)
+Chrome DevTools 支持远程调试 Android 设备上的网页和 WebView 应用。这一功能对于移动端前端开发和混合应用开发来说非常实用,可以让我们使用桌面 Chrome 的完整开发者工具来调试移动端页面。
 
-![remote-debug](/images/remote-debug-banner.png)
 <!--more-->
-## 要求
 
-* Chrome 32 or later installed on your development machine.
-* A USB cable to connect your Android device.
-* For browser debugging: Android 4.0+ and Chrome for Android.
-* For app debugging: Android 4.4+ and a WebView configured for debugging.
+## 前置要求
 
-## 步骤
+- 开发机上安装 **Chrome 32+**
+- USB 数据线连接 Android 设备
+- **浏览器调试**: Android 4.0+ 且安装了 Chrome for Android
+- **WebView 调试**: Android 4.4+ (KitKat) 且 WebView 已配置为可调试模式
 
-* 打开设备的开发者模式并用数据线连接手机
-* 打开`Chrome`,地址栏输入`chrome://inspect`,确保选中,设备连接的时候可能会弹出来授权界面,不用说直接`OK`
-<br />![chrome-discover-usb](/images/chrome-discover-usb.png)
-* 这时候`Chrome`会展示出来已打开的可调试的设备端的浏览器`Tab`,点击`inspect`即可查看
-<br />![chrome-inspect-tabs](/images/chrome-inspect-tabs.png)
-* 如果我们想调试自己的应用的话,需要在代码中增加`WebView.setWebContentsDebuggingEnabled(true);`这样就可以了
+## 操作步骤
 
+### 1. 连接设备
+
+打开设备的开发者模式(设置 > 关于手机 > 连续点击版本号),确保 **USB 调试** 已启用,然后用数据线连接手机。
+
+### 2. 打开 Chrome 检查页面
+
+在桌面 Chrome 地址栏输入 `chrome://inspect`,确保 **Discover USB devices** 已勾选。设备首次连接时可能会弹出授权确认,点击确定即可。
+
+![chrome-discover-usb](/images/chrome-discover-usb.png)
+
+### 3. 检查浏览器标签页
+
+此时 Chrome 会列出设备上已打开的浏览器标签页,点击 **inspect** 即可打开 DevTools 调试界面。
+
+![chrome-inspect-tabs](/images/chrome-inspect-tabs.png)
+
+### 4. 调试 WebView 应用
+
+如果想调试自己的应用中的 WebView,需要在代码中添加:
+
+```java
 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
     WebView.setWebContentsDebuggingEnabled(true);
 }
+```
+
+> 生产环境中建议仅在 debug 构建中启用,或通过编译开关控制。
 
 ![chrome-debug-webview](/images/chrome-debug-webview.png)
-* `Chrome`的调试就不说了,如果需要实时显示的话,点击`Screencast`
-<br />![screencast-icon-location](/images/screencast-icon-location.png)
 
-### Debugging tips
+### 5. 实时显示设备屏幕
 
-* Use F5 (or Cmd+r on Mac) to reload a remote page from the DevTools window.
-* Keep the device on a cellular network. Use the Network panel to view the network waterfall under actual mobile conditions.
-* Use the Timeline panel to analyze rendering and CPU usage. Hardware on mobile devices often runs much slower than on your development machine.
-* If you’re running a local web server, use port forwarding or virtual host mapping to access the site on your device.
-      
+点击 DevTools 中的 **Screencast** 图标,可以实时查看设备屏幕,并在桌面上直接操作。
 
+![screencast-icon-location](/images/screencast-icon-location.png)
 
-下面的部分不翻译了,直接贴上来吧
-### Port forwarding
+## 调试技巧
 
-Your phone can't always reach the content on your development server. They might be on different networks. Moreover, you might be developing on a restricted corporate network.
+- 按 **F5** (Mac 上为 **Cmd+R**) 从 DevTools 刷新远程页面
+- 使设备使用 **蜂窝网络**连接,在 Network 面板中查看真实移动网络下的网络瀑布图
+- 使用 **Timeline 面板** 分析渲染和 CPU 性能——移动设备的硬件通常远慢于开发机
+- 如果开发服务器无法从设备访问,使用端口转发(Port Forwarding)或虚拟主机映射(Virtual Host Mapping)
 
-Port forwarding on Chrome for Android makes it easy to test your development site on mobile. It works by creating a listening TCP port on your mobile device that maps to a particular TCP port on your development machine. Traffic between these ports travels through USB, so the connection doesn't depend on your network configuration.
+## 端口转发
 
-To enable port forwarding:
+手机通常无法直接访问开发服务器(它们可能处于不同的网络,或开发机处于受限的企业网络中)。Chrome 的端口转发功能通过在手机上创建一个监听 TCP 端口,将流量通过 USB 转发到开发机的指定端口,从而解决这个问题。
 
-* Open chrome://inspect on your development machine.
-* Click Port Forwarding. The port forwarding settings display.
-* In the Device port field, enter the port number you want your Android device to listen on. 
-(The default port is 8080.)
-* In the Host field, enter the IP address (or hostname) and port number where your web application is running. 
-This address can be any local location accessible from your development machine. Currently, port numbers must be between 1024 and 65535 (inclusive).
-* Check Enable port forwarding.
-* Click Done.
-<br />![port-forwarding-on-device](/images/port-forwarding-on-device.png)
+设置步骤:
 
-### Virtual host mapping
+1. 打开 `chrome://inspect`
+2. 点击 **Port Forwarding**
+3. 在 **Device port** 中填写设备要监听的端口(默认 8080)
+4. 在 **Host** 中填写开发服务器的 IP 和端口(端口必须在 1024-65535 之间)
+5. 勾选 **Enable port forwarding**
+6. 点击 **Done**
 
-* On the host machine, install proxy software such as Charles Proxy (free trial available) or Squid.
-* Run the proxy server and note the port that it's using.Note: The proxy server and your development server must be running on different ports.
-* In a Chrome browser, navigate to chrome://inspect.
-* Click Port forwarding. The port forwarding settings display.
-* In the Device port field, enter the port number that you want your Android device to listen on. Use a port that Android allows, such as 9000.
-* In the Host field, enter localhost:xxxx, where xxxx is the port your proxy is running on.
-* Check Enable port forwarding.
-* Click Done.
+![port-forwarding-on-device](/images/port-forwarding-on-device.png)
 
-The proxy on the host machine is set up to make requests on behalf of your Android device.
+## 虚拟主机映射
 
-### Configure proxy settings on your device
+如果需要使用自定义域名访问本地开发服务器:
 
-Your Android device needs to communicate with the proxy on the host machine.
-To configure the proxy settings on your device:
+1. 在开发机上安装代理软件(如 Charles Proxy 或 Squid),运行代理并记下端口号
+2. 在 `chrome://inspect` 中设置端口转发,Device port 填写 9000,Host 填写 `localhost:代理端口`
+3. 在 Android 设备的 Wi-Fi 设置中手动配置代理为 `localhost:9000`
 
-* Select Settings > Wi-Fi.
-* Long-press the network that you are currently connected to.Note: Proxy settings apply per network.
-* Tap Modify network.
-* Select Advanced options.The proxy settings display.
-* Tap the Proxy menu and select Manual.
-* In the Proxy hostname field, enter localhost.
-* In the Proxy port field, enter 9000.
-* Tap Save.
+## 常见问题
 
-### Troubleshooting
+**设备未显示在 `chrome://inspect` 页面**
 
-**I can't see my device on the `chrome://inspect` page.**
+- Windows 用户需确认安装了正确的 USB 驱动,参见 [OEM USB Drivers](https://developer.android.com/studio/run/oem-usb)
+- 确保设备直接连接到电脑(不要经过 USB Hub)
+- 确认已启用 USB 调试,并在设备上同意 USB 调试授权
+- 桌面 Chrome 版本需高于设备上的 Chrome for Android 版本,可尝试 Chrome Canary
+- 如果仍然不行,在设备上进入 设置 > 开发者选项 > 撤销 USB 调试授权,重新连接
 
-* If you are developing on Windows, verify that the appropriate USB driver for your device is installed. See OEM USB Drivers on the Android Developers' site.
-* Verify that the device is connected directly to your machine, bypassing any hubs.
-* Verify that USB debugging is enabled on your device. Remember to accept the USB debugging permission alerts on your device.
-* On your desktop browser, navigate to chrome://inspect and verify that Discover USB devices is checked.
-* Remote debugging requires your version of desktop Chrome to be newer than the version of Chrome for Android on your device. Try using Chrome Canary (Mac/Windows) or the Chrome Dev channel release (Linux) on desktop.
+**浏览器标签页未显示**
 
-If you still can't see your device, unplug it. On your device, select Settings > Developer options. Tap Revoke USB debugging authorizations. Then, retry the device setup and discovery processes.
+- 在设备上打开 Chrome 并加载要调试的网页,然后刷新 `chrome://inspect`
 
-**I can't see my browser tabs on the `chrome://inspect` page.**
+**WebView 未显示**
 
-* On your device, open the Chrome browser and navigate to the web page you want to debug. Then, refresh the `chrome://inspect` page.
+- 确认 WebView 调试已启用(`setWebContentsDebuggingEnabled(true)`)
+- 在设备上打开包含 WebView 的应用,然后刷新 `chrome://inspect`
 
-**I can't see my WebViews on the `chrome://inspect` page.**
+**无法访问开发服务器**
 
-* Verify that WebView debugging is enabled for your app.
-* On your device, open the app with the WebView you want to debug. Then, refresh the `chrome://inspect` page.
+- 尝试启用端口转发或设置虚拟主机映射
 
-**I can't access my web server from my Android device.**
+如果上述方法都无效,可以使用 adb 工具的传统方案作为备选。
 
-* If network restrictions prevent your mobile device from accessing your development server, try enabling port forwarding or setting up a virtual host map.
+## 参考
 
-Lastly, if remote debugging still isn't working, you can revert to the legacy workflow using the adb binary from the Android SDK.
+- [Remote debugging WebViews — Chrome DevTools](https://developer.chrome.com/docs/devtools/remote-debugging/webviews)
+- [Debugging Web Apps — Android Developers](https://developer.android.com/develop/ui/views/layout/webapps/debug-chrome-devtools)
+- [OEM USB Drivers — Android Developers](https://developer.android.com/studio/run/oem-usb)
+- [Chrome DevTools Remote Debugging](https://developer.chrome.com/docs/devtools/remote-debugging)

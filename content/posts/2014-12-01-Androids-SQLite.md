@@ -3,40 +3,73 @@ title: "Android's SQLite"
 date: 2014-12-01 22:11:22
 author: "haoxiqiang"
 tags: ["android"]
-categories: ["Blog"]
+categories: ["Android"]
 ShowToc: true
 TocOpen: false
 ---
-SQLite数据库是一个非常小并且比较简单的数据库引擎,我们能够方便的使用它来做数据存储.Android 上创建和打开数据库只需要继承`SQLiteOpenHelper`, 默认的构造方法中，你要制定数据库名和版本,如果该数据库已经存在，则打开,否则会被创建。如果有许多单独的数据库文件。每个数据库都必须表示为单独的 `SQLiteOpenHelper`。但是这样使用的时候是有坑的, `SQLiteOpenHelper` 子类返回同样的 `SQLiteDatabase` 实例。这意味着在任何线程调用 `SQLiteDatabase.close()` 都会关闭你应用中所有的 `SQLiteDatabase` 实例。所以要格外注意打开和关闭时机,同时我觉得这样做容易混乱,不如合并到一个里面,除非数据巨大.
-数据库文件对你的应用来说是私有的，数据库文件没有加密,一般在`/data/data/(packageName)/database/`路径下面,如果是root的手机任何人都可以读取的.如果在不root的情况下读取,就得在你的应用中拷贝出来db文件放置到public路径中的位置.
+
+SQLite 是一个轻量级的关系型数据库引擎，Android 内置对其支持，非常适合本地数据持久化。无需额外配置，通过 `android.database.sqlite` 包下的 API 即可使用。
+
 <!--more-->
-``` java
+
+## SQLiteOpenHelper 的基本用法
+
+创建和打开数据库只需继承 `SQLiteOpenHelper`。构造方法中指定数据库名和版本号，系统会自动判断：如果数据库已存在则打开，否则创建新库并回调 `onCreate`。
+
+```java
 public class DBHelper extends SQLiteOpenHelper {
     private static final String TAG = "DBHelper";
-   	private static final String DATABASE_NAME = "contacts.db";
-   	private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "contacts.db";
+    private static final int DATABASE_VERSION = 1;
 
-   	public DBHelper(Context context) {
-       	super(context, DATABASE_NAME, null, DATABASE_VERSION);    	}
-
-   	/**
-   	* if the database named DATABASE_NAME doesn't exist in order to create it.     	*/
-    @Override
-   	public void onCreate(SQLiteDatabase sqLiteDatabase) {
-       	Log.i(TAG, "["+DATABASE_NAME+"v."+DATABASE_VERSION+"]");
-    	//TODO: Create the Database
+    public DBHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-   	/**
-   	* Called when the DATABASE_VERSION is increased.    	*/
+    /**
+     * Called when the database is created for the first time.
+     */
     @Override
-   	public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-       	Log.i(TAG, "Upgrading database["+DATABASE_NAME+" v." + newVersion+"]");
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        Log.i(TAG, "[" + DATABASE_NAME + " v." + DATABASE_VERSION + "]");
+        // TODO: Create tables here
+    }
+
+    /**
+     * Called when the DATABASE_VERSION is increased.
+     */
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase,
+                          int oldVersion, int newVersion) {
+        Log.i(TAG, "Upgrading database[" + DATABASE_NAME +
+              " v." + newVersion + "]");
     }
 }
 ```
->源码地址<br />
 
->参考<br />
-[Android 中的 SQLite 数据库支持](http://objccn.io/issue-11-5/)<br />
-[using the SQLite Database on Android and SQLiteOpenHelper](http://kylewbanks.com/blog/Tutorial-Implementing-a-Client-Side-Cache-using-the-SQLite-Database-on-Android-and-SQLiteOpenHelper)
+需要注意的是，数据库直到首次调用 `getWritableDatabase()` 或 `getReadableDatabase()` 时才会真正创建或打开。`onUpgrade` 在版本号递增时触发，应在此处执行表结构变更逻辑。
+
+## 单例模式与线程安全
+
+`SQLiteOpenHelper` 的子类会返回同一个 `SQLiteDatabase` 实例。这意味着在任何线程调用 `close()` 都会关闭应用中所有的数据库实例。因此需要格外注意打开和关闭的时机。
+
+建议的实践：
+
+- 使用单例模式管理 `SQLiteOpenHelper` 实例
+- 避免在多处频繁开关数据库连接
+- 除非数据量特别大，否则尽量将数据合并到一个数据库中，避免多个 `SQLiteOpenHelper` 实例带来的混乱
+
+## 数据库文件的存储位置与安全性
+
+数据库文件对应用来说是私有的，默认存储在 `/data/data/(packageName)/database/` 路径下。但需要注意：
+
+- 数据库文件**没有加密**，Root 过的设备上任何人都可以直接读取
+- 如需在非 Root 设备上导出数据库文件，需要在应用中先将其复制到公共目录
+- 敏感数据建议使用 `EncryptedDatabase` 或 SQLCipher 等方案加密
+
+## 参考
+
+- [SQLiteOpenHelper | Android Developers](https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper)
+- [Save data using SQLite | Android Developers](https://developer.android.com/training/data-storage/sqlite)
+- [SQLite 官方文档](https://www.sqlite.org/docs.html)
+- [Using the SQLite Database on Android and SQLiteOpenHelper](http://kylewbanks.com/blog/Tutorial-Implementing-a-Client-Side-Cache-using-the-SQLite-Database-on-Android-and-SQLiteOpenHelper)

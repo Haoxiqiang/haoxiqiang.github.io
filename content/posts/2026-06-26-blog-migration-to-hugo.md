@@ -11,21 +11,21 @@ TocOpen: true
 
 ## 背景
 
-这个博客从 2013 年底开始，使用 Jekyll 托管在 GitHub Pages 上，经历了几次主题变更，最近一次使用的是 [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) 7.1.1。
+这个博客从 2013 年底开始，使用 Jekyll 托管在 GitHub Pages 上，经历了几次主题变更。最近一次使用的是 [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) 7.1.1。
 
 积累了 55 篇文章后，决定重新审视技术栈选型，期望找到一个**简单、优雅、有技术范**的方案。
 
 ## 2026 年静态博客生态
 
-在做选型之前，整理了一下当前主流的静态站点生成器（SSG）对比：
+在选型之前，整理了当前主流的静态站点生成器（SSG）对比：
 
 | SSG | 语言 | 构建速度 | 特点 |
 |-----|------|----------|------|
 | Jekyll | Ruby | 中等 | GitHub Pages 原生支持，生态最成熟 |
 | Hugo | Go | 极快 (<1ms/页) | 单二进制，零依赖 |
-| Astro | JS/TS | 快 | 零 JS 默认输出，Island Architecture |
+| Astro | JS/TS | 快 | 默认零 JS 输出，Island Architecture |
 | 11ty | JS | 快 | 灵活，多模板引擎 |
-| Zola | Rust | 极快 | 单二进制，内置 Sass/高亮 |
+| Zola | Rust | 极快 | 单二进制，内置 Sass/语法高亮 |
 
 ### 为什么选 Hugo + PaperMod
 
@@ -71,17 +71,19 @@ TocOpen: false
 
 ### 3. 多语言配置
 
-Hugo 的多语言支持非常直观，通过文件名后缀区分：
+Hugo 的多语言支持通过文件名后缀区分，非常直观：
 
 ```
 content/posts/
-├── my-post.md        # 中文 (默认)
+├── my-post.md        # 中文（默认语言）
 └── my-post.en.md     # English
 ```
 
-配置中设置 `defaultContentLanguage: zh`，英文版本通过 `/en/` 前缀访问。
+在 `hugo.yaml` 中设置 `defaultContentLanguage: zh`，英文版本通过 `/en/` 前缀访问。
 
 ### 4. GitHub Actions 部署
+
+利用 [peaceiris/actions-hugo](https://github.com/peaceiris/actions-hugo) 和 GitHub 官方的 Pages 部署 action：
 
 ```yaml
 name: Deploy Hugo site to Pages
@@ -120,17 +122,17 @@ jobs:
 
 选择 PaperMod 后获得的开箱即用功能：
 
-- ✅ 深色/浅色模式自动切换
-- ✅ 站内搜索 (基于 Fuse.js)
-- ✅ 代码块一键复制
-- ✅ 阅读时间估计
-- ✅ 文章目录 (TOC)
-- ✅ 面包屑导航
-- ✅ RSS 订阅
-- ✅ SEO 优化 (Open Graph, Twitter Cards)
-- ✅ 响应式设计
-- ✅ 归档页面
-- ✅ 多语言支持
+- 深色/浅色模式自动切换
+- 站内搜索（基于 Fuse.js）
+- 代码块一键复制
+- 阅读时间估计
+- 文章目录（TOC）
+- 面包屑导航
+- RSS 订阅
+- SEO 优化（Open Graph、Twitter Cards）
+- 响应式设计
+- 归档页面
+- 多语言支持
 
 ## GitHub Pages 2026 最佳实践
 
@@ -138,17 +140,17 @@ jobs:
 
 ### 部署方式
 
-**推荐 GitHub Actions**，不再使用分支部署模式。Actions 方式的优势：
+**推荐使用 GitHub Actions**，不再使用旧的分支部署模式。Actions 方式的优势：
 - 不限于 Jekyll，可使用任何 SSG
 - 构建环境完全可控
-- 可以使用最新版本的工具
+- 始终使用最新版本的工具
 
 ### 性能优化
 
 - 启用 `minify` 压缩输出
-- 利用 CDN (GitHub Pages 自带 Fastly CDN)
+- 利用 CDN（GitHub Pages 自带 Fastly CDN）
 - 图片使用 WebP 格式
-- 启用 PWA 缓存离线访问
+- 启用 PWA 缓存支持离线访问
 
 ### 自定义域名
 
@@ -164,20 +166,22 @@ jobs:
 
 ## 迁移总结
 
-| 维度 | 之前 (Jekyll) | 之后 (Hugo) |
+| 维度 | 之前（Jekyll） | 之后（Hugo） |
 |------|---------------|-------------|
 | 构建时间 | ~5s | <100ms |
 | 依赖安装 | Ruby + Bundler | 单个 binary |
 | 主题 | Chirpy 7.1.1 | PaperMod |
 | 多语言 | 不支持 | 原生支持 |
 | 搜索 | 无 | Fuse.js 全文搜索 |
-| 文章数 | 55 | 54 (去除1个重复) |
+| 文章数 | 55 | 54（去除 1 个重复） |
 
-迁移工作量约半天，主要时间花在统一 front matter 格式上。结果很满意 — 构建速度从秒级变成毫秒级，主题简洁优雅，多语言也准备就绪。
+迁移工作量约半天，主要花在统一 front matter 格式上。结果很满意——构建速度从秒级变成毫秒级，主题简洁优雅，多语言也准备就绪。
 
 ## 参考资源
 
 - [Hugo 官方文档](https://gohugo.io/documentation/)
+- [Hugo 多语言配置](https://gohugo.io/configuration/languages/)
+- [PaperMod 主题 GitHub 仓库](https://github.com/adityatelange/hugo-PaperMod)
 - [PaperMod 主题文档](https://adityatelange.github.io/hugo-PaperMod/)
 - [Hugo GitHub Pages 部署指南](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
-- [2026 年 SSG 对比评测](https://www.jekyllpad.com/blog/best-static-site-generator) (jekyllpad.com)
+- [peaceiris/actions-hugo](https://github.com/peaceiris/actions-hugo)

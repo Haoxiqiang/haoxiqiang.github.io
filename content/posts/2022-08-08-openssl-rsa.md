@@ -1,15 +1,18 @@
 ---
-title: "openssl rsa 新的认知"
+title: "OpenSSL RSA 加密的一个认知盲区"
 date: 2022-08-08 17:09:43
 author: "haoxiqiang"
-tags: ["openssl", "rsa"]
-categories: ["Blog"]
+tags: ["openssl", "rsa", "cryptography"]
+categories: ["Security"]
 ShowToc: true
 TocOpen: false
 ---
-我本来很清楚不同加密方式的区别和使用,今天在写一个RSA的时候发现公钥加密出来的结果每次都不一样,这就触发了盲点,很奇怪这里的实现,去看了一下原理
 
-我的使用代码如下
+原本对 RSA 不同加密方式的区别和使用场景还是很清楚的。今天在实现一个 RSA 加密功能时，发现公钥加密结果每次都不一样，这个现象触发了我的盲区。查阅相关资料后，记录一下背后的原理。
+
+## 问题现象
+
+以下代码使用 OpenSSL 的 EVP API 进行 RSA 加密，没有显式传入随机值，但每次运行结果都不相同：
 
 ```c
 unsigned char *encode_by_rsa(const char *public_key, unsigned const char *input) {
@@ -44,17 +47,25 @@ unsigned char *encode_by_rsa(const char *public_key, unsigned const char *input)
     return encrypted_data;
 }
 ```
-可以看到,没有随机值传入,但是每次的调用结果是不同的,原因是:
-**不管是使用RSA私钥进行签名还是公钥进行加密，操作中都需要对待处理的数据先进行填充，然后再对填充后的数据进行加密处理。**
-[RFC2313](https://www.rfc-editor.org/rfc/rfc2313.html)
-[RFC2313#section-8.1](https://www.rfc-editor.org/rfc/rfc2313.html#section-8.1)
-有说明 PKCS 填充有不同的方式,每次在数据被加密前都会使用伪随机数进行填充
-以代码中的OAEP填充为例 [Optimal_asymmetric_encryption_padding](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding)
-[RSA组件之最优非对称加密填充(OAEP)的实现](https://blog.csdn.net/guyongqiangx/article/details/121055655)
 
-以前确实没有看这里面的的实现.
+## 原因：随机填充
 
-简单的写一个`Python`的 `Sample`:
+**不管是 RSA 私钥签名还是公钥加密，操作中都需要对待处理数据先进行填充，再对填充后的数据进行加密运算。** 填充过程中引入了伪随机数，所以即使相同的输入和密钥，每次输出都不同。
+
+### 填充方式详解
+
+标准 RSA 操作中，数据长度必须小于密钥长度。在实际应用（如代码中使用的 OAEP 填充）中，填充有以下作用：
+
+| 填充方式 | 规范 | 特点 |
+|----------|------|------|
+| **PKCS#1 v1.5** | RFC 2313 | 传统填充，历史最久，但存在 Bleichenbacher 填充预言攻击 |
+| **OAEP** | PKCS#1 v2.0 (RFC 2437) / v2.1 (RFC 3447) | 最优非对称加密填充，推荐用于新应用，引入随机性 |
+| **PSS** | PKCS#1 v2.1 | 用于签名，也是概率性的 |
+
+OAEP（Optimal Asymmetric Encryption Padding）通过在数据前添加随机掩码，确保了加密结果每次不同。这正是代码中 `RSA_PKCS1_OAEP_PADDING` 的表现。
+
+## Python Sample
+
 ```python
 import base64
 
@@ -82,8 +93,6 @@ def rsa_decode(encrypt_text):
 
 
 def main():
-    # print("private_key", private_key.exportKey().decode())
-    # print("public_key", public_key.exportKey().decode())
     data = "Hello, world!"
     encrypt_text = rsa_encrypt(data.encode())
     print("encrypt_text", encrypt_text)
@@ -93,5 +102,13 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 ```
+
+## 参考资源
+
+- [RFC 2313 — PKCS #1: RSA Encryption Version 1.5](https://www.rfc-editor.org/rfc/rfc2313)
+- [RFC 2437 — PKCS #1: RSA Cryptography Specifications Version 2.0](https://www.rfc-editor.org/rfc/rfc2437)
+- [RFC 3447 — PKCS #1: RSA Cryptography Specifications Version 2.1](https://www.rfc-editor.org/rfc/rfc3447)
+- [OpenSSL 官方文档 — RSA_public_encrypt](https://docs.openssl.org/1.1.1/man3/RSA_public_encrypt/)
+- [OpenSSL 3.x EVP RSA 文档](https://docs.openssl.org/3.2/man7/EVP_ASYM_CIPHER-RSA/)
+- [Wikipedia — Optimal Asymmetric Encryption Padding](https://en.wikipedia.org/wiki/Optimal_asymmetric_encryption_padding)

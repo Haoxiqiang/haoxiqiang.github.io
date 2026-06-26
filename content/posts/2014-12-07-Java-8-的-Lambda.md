@@ -1,100 +1,142 @@
 ---
-title: "Java 8的Lambda表达式"
+title: "Java 8 的 Lambda 表达式"
 date: 2014-12-07 15:35:07
 author: "haoxiqiang"
 tags: ["java"]
-categories: ["Blog"]
+categories: ["Java"]
 ShowToc: true
 TocOpen: false
 ---
-啥是`Lambda`表达式?写个最简单的看看:
 
-``` java
-Runnable runnable1 = new Runnable() {	
-	@Override
-	public void run() {
-		System.out.println("runnable1 start!!!");
-	}
+## 什么是 Lambda 表达式？
+
+Lambda 表达式是 Java 8 引入的核心特性，让代码更加简洁。先看一个最直观的例子：
+
+```java
+Runnable runnable1 = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("runnable1 start!!!");
+    }
 };
 Runnable runnable2 = () -> System.out.println("runnable2 start!!!");
+
 runnable1.run();
 runnable2.run();
 ```
-这个是一个无参数无返回值的例子,可以直接写成`()->expression`
+
+两段代码完全等价，但 Lambda 版本只有一行。基本形式为 `() -> expression` 或 `() -> { statements; }`。
+
 <!--more-->
-``` java
+
+## 有参数无返回值
+
+```java
 JButton testButton = new JButton("Test Button");
 testButton.addActionListener(new ActionListener() {
-	@Override
-	public void actionPerformed(ActionEvent ae) {
-		System.out.println("Click Detected by Anon Class");
-	}
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        System.out.println("Click Detected by Anon Class");
+    }
 });
 testButton.addActionListener(e -> System.out
-		.println("Click Detected by Lambda Listner"));
+        .println("Click Detected by Lambda Listner"));
 ```
-这个是一个有参数无返回值的例子,可以直接写成`e->expression`
-``` java
+
+单参数时可省略括号，形式为 `e -> expression`。
+
+## 有参数有返回值
+
+```java
 List<Person> personList = Person.createShortList();
-// Sort with Inner Class
-Collections.sort(personList, new Comparator<Person>(){
-  public int compare(Person p1, Person p2){
-    return p1.getSurName().compareTo(p2.getSurName());
-  }
+
+// 匿名内部类
+Collections.sort(personList, new Comparator<Person>() {
+    public int compare(Person p1, Person p2) {
+        return p1.getSurName().compareTo(p2.getSurName());
+    }
 });
-// Use Lambda instead
-Collections.sort(personList, (Person p1, Person p2) -> p1.getSurName().compareTo(p2.getSurName()));
+
+// Lambda 版本
+Collections.sort(personList,
+    (Person p1, Person p2) -> p1.getSurName().compareTo(p2.getSurName()));
 ```
-这个是一个有参数有返回值的例子,可以直接写成`(p1,p2)->{return expression;}`
-当你看到这里,你虽然不明白为什么,但是你确实是会使用了最基本的几种`Predicate` `Lambda`表达式的用法,我们先不管`Lambda`的优劣,只是研究一下它的特点.如果你自己定义了一个接口你可以使用`@FunctionalInterface`来声明,但是不管声明不声明,`java 8`都会默认看做是函数式接口
 
-Java 8 提供了多种类型的`function`
+多参数带返回值的 Lambda 可写成 `(p1, p2) -> { return expression; }`。当类型可推断时，参数类型可以省略。
 
-* Predicate: A property of the object passed as argument
-* Consumer: An action to be performed with the object passed as argument
-* Function: Transform a T to a U
-* Supplier: Provide an instance of a T (such as a factory)
-* UnaryOperator: A unary operator from T -> T
-* BinaryOperator: A binary operator from (T, T) -> T
+## @FunctionalInterface 与函数式接口
 
-如果是集合,遍历的时候可以选择使用`forEach`
+如果一个接口中只有一个抽象方法，即使不加 `@FunctionalInterface` 注解，Java 8 也会将其视为函数式接口。加上注解可以明确意图，并在违反约定时让编译器报错。
 
-``` java
+常见的函数式接口包括 `Runnable`、`Comparator`、`ActionListener` 等。
+
+## Java 8 内置的函数式接口
+
+Java 8 在 `java.util.function` 包下提供了多种标准函数式接口：
+
+| 接口 | 描述 |
+|------|------|
+| `Predicate<T>` | 接收参数 T，返回 boolean |
+| `Consumer<T>` | 接收参数 T，无返回值 |
+| `Function<T, R>` | 接收 T，返回 R |
+| `Supplier<T>` | 不接受参数，返回 T（工厂模式） |
+| `UnaryOperator<T>` | 接收 T，返回 T（一元操作） |
+| `BinaryOperator<T>` | 接收两个 T，返回 T（二元操作） |
+
+## 集合操作与 Stream
+
+结合 Stream API 可以写出非常简洁的数据处理代码：
+
+```java
 List<Person> pl = Person.createShortList();
-pl.forEach( p -> p.printWesternName() );
+
+// forEach
+pl.forEach(p -> p.printWesternName());
 pl.forEach(Person::printEasternName);
-pl.forEach(p -> { System.out.println(p.printCustom(r -> "Name: " + r.getGivenName())); });
-pl.stream().filter(p->p.getAge()>16)
-  .forEach(Person::printWesternName);
+pl.forEach(p -> {
+    System.out.println(p.printCustom(
+        r -> "Name: " + r.getGivenName()));
+});
 
-// Make a new list after filtering.
-Predicate<Person> allDraftees = p -> p.getAge() >= 18 && p.getAge() <= 25 && p.getGender() == Gender.MALE;
+// filter + forEach
+pl.stream().filter(p -> p.getAge() > 16)
+    .forEach(Person::printWesternName);
+
+// filter + collect（生成新列表）
+Predicate<Person> allDraftees =
+    p -> p.getAge() >= 18 && p.getAge() <= 25
+         && p.getGender() == Gender.MALE;
 List<Person> pilotList = pl
-        .stream()
-        .filter(allDraftees)
-        .collect(Collectors.toList());
+    .stream()
+    .filter(allDraftees)
+    .collect(Collectors.toList());
 
-Predicate<Person> allPilots = p -> p.getAge() >= 23 && p.getAge() <= 65;
+// mapToInt + sum
+Predicate<Person> allPilots =
+    p -> p.getAge() >= 23 && p.getAge() <= 65;
 long totalAge = pl
-        .stream()
-        .filter(allPilots)
-        .mapToInt(p -> p.getAge())
-        .sum();
+    .stream()
+    .filter(allPilots)
+    .mapToInt(p -> p.getAge())
+    .sum();
 
-// Get average of ages
+// parallelStream + average
 OptionalDouble averageAge = pl
-        .parallelStream()
-        .filter(allPilots)
-        .mapToDouble(p -> p.getAge())
-        .average();
-
+    .parallelStream()
+    .filter(allPilots)
+    .mapToDouble(p -> p.getAge())
+    .average();
 ```
-接下来的混合使用,我没弄太明白,这种扩展了很多层的,看起来就头晕啊...
-``` java
+
+## 泛型混合使用
+
+下面这个例子展示了如何将 `Predicate`、`Function` 和 `Consumer` 组合为一个通用的处理管道。可读性随着层级增加而下降，但理解了每个接口的职责后还是可以看懂的：
+
+```java
 public static <X, Y> void processElements(
     Iterable<X> source,
     Predicate<X> tester,
-    Function <X, Y> mapper,
+    Function<X, Y> mapper,
     Consumer<Y> block) {
     for (X p : source) {
         if (tester.test(p)) {
@@ -105,7 +147,10 @@ public static <X, Y> void processElements(
 }
 ```
 
->参考<br />
-[Lambda-QuickStart](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html)<br />
-[LambdaExpressions](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)<br />
-[LambdaExpressions性能影响](/source/pdf/jvmls2013kuksen-2014088.pdf)
+## 参考
+
+- [Lambda Expressions (Oracle Official Tutorial)](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+- [Lambda-QuickStart (Oracle OBE)](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html)
+- [java.util.function Package (Java SE 8)](https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html)
+- [Project Lambda (OpenJDK)](https://openjdk.org/projects/lambda/)
+- [Lambda Expressions (JLS 15.27)](https://docs.oracle.com/javase/specs/jls/se8/html/jls-15.html#jls-15.27)

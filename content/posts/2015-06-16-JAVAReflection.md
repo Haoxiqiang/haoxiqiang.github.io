@@ -1,79 +1,79 @@
 ---
-title: "Java Reflection"
+title: "Java Reflection 修改 private static final 字段"
 date: 2015-06-16 11:09:06
 author: "haoxiqiang"
-tags: ["java"]
-categories: ["Blog"]
+tags: ["java", "reflection", "jls"]
+categories: ["Java"]
 ShowToc: true
 TocOpen: false
 ---
-[change-private-static-final-field-using-java-reflection](http://stackoverflow.com/questions/3301635/change-private-static-final-field-using-java-reflection)
-最近搞内存泄露很多地方得自己反射去改值,看到一个不错的回答,记录一下
+
+排查内存泄漏问题时，经常需要反射修改字段值。在 Stack Overflow 上看到一个高质量回答，整理如下。
 
 <!--more-->
 
-Assuming no SecurityManager is preventing you from doing this, you can use setAccessible to get around private and resetting the modifier to get rid of final, and actually modify a private static final field.
+## 能否修改 `private static final` 字段？
 
-## Here's an example:
-``` java
+在 SecurityManager 允许的前提下，可以通过 `setAccessible` 绕过 `private` 限制，再移除 `final` 修饰符，从而修改 `private static final` 字段。
+
+## 示例代码
+
+```java
 import java.lang.reflect.*;
+
 public class EverythingIsTrue {
-   static void setFinalStatic(Field field, Object newValue) throws Exception {
-      field.setAccessible(true);
+    static void setFinalStatic(Field field, Object newValue) throws Exception {
+        field.setAccessible(true);
 
-      Field modifiersField = Field.class.getDeclaredField("modifiers");
-      modifiersField.setAccessible(true);
-      modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+        Field modifiersField = Field.class.getDeclaredField("modifiers");
+        modifiersField.setAccessible(true);
+        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
 
-      field.set(null, newValue);
-   }
-   public static void main(String args[]) throws Exception {      
-      setFinalStatic(Boolean.class.getField("FALSE"), true);
+        field.set(null, newValue);
+    }
 
-      System.out.format("Everything is %s", false); // "Everything is true"
-   }
+    public static void main(String args[]) throws Exception {
+        setFinalStatic(Boolean.class.getField("FALSE"), true);
+        System.out.format("Everything is %s", false); // "Everything is true"
+    }
 }
 ```
-Assuming no SecurityException is thrown, the above code prints "Everything is true".
 
-## What's actually done here is as follows:
+若无 SecurityException 抛出，上述代码输出 `"Everything is true"`。
 
-The primitive boolean values true and false in main are autoboxed to reference type Boolean "constants" Boolean.TRUE and Boolean.FALSE
-Reflection is used to change the public static final Boolean.FALSE to refer to the Boolean referred to by Boolean.TRUE
-As a result, subsequently whenever a false is autoboxed to Boolean.FALSE, it refers to the same Boolean as the one refered to by Boolean.TRUE
-Everything that was "false" now is "true"
+## 原理
 
-## Related questions
+1. `main` 中的 `true` 和 `false` 被自动装箱为 `Boolean.TRUE` 和 `Boolean.FALSE`
+2. 通过反射将 `Boolean.FALSE` 指向 `Boolean.TRUE` 所引用的对象
+3. 此后所有 `false` 的自动装箱结果都变为 `Boolean.TRUE`
+4. 于是原本为 "false" 的地方都变成了 "true"
 
-[Using reflection to change static final File.separatorChar for unit testing](http://stackoverflow.com/questions/2474017/using-reflection-to-change-static-final-file-separatorchar-for-unit-testing/2474242#2474242)
-[How to limit setAccessible to only “legitimate” uses?](http://stackoverflow.com/questions/2481862/how-to-limit-setaccessible-to-only-legitimate-uses)
+## 位运算说明
 
-* Has examples of messing with Integer's cache, mutating a String, etc
-
-## Caveats
-
-Extreme care should be taken whenever you do something like this. It may not work because a SecurityManager may be present, but even if it doesn't, depending on usage pattern, it may or may not work.
-
-[JLS 17.5.3 Subsequent Modification of Final Fields](http://java.sun.com/docs/books/jls/third_edition/html/memory.html#17.5.3)
-
-In some cases, such as deserialization, the system will need to change the final fields of an object after construction. final fields can be changed via reflection and other implementation dependent means. The only pattern in which this has reasonable semantics is one in which an object is constructed and then the final fields of the object are updated. The object should not be made visible to other threads, nor should the final fields be read, until all updates to the final fields of the object are complete. Freezes of a final field occur both at the end of the constructor in which the final field is set, and immediately after each modification of a final field via reflection or other special mechanism.
-
-Even then, there are a number of complications. If a final field is initialized to a compile-time constant in the field declaration, changes to the final field may not be observed, since uses of that final field are replaced at compile time with the compile-time constant.
-
-Another problem is that the specification allows aggressive optimization of final fields. Within a thread, it is permissible to reorder reads of a final field with those modifications of a final field that do not take place in the constructor.
-
-### See also
-
-[JLS 15.28 Constant Expression](http://docs.oracle.com/javase/specs/jls/se7/html/jls-15.html#jls-15.28)
-It's unlikely that this technique works with a primitive private static final boolean, because it's inlineable as a compile-time constant and thus the "new" value may not be observable
-
-## Appendix: On the bitwise manipulation
-
-Essentially,
-
+```java
 field.getModifiers() & ~Modifier.FINAL
-turns off the bit corresponding to Modifier.FINAL from field.getModifiers(). & is the bitwise-and, and ~ is the bitwise-complement.
+```
 
-### See also
+- `field.getModifiers()` 获取修饰符位掩码
+- `~Modifier.FINAL` 对 `FINAL` 位取反
+- 按位与运算，即清除 `FINAL` 位
 
-[Wikipedia/Bitwise operation](http://en.wikipedia.org/wiki/Bitwise_operations)
+## 注意事项
+
+- 此行为依赖于 `SecurityManager` 配置，开启后可能失败
+- JLS 17.5.3 明确指出：final 字段可以通过反射及其他实现相关手段修改，但语义上仅在对象构造完成且尚未被其他线程可见时才有合理含义
+- 若 final 字段声明时初始化为编译期常量（compile-time constant），反射修改可能无效——编译器已将常量内联到字节码中
+- JVM 可以对 final 字段的读取进行激进的指令重排优化
+
+> JLS 17.5.3：Final fields can be changed via reflection and other implementation dependent means. The only pattern in which this has reasonable semantics is one in which an object is constructed and then the final fields of the object are updated. The object should not be made visible to other threads, nor should the final fields be read, until all updates to the final fields of the object are complete.
+
+另见 [JLS 15.28 Constant Expression](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.28)：编译期常量（如原始类型的 `private static final boolean`）的内联特性使得反射修改很可能无效。
+
+## 参考
+
+- [Stack Overflow: Change private static final field using Java reflection](https://stackoverflow.com/questions/3301635/change-private-static-final-field-using-java-reflection)
+- [JLS 17.5.3: Subsequent Modification of Final Fields](https://docs.oracle.com/javase/specs/jls/se21/html/jls-17.html#jls-17.5.3)
+- [JLS 15.28: Constant Expression](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.28)
+- [Stack Overflow: Using reflection to change static final File.separatorChar](https://stackoverflow.com/questions/2474017/using-reflection-to-change-static-final-file-separatorchar-for-unit-testing)
+- [Stack Overflow: How to limit setAccessible to legitimate uses](https://stackoverflow.com/questions/2481862/how-to-limit-setaccessible-to-only-legitimate-uses)
+- [Wikipedia: Bitwise operation](https://en.wikipedia.org/wiki/Bitwise_operation)

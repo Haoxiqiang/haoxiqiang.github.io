@@ -1,14 +1,22 @@
 ---
-title: "Resource Shrinking"
+title: "Android Resource Shrinking 资源清理"
 date: 2015-12-23 17:43:07
 author: "haoxiqiang"
-tags: ["android"]
-categories: ["Blog"]
+tags: ["android", "gradle", "build", "optimization"]
+categories: ["Android"]
 ShowToc: true
 TocOpen: false
 ---
-构建项目过程中发现这样一个属性shrinkResources,用来删除一个项目中没有使用的资源文件,我把自己遇到的问题记录一下
-``` gradle
+
+构建项目时发现 `shrinkResources` 这个属性，用于删除项目中未使用的资源文件。记录一下使用中的问题和配置方法。
+
+<!--more-->
+
+## 基本配置
+
+`shrinkResources` 需要配合 `minifyEnabled` 一起使用，因为资源清理是在 ProGuard/R8 去除无用代码之后进行的：
+
+```gradle
 android {
     ...
     buildTypes {
@@ -21,62 +29,81 @@ android {
 }
 ```
 
-<!--more-->
-随着项目的越来越大,维护过程中难免疏漏掉一些没有使用的资源,现在通过 `Gradle`构建项目的时候可以配置 `shrinkResources true`,过滤掉这些没有被直接引用的资源,原理也就是查看这个文件是不是被其他文件引用.目前来看也只能在打包的时候删除掉 res中的无用文件(这个属性设置的时候这个`minifyenabled`也必须使用 true 才能生效,因为整个过程是在 proguard 去除掉无用代码之后才进行的任务,具体不讲构建流程了).我们可以直接看到究竟减少了多少体积和去除了那些文件,这部分操作需要我们记录下日志信息,一般我的做法就是在开发过程中,保存下来日志,然后分析一下,当然不同的构建版本可能看到的信息并不一样,我这里列出来的是官方的一个文档的内容,我们的应用比较干净这个属性已经看不出来什么效果了,不过具体信息大同小异
-``` bash
-./gradlew clean assembleRelease --info  > /Users/haoxiqiang/Documents/tifen-android-lib/app/build/build-output.txt
+## 查看清理结果
+
+通过 `--info` 日志查看整体缩减效果：
+
+```bash
+./gradlew clean assembleRelease --info  > build-output.txt
 
 ...
 :android:shrinkDebugResources
 Removed unused resources: Binary resource data reduced from 2570KB to 1711KB: Removed 33%
-Note: If necessary, you can disable resource shrinking by adding
-android {
-    buildTypes {
-        debug {
-            shrinkResources false
-        }
-    }
-}
-:android:validateDebugSigning
 ...
 ```
-``` bash
+
+查看具体跳过了哪些文件：
+
+```bash
 $ ./gradlew clean assembleDebug --info | grep "Skipped unused resource"
 Skipped unused resource res/anim/abc_fade_in.xml: 396 bytes
 Skipped unused resource res/anim/abc_fade_out.xml: 396 bytes
 Skipped unused resource res/anim/abc_slide_in_bottom.xml: 400 bytes
 ```
-有些时候可能有一些特殊需求,比如利用反射去取资源文件,就容易被删除掉(特别某些第三方的 sdk 也用这种方式,感觉坑逼的不行),现在的版本已经支持 `keep` 操作了,主要有两种形式,组合起来基本能满足大部分需求了
 
-* `Strict Versus Safe` 在对应的xml 文件中可以增加`shrinkMode="strict"`就可以保留这个文件
-``` xml
+## 保留或排除特定资源
+
+有些资源通过反射引用（常见于第三方 SDK），会被构建系统误删。现在的版本已经支持通过 `keep.xml` 配置保留规则。
+
+### Strict Mode
+
+在 `res/raw/keep.xml` 中设置 `shrinkMode="strict"` 启用严格模式：
+
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools"
     tools:shrinkMode="strict" />
 ```
-* `Keeping Resources` 在 raw 文件夹内建立 `keep.xml` 可以配置一些信息
-``` xml
+
+### 保留特定资源
+
+```xml
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:discard="@layout/unused2"
-    tools:keep="@layout/umeng_*,  @drawable/umeng_*, @anim/umeng_*" />
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@layout/umeng_*, @drawable/umeng_*, @anim/umeng_*" />
 ```
-这里有一个特殊的用法指定一定删除掉某个资源
-``` xml
+
+### 强制删除
+
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools"
     tools:shrinkMode="safe"
     tools:discard="@layout/unused2" />
 ```
 
-另外构建系统在去除资源的时候也会跳过一些看起来像是被引用的资源,比如`file:///android_res/drawable/ic_plus.png`这种形式的资源的 URL
+另外，构建系统也会跳过看起来像被引用的资源 URL，例如 `file:///android_res/drawable/ic_plus.png` 这类形式。
 
-国内很多应用不需要多语言支持的可以配置一个 `ResConfig `的东西,这样可以保留指定的语言,也可以配置`"nodpi", "hdpi"`来限定一些指定的资源
-``` gradle
+## 按需配置语言和密度
+
+国内很多应用不需要多语言支持，可以通过 `resConfigs` 保留指定语言或密度资源：
+
+```gradle
 android {
     defaultConfig {
         ...
         resConfigs "en", "zh"
-        }
+    }
 }
 ```
-总的建议的可以试一试,起码可以根据日志信息来手动过滤一下
+
+也可以配置 `"nodpi"`、`"hdpi"` 等来限定密度资源。
+
+## 总结
+
+建议尝试启用 `shrinkResources`，即使应用本身比较"干净"、效果不明显，日志信息也能帮你了解项目中哪些资源被使用、哪些可能被误删。
+
+## 参考
+
+- [Customize which resources to keep](https://developer.android.com/topic/performance/app-optimization/customize-which-resources-to-keep)
+- [Enable app optimization](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization)

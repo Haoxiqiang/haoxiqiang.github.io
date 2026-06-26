@@ -75,13 +75,15 @@ Hugo's multilingual support is intuitive — differentiated by filename suffix:
 
 ```
 content/posts/
-├── my-post.md        # Chinese (default)
+├── my-post.md        # Chinese (default language)
 └── my-post.en.md     # English
 ```
 
-With `defaultContentLanguage: zh` in config, English versions are accessible via the `/en/` prefix.
+With `defaultContentLanguage: zh` in the config, English versions are accessible via the `/en/` prefix.
 
 ### 4. GitHub Actions Deployment
+
+Using [peaceiris/actions-hugo](https://github.com/peaceiris/actions-hugo) along with GitHub's official Pages deployment actions:
 
 ```yaml
 name: Deploy Hugo site to Pages
@@ -120,17 +122,17 @@ jobs:
 
 Out-of-the-box features with PaperMod:
 
-- ✅ Auto dark/light mode switching
-- ✅ Site search (Fuse.js-based)
-- ✅ One-click code copy
-- ✅ Reading time estimation
-- ✅ Table of contents (TOC)
-- ✅ Breadcrumb navigation
-- ✅ RSS feed
-- ✅ SEO optimization (Open Graph, Twitter Cards)
-- ✅ Responsive design
-- ✅ Archives page
-- ✅ Multilingual support
+- Auto dark/light mode switching
+- Site search (Fuse.js-based)
+- One-click code copy
+- Reading time estimation
+- Table of contents (TOC)
+- Breadcrumb navigation
+- RSS feed
+- SEO optimization (Open Graph, Twitter Cards)
+- Responsive design
+- Archives page
+- Multilingual support
 
 ## GitHub Pages Best Practices in 2026
 
@@ -139,9 +141,9 @@ Key recommendations for using GitHub Pages today:
 ### Deployment Method
 
 **Use GitHub Actions** — branch-based deployment is outdated. Actions advantages:
-- Not limited to Jekyll, use any SSG
+- Not limited to Jekyll; use any SSG
 - Full control over build environment
-- Always use the latest tool versions
+- Always using the latest tool versions
 
 ### Performance Optimization
 
@@ -173,11 +175,13 @@ Key recommendations for using GitHub Pages today:
 | Search | None | Fuse.js full-text search |
 | Post count | 55 | 54 (removed 1 duplicate) |
 
-The migration took about half a day, mostly spent standardizing front matter. The result is satisfying — build speed went from seconds to milliseconds, the theme is clean and elegant, and multilingual is ready.
+The migration took about half a day, mostly spent standardizing front matter. The result is satisfying — build speed went from seconds to milliseconds, the theme is clean and elegant, and multilingual support is ready.
 
 ## References
 
 - [Hugo Official Documentation](https://gohugo.io/documentation/)
+- [Hugo Multilingual Configuration](https://gohugo.io/configuration/languages/)
+- [PaperMod Theme GitHub Repository](https://github.com/adityatelange/hugo-PaperMod)
 - [PaperMod Theme Documentation](https://adityatelange.github.io/hugo-PaperMod/)
 - [Hugo GitHub Pages Deployment Guide](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
-- [2026 SSG Comparison Review](https://www.jekyllpad.com/blog/best-static-site-generator) (jekyllpad.com)
+- [peaceiris/actions-hugo](https://github.com/peaceiris/actions-hugo)

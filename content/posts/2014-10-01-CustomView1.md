@@ -1,19 +1,25 @@
 ---
-title: "Android的自定义View"
+title: "Android 的自定义 View（一）"
 date: 2014-10-01 17:19:06
 author: "haoxiqiang"
-tags: ["android"]
-categories: ["Blog"]
+tags: ["Android"]
+categories: ["Android"]
 ShowToc: true
 TocOpen: false
 ---
-在第一部分写一些自定义View的规则吧,说实话,其实我也挺菜比的.刚开始写自定义的View的时候,难免不知道如何下手.一般说来有两种
 
-* 一种是自己从View开始自己去通过计算,绘制出来自己需要的样子.
-* 另外一种就是,扩展现有的View，比如再增加几个View进去,或者复写一些方法来改变原有的逻辑.
+刚开始编写自定义 View 时，难免不知道如何下手。一般说来有两种实现方式：
+
+1. **从零开始**：继承 `View`，通过计算和绘制实现所需的外观。
+2. **扩展现有 View**：在已有控件基础上增加子 View，或重写方法改变原有逻辑。
+
 <!--more-->
-我们先写一个继承View的,看看View都需要写什么:
-``` java
+
+## 继承 View 实现自定义控件
+
+先看一个继承 `View` 的最简示例：
+
+```java
 public class SimpleView extends View {
 
     public SimpleView(Context context) {
@@ -25,20 +31,28 @@ public class SimpleView extends View {
     }
 }
 ```
-如果你不需要xml配置属性的话AttributeSet这个构造方法可以不写,当然这个时候你不能把这个View写到xml中了,AttributeSet的使用方法其实就是把一堆xml的属性解析成了一个Array来方便你的使用,xml的属性的类型需要你事先声明,我们一般写到这个里面`res/values/attrs.xml`,称之为`<declare-styleable>`,这里面的数据类型支持的有:`boolean`,`string`,`dimension`,`enum`,`fraction`,`reference`,`color`.在这当中我们也可以使用`|`来制定多种类型
 
-``` xml
+如果不需要 XML 配置属性，`AttributeSet` 构造方法可以不写——但这样一来此 View 也不能在 XML 中使用。
+
+## 自定义属性
+
+`AttributeSet` 将 XML 属性解析为数组供代码使用。属性类型需要事先声明，通常定义在 `res/values/attrs.xml` 中：
+
+```xml
 <declare-styleable name="SimpleView">
-	<attr name="showContent" format="boolean" />
-	<attr name="showPosition" format="enum">
-		<enum name="left" value="0" />
-		<enum name="right" value="1" />
-	</attr>
+    <attr name="showContent" format="boolean" />
+    <attr name="showPosition" format="enum">
+        <enum name="left" value="0" />
+        <enum name="right" value="1" />
+    </attr>
 </declare-styleable>
 ```
 
-现在我们写好了一个带参数的View,在xml中可以设置一个自定义的命名空间,这个命名空间的写法`http://schemas.android.com/apk/res/[your package name]` 或者 `http://schemas.android.com/apk/res/auto`,举个例子:
-``` xml
+支持的数据类型：`boolean`、`string`、`dimension`、`enum`、`fraction`、`reference`、`color`，也可用 `|` 指定多种类型。
+
+### 在 XML 中使用自定义命名空间
+
+```xml
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:hxq="http://schemas.android.com/apk/res/blog.haoxiqiang"
@@ -56,9 +70,13 @@ public class SimpleView extends View {
 </RelativeLayout>
 ```
 
-我这里使用的是包名的形式,我现在想要做这样一个View,画一个圆,配上文字,`showContent`控制文字的显示与否,`showPosition`控制在屏幕的左半部分还是右半部分绘制,View的完整代码如下
+命名空间写法：`http://schemas.android.com/apk/res/[your package name]` 或 `http://schemas.android.com/apk/res/auto`。
 
-``` java
+## 完整示例：带圆和文字的 View
+
+下面实现一个自定义 View，绘制一个蓝色圆形并配上文字。`showContent` 控制文字显示，`showPosition` 控制在屏幕左半部分还是右半部分绘制。
+
+```java
 package blog.haoxiqiang;
 
 public class SimpleView extends View {
@@ -124,11 +142,10 @@ public class SimpleView extends View {
 }
 ```
 
-在第二部分中,准备写一下Measure
+下一篇将讨论 `onMeasure` 的工作原理。
 
->源码地址<br />
-[BlogCode01](https://github.com/Haoxiqiang/BlogCode)
+## 参考
 
-
->参考<br />
-[Creating Custom Views](http://developer.android.com/training/custom-views/index.html)
+- [源码 BlogCode01](https://github.com/Haoxiqiang/BlogCode)
+- [Creating Custom Views - Android Developers](https://developer.android.com/training/custom-views/index.html)
+- [Create custom view components - Android Developers](https://developer.android.com/develop/ui/views/layout/custom-views/custom-components)

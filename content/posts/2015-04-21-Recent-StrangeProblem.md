@@ -2,34 +2,57 @@
 title: "最近遇到的一些奇怪的问题"
 date: 2015-04-21 14:41:34
 author: "haoxiqiang"
-tags: ["android"]
-categories: ["Blog"]
+tags: ["android", "troubleshooting"]
+categories: ["Android"]
 ShowToc: true
 TocOpen: false
 ---
-* `Android Studio`新创建的工程直接报错,不能正常编译
-* 魅蓝note不能连接adb,或者其他不能连接的错误
-* 手机上某一个应用死活安装不上了,卸载了也不行,报报过签名错误,空间不足乱七八糟的
+
+Android 开发中偶尔会遇到一些看似莫名其妙的问题，记录在这里，方便以后查阅。
+
 <!--more-->
 
-### 1.`Android Studio`新创建的工程直接报错,不能正常编译
+## 1. Android Studio 新建工程直接报编译错误
 
-	Error:Execution failed for task :app:mergeDebugResources. > Crunching Cruncher ic_launcher.png failed, see logs
+```
+Error:Execution failed for task :app:mergeDebugResources.
+> Crunching Cruncher ic_launcher.png failed, see logs
+```
 
-	解决办法:
-	创建一个drawable-hdpi或者drawable-xhdpi就好了
-	
-### 2.魅蓝note不能连接adb,或者其他不能连接的错误
-	有些手机,注意是其他一切条件正常的时候,不能连接到电脑,需要考虑是不是需要加一下`vendor id`,提供`mac os`解决办法:
-	
-* 找到vendor id,一般在设备管理中可以看到对应的usb的vendor id
-* vi ~/.android/adb_usb.ini 最后增加0x2a45//这里是你找到的vendor id,我的是0x2a45,魅族厂商的
-* adb kill-server dab start-server,然后重新连接usb就可以了
+**原因**：早期 Android Studio 版本中，资源目录结构不完整时可能触发此问题。
 
-### 3.手机上某一个应用死活安装不上了,卸载了也不行,报报过签名错误,空间不足乱七八糟的
+**解决方法**：创建一个 `drawable-hdpi` 或 `drawable-xhdpi` 文件夹即可。
 
-	Package com.yuexue.tifenapp signatures do not match the previously installed version; ignoring!
+## 2. 魅蓝 Note 无法连接 ADB（或其它 USB 连接问题）
 
-	最开始看到一个这样的错误,一直不明白,试着这么做了一次,问题解决
+当所有常规条件都正常时，手机仍然无法连接电脑，可能需要添加 USB **Vendor ID**。
 
-	adb -e uninstall com.yuexue.tifenapp//不带-e 也可以
+**macOS 下的解决方法**：
+
+1. 通过系统信息或 `system_profiler SPUSBDataType` 找到设备的 Vendor ID
+2. 编辑 `~/.android/adb_usb.ini`，在末尾添加 `0x2a45`（魅族厂商 ID）
+3. 重启 ADB 服务并重新连接：
+   ```bash
+   adb kill-server
+   adb start-server
+   ```
+
+详细参考：[Android 官方 ADB 文档](https://developer.android.com/studio/command-line/adb)
+
+## 3. 应用签名冲突无法安装
+
+```
+Package com.yuexue.tifenapp signatures do not match the previously installed version; ignoring!
+```
+
+**原因**：手机上已安装的版本与新安装的版本签名不一致。这在调试与正式签名切换时经常出现。
+
+**解决方法**：先卸载冲突版本：
+
+```bash
+adb uninstall com.yuexue.tifenapp
+```
+
+关键要点：
+- `adb -e` 指定模拟器设备，不带设备参数则会匹配唯一连接设备
+- 应用在谷歌 Play 中的包名卸载需要用 `adb shell pm uninstall -k --user 0 <pkg>`（需 root）
