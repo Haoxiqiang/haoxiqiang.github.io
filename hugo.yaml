@@ -22,22 +22,9 @@ languages:
     label: "中文"
     weight: 1
     params:
-      profileMode:
-        enabled: true
-        title: "郝锡强"
-        subtitle: "Chromium / Android / Server 都搞了一点"
-        imageUrl: "images/avatar.jpg"
-        imageWidth: 120
-        imageHeight: 120
-        buttons:
-          - name: 文章
-            url: posts
-          - name: 归档
-            url: archives
-          - name: 标签
-            url: tags
-          - name: 搜索
-            url: search
+      homeInfoParams:
+        Title: "郝锡强"
+        Content: "Chromium / Android / Server 都搞了一点"
     menu:
       main:
         - identifier: posts
@@ -69,22 +56,9 @@ languages:
     label: "English"
     weight: 2
     params:
-      profileMode:
-        enabled: true
-        title: "Haoxiqiang"
-        subtitle: "Working on Chromium / Android / Server"
-        imageUrl: "images/avatar.jpg"
-        imageWidth: 120
-        imageHeight: 120
-        buttons:
-          - name: Posts
-            url: posts
-          - name: Archives
-            url: archives
-          - name: Tags
-            url: tags
-          - name: Search
-            url: search
+      homeInfoParams:
+        Title: "Haoxiqiang"
+        Content: "Working on Chromium / Android / Server"
     menu:
       main:
         - identifier: posts
