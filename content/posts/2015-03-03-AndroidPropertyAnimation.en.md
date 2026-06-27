@@ -1,6 +1,7 @@
 ---
 title: "Android Property Animation"
 date: 2015-03-03 10:31:21
+slug: "AndroidPropertyAnimation"
 author: "haoxiqiang"
 tags: ["android"]
 categories: ["Android"]

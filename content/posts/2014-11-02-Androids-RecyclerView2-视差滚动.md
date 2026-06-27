@@ -1,6 +1,7 @@
 ---
 title: "Android 的 RecyclerView（二）：视差滚动"
 date: 2014-11-02 14:01:22
+slug: "Androids-RecyclerView2-视差滚动"
 author: "haoxiqiang"
 tags: ["Android"]
 categories: ["Android"]

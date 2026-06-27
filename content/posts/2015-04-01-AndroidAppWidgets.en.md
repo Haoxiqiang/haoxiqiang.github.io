@@ -1,6 +1,7 @@
 ---
 title: "Android App Widgets"
 date: 2015-04-01 10:37:26
+slug: "AndroidAppWidgets"
 author: "haoxiqiang"
 tags: ["android"]
 categories: ["Android"]

@@ -1,6 +1,7 @@
 ---
 title: "Strange Problems I Encountered Recently"
 date: 2015-04-21 14:41:34
+slug: "Recent-StrangeProblem"
 author: "haoxiqiang"
 tags: ["android", "troubleshooting"]
 categories: ["Android"]

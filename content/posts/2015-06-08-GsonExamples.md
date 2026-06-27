@@ -1,6 +1,7 @@
 ---
 title: "Gson 使用指南"
 date: 2015-06-08 12:37:45
+slug: "GsonExamples"
 author: "haoxiqiang"
 tags: ["java", "gson", "json"]
 categories: ["Java"]

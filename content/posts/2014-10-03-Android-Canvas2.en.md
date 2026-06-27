@@ -1,6 +1,7 @@
 ---
 title: "Android Canvas (Part 2): Clipping"
 date: 2014-10-03 14:19:06
+slug: "Android-Canvas2"
 author: "haoxiqiang"
 tags: ["Android"]
 categories: ["Android"]

@@ -1,6 +1,7 @@
 ---
 title: "Android 的 Canvas（二）：裁剪"
 date: 2014-10-03 14:19:06
+slug: "Android-Canvas2"
 author: "haoxiqiang"
 tags: ["Android"]
 categories: ["Android"]

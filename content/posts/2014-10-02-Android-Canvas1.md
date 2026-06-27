@@ -1,6 +1,7 @@
 ---
 title: "Android 的 Canvas（一）"
 date: 2014-10-02 13:19:06
+slug: "Android-Canvas1"
 author: "haoxiqiang"
 tags: ["Android"]
 categories: ["Android"]

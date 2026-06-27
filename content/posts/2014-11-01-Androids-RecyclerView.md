@@ -1,6 +1,7 @@
 ---
 title: "Android 的 RecyclerView"
 date: 2014-11-01 17:03:26
+slug: "Androids-RecyclerView"
 author: "haoxiqiang"
 tags: ["Android"]
 categories: ["Android"]

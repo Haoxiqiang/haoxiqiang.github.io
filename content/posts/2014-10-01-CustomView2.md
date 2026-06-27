@@ -1,6 +1,7 @@
 ---
 title: "Android 的自定义 View（二）：测量模式"
 date: 2014-10-01 19:19:06
+slug: "CustomView2"
 author: "haoxiqiang"
 tags: ["Android"]
 categories: ["Android"]

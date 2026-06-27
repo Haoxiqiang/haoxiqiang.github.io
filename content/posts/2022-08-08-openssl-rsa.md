@@ -1,6 +1,7 @@
 ---
 title: "OpenSSL RSA 加密的一个认知盲区"
 date: 2022-08-08 17:09:43
+slug: "openssl-rsa"
 author: "haoxiqiang"
 tags: ["openssl", "rsa", "cryptography"]
 categories: ["Security"]

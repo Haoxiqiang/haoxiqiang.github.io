@@ -1,6 +1,7 @@
 ---
 title: "Android Fragment$InstantiationException: Causes and Solutions"
 date: 2015-01-07 08:35:07
+slug: "Android-FragmentInstantiationException"
 author: "haoxiqiang"
 tags: ["android", "fragment", "crash", "exception"]
 categories: ["Android"]

@@ -12,6 +12,10 @@ buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
 
+# Permalinks - use slug (from front matter) which matches old Jekyll URL structure
+permalinks:
+  posts: /posts/:slug/
+
 # Multilingual
 languages:
   zh:

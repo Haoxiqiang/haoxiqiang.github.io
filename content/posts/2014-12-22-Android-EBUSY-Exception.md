@@ -1,6 +1,7 @@
 ---
 title: "Android EBUSY Exception"
 date: 2014-12-22 15:35:07
+slug: "Android-EBUSY-Exception"
 author: "haoxiqiang"
 tags: ["android", "java"]
 categories: ["Android"]

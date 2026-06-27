@@ -1,6 +1,7 @@
 ---
 title: "Remote Debugging on Android with Chrome"
 date: 2015-03-24 14:54:02
+slug: "RemoteDebuggingonAndroidwithChrome"
 author: "haoxiqiang"
 tags: ["android", "chrome", "debug"]
 categories: ["Android"]

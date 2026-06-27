@@ -1,6 +1,7 @@
 ---
 title: "Android's SQLite"
 date: 2014-12-01 22:11:22
+slug: "Androids-SQLite"
 author: "haoxiqiang"
 tags: ["android"]
 categories: ["Android"]

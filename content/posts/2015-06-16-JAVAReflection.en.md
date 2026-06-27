@@ -1,6 +1,7 @@
 ---
 title: "Java Reflection: Modifying Private Static Final Fields"
 date: 2015-06-16 11:09:06
+slug: "JAVAReflection"
 author: "haoxiqiang"
 tags: ["java", "reflection", "jls"]
 categories: ["Java"]

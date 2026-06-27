@@ -1,6 +1,7 @@
 ---
 title: "Android Developer Requirements"
 date: 2015-04-01 09:50:52
+slug: "AndroidDeveloperRequirements"
 author: "haoxiqiang"
 tags: ["android"]
 categories: ["Android"]

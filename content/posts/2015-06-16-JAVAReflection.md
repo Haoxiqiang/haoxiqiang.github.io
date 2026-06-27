@@ -1,6 +1,7 @@
 ---
 title: "Java Reflection 修改 private static final 字段"
 date: 2015-06-16 11:09:06
+slug: "JAVAReflection"
 author: "haoxiqiang"
 tags: ["java", "reflection", "jls"]
 categories: ["Java"]

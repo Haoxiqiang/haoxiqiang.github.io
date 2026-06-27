@@ -1,6 +1,7 @@
 ---
 title: "Make Your App the Default SMS App"
 date: 2015-05-18 16:49:21
+slug: "DefaultApp"
 author: "haoxiqiang"
 tags: ["android"]
 categories: ["Android"]

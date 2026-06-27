@@ -1,6 +1,7 @@
 ---
 title: "SQLite Limits Explained: Tracing a SQLiteFullException"
 date: 2015-02-28 22:48:55
+slug: "LimitsInSQLite"
 author: "haoxiqiang"
 tags: ["android", "sqlite", "database"]
 categories: ["Android"]

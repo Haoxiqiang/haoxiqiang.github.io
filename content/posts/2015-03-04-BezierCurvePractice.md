@@ -1,6 +1,7 @@
 ---
 title: "Bezier Curve Practice"
 date: 2015-03-04 14:11:48
+slug: "BezierCurvePractice"
 author: "haoxiqiang"
 tags: ["android", "graphics"]
 categories: ["Android"]

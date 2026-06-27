@@ -1,6 +1,7 @@
 ---
 title: "Build AOSP for Pixel 3 XL"
 date: 2022-08-15 20:53:06
+slug: "aosp-build-for-pixel3"
 author: "haoxiqiang"
 tags: ["aosp", "android", "pixel3", "lineageos"]
 categories: ["Android"]

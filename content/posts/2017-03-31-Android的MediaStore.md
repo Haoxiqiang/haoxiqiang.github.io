@@ -1,6 +1,7 @@
 ---
 title: "Android 的 MediaStore"
 date: 2017-03-31 11:19:26
+slug: "Android的MediaStore"
 author: "haoxiqiang"
 tags: ["android", "mediastore", "contentresolver"]
 categories: ["Android"]

@@ -1,6 +1,7 @@
 ---
 title: "Lambda Expressions in Java 8"
 date: 2014-12-07 15:35:07
+slug: "Java-8-的-Lambda"
 author: "haoxiqiang"
 tags: ["java"]
 categories: ["Java"]

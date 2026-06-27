@@ -1,6 +1,7 @@
 ---
 title: "How Java HashMap Works Internally"
 date: 2014-12-27 08:35:07
+slug: "JavaHashMap的实现原理"
 author: "haoxiqiang"
 tags: ["java", "hashmap", "collection", "interview"]
 categories: ["Java"]

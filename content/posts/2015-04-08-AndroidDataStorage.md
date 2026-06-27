@@ -1,6 +1,7 @@
 ---
 title: "Android Data Storage"
 date: 2015-04-08 11:38:49
+slug: "AndroidDataStorage"
 author: "haoxiqiang"
 tags: ["android"]
 categories: ["Android"]

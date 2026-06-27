@@ -1,6 +1,7 @@
 ---
 title: "CSS Box Shadows Techniques"
 date: 2014-12-26 23:35:07
+slug: "CSS-Box-Shadows"
 author: "haoxiqiang"
 tags: ["css"]
 categories: ["Web"]

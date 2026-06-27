@@ -1,6 +1,7 @@
 ---
 title: "Java HashMap 的实现原理"
 date: 2014-12-27 08:35:07
+slug: "JavaHashMap的实现原理"
 author: "haoxiqiang"
 tags: ["java", "hashmap", "collection", "面试"]
 categories: ["Java"]

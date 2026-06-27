@@ -1,6 +1,7 @@
 ---
 title: "Design Patterns"
 date: 2015-03-30 10:08:26
+slug: "DesignPatterns"
 author: "haoxiqiang"
 tags: ["java", "design-patterns"]
 categories: ["Java"]

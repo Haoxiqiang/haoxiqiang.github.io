@@ -1,6 +1,7 @@
 ---
 title: "Lorem Ipsum — Placeholder Text"
 date: 2015-12-04 12:04:00
+slug: "Loremipsum乱数假文"
 author: "haoxiqiang"
 tags: ["blog", "fun", "typography"]
 categories: ["Blog"]

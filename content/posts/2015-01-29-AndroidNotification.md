@@ -1,6 +1,7 @@
 ---
 title: "Android 通知机制详解"
 date: 2015-01-29 15:26:07
+slug: "AndroidNotification"
 author: "haoxiqiang"
 tags: ["android", "notification"]
 categories: ["Android"]

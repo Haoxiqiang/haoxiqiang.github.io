@@ -1,6 +1,7 @@
 ---
 title: "ShadowSocks Rust 的配置与优化"
 date: 2022-05-06 16:10:22
+slug: "shadowsocks-rust"
 author: "haoxiqiang"
 tags: ["shadowsocks", "vpn", "network"]
 categories: ["DevOps"]

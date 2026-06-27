@@ -1,6 +1,7 @@
 ---
 title: "Cache Algorithms"
 date: 2015-05-05 16:31:28
+slug: "CacheAlgorithms"
 author: "haoxiqiang"
 tags: ["java", "cache", "algorithms"]
 categories: ["Java"]

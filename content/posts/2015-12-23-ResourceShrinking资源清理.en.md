@@ -1,6 +1,7 @@
 ---
 title: "Android Resource Shrinking"
 date: 2015-12-23 17:43:07
+slug: "ResourceShrinking资源清理"
 author: "haoxiqiang"
 tags: ["android", "gradle", "build", "optimization"]
 categories: ["Android"]

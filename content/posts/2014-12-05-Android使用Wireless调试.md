@@ -1,6 +1,7 @@
 ---
 title: "Android 使用 Wireless 调试"
 date: 2014-12-05 11:35:07
+slug: "Android使用Wireless调试"
 author: "haoxiqiang"
 tags: ["android"]
 categories: ["Android"]

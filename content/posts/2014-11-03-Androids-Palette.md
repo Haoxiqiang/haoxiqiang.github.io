@@ -1,6 +1,7 @@
 ---
 title: "Android's Palette"
 date: 2014-11-03 10:01:22
+slug: "Androids-Palette"
 author: "haoxiqiang"
 tags: ["android"]
 categories: ["Android"]

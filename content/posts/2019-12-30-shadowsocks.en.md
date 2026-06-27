@@ -1,6 +1,7 @@
 ---
 title: "Shadowsocks Setup and Optimization"
 date: 2019-12-31 20:29:27
+slug: "shadowsocks"
 author: "haoxiqiang"
 tags: ["shadowsocks", "vpn", "bbr", "linux"]
 categories: ["DevOps"]

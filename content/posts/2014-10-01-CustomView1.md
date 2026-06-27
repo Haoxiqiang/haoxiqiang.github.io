@@ -1,6 +1,7 @@
 ---
 title: "Android 的自定义 View（一）"
 date: 2014-10-01 17:19:06
+slug: "CustomView1"
 author: "haoxiqiang"
 tags: ["Android"]
 categories: ["Android"]

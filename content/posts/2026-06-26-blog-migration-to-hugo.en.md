@@ -1,6 +1,7 @@
 ---
 title: "Blog Migration: From Jekyll Chirpy to Hugo PaperMod"
 date: 2026-06-26
+slug: "blog-migration-to-hugo"
 description: "Documenting the migration from Jekyll + Chirpy to Hugo + PaperMod, including selection analysis and GitHub Pages best practices in 2026"
 author: "haoxiqiang"
 tags: ["hugo", "github-pages", "blog", "jekyll"]

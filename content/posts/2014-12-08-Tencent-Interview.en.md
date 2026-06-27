@@ -1,6 +1,7 @@
 ---
 title: "Tencent Interview"
 date: 2014-12-08 10:35:07
+slug: "Tencent-Interview"
 author: "haoxiqiang"
 tags: ["android", "java", "interview"]
 categories: ["Blog"]
